@@ -7,6 +7,7 @@ class ControlDeDatos:
     DOCS
     @User: David
     """
+    @staticmethod
     def guardarDatos(nombre:str,puntuacion:int) -> str:
         webhook = "https://wh.unet.es/webhook/54d47dec-0f41-4f6d-bd53-24e9384494c7"
         """
@@ -30,7 +31,7 @@ class ControlDeDatos:
             return e.read().decode('utf-8')
         except Exception as e:
             return e
-
+    @staticmethod
     def preguntarDatos() -> list:
         """
             Devuelva una Lista de Diccionarios con los datos de nmbre y puntiación
