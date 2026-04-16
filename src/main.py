@@ -15,6 +15,7 @@ from character.player import PlayerCharacter as PlayerCharacter
 from character.character import Character as Character
 from character.enemy import Enemy as Enemy
 from character.walking_enemy import  ZombieEnemy,RobotEnemy as ZombieEnemy,RobotEnemy
+from character.proyectil import Proyectil as Proyectil
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -143,6 +144,8 @@ class GameView(arcade.View):
         self.player_sprite.center_y = 128
         self.scene.add_sprite("Player", self.player_sprite)
 
+
+
         # -- Enemies
         enemies_layer = self.tile_map.object_lists["Enemies"]
 
@@ -250,18 +253,7 @@ class GameView(arcade.View):
         if self.can_shoot:
             if self.shoot_pressed:
                 arcade.play_sound(self.shoot_sound)
-                bullet = arcade.Sprite(
-                    ":resources:images/space_shooter/laserBlue01.png",
-                    scaling=0.8,
-                )
-                if self.player_sprite.facing_direction == RIGHT_FACING:
-                    bullet.change_x = 12
-                else:
-                    bullet.change_x = -12
-
-                bullet.center_x = self.player_sprite.center_x
-                bullet.center_y = self.player_sprite.center_y
-
+                bullet = Proyectil(self.player_sprite)
                 self.scene.add_sprite("Bullets", bullet)
                 self.can_shoot = False
         else:
@@ -347,6 +339,14 @@ class GameView(arcade.View):
 
         # Center our camera on the player
         self.camera.position = self.player_sprite.position
+
+    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int) -> bool | None:
+        """
+            lógica de apuntaje
+        """
+        self.player_sprite.mousex = x
+        self.player_sprite.mousey = y
+
 
     def process_keychange(self):
         # First handle the case where we have moved up. This needs to be handled

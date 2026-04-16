@@ -1,7 +1,6 @@
 import arcade
 from character.character import Character
-
-
+import pathlib
 #Constantes
 RIGHT_FACING = 0
 LEFT_FACING = 1
@@ -15,11 +14,14 @@ class PlayerCharacter(Character):
         self.climbing = False
         self.should_update_walk = 0
 
-    def update_animation(self, delta_time):
 
+        self.mousex = 0
+        self.mousey = 0
+    def update_animation(self, delta_time):
         # Figure out the direction the character is facing based on the movement
         # and previous direction.
         #
+        print(self.mousex, self.mousey)
         if self.change_x < 0 and self.facing_direction == RIGHT_FACING:
             self.facing_direction = LEFT_FACING
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
