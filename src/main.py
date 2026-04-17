@@ -16,6 +16,7 @@ from character.character import Character as Character
 from character.enemy import Enemy as Enemy
 from character.walking_enemy import  ZombieEnemy,RobotEnemy as ZombieEnemy,RobotEnemy
 from character.proyectil import Proyectil as Proyectil
+from character.arma import Arma as Arma
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -68,6 +69,7 @@ class GameView(arcade.View):
         super().__init__()
 
         # Track the current state of our input
+        self.arma = None
         self.left_pressed = False
         self.right_pressed = False
         self.up_pressed = False
@@ -139,10 +141,16 @@ class GameView(arcade.View):
         # Create our Scene Based on the TileMap
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
-        self.player_sprite = PlayerCharacter()
+
+        self.arma = Arma()
+        self.scene.add_sprite("Arma", self.arma)
+        self.player_sprite = PlayerCharacter(self.arma)
         self.player_sprite.center_x = 128
         self.player_sprite.center_y = 128
         self.scene.add_sprite("Player", self.player_sprite)
+
+        ###Debug
+
 
 
 
@@ -253,7 +261,7 @@ class GameView(arcade.View):
         if self.can_shoot:
             if self.shoot_pressed:
                 arcade.play_sound(self.shoot_sound)
-                bullet = Proyectil(self.player_sprite)
+                bullet = Proyectil(self.player_sprite,self.player_sprite.aim_radians)
                 self.scene.add_sprite("Bullets", bullet)
                 self.can_shoot = False
         else:

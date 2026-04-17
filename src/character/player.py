@@ -1,12 +1,19 @@
 import arcade
 from character.character import Character
 import pathlib
+import math
 #Constantes
 RIGHT_FACING = 0
 LEFT_FACING = 1
 
+#OJO QUE PUEDE CAMBIAR! - CALCULA LA POSICION DE LA PISTOLA!
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
+
+
+
 class PlayerCharacter(Character):
-    def __init__(self):
+    def __init__(self,arma):
         super().__init__("female_adventurer", "femaleAdventurer")
 
         # Track extra state related to the player. We will use these for change
@@ -14,14 +21,30 @@ class PlayerCharacter(Character):
         self.climbing = False
         self.should_update_walk = 0
 
+        #Clase arma
+        self.arma = arma
 
+        #posición mouse
         self.mousex = 0
         self.mousey = 0
+        #Orientación relativa del mouse (para arma)
+        self.aim_radians = 0
     def update_animation(self, delta_time):
         # Figure out the direction the character is facing based on the movement
         # and previous direction.
-        #
-        print(self.mousex, self.mousey)
+
+        #Cálculo de posición de arma
+        self.arma.center_x = self.center_x + ((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
+        self.arma.center_y = self.center_y + ((self.mousey - SCREEN_HEIGHT // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
+        #Calculo de Orientacioón de arma (Radians)
+        if (self.mousey - SCREEN_HEIGHT // 2) >= 0:
+            self.aim_radians = (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5))
+        else:
+            self.aim_radians = (2 * math.pi - (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2) ** 2 + (self.mousey - SCREEN_HEIGHT // 2) ** 2) ** 0.5)))
+
+        #Pasar orientación al arma
+        self.arma.angle = 360 - math.degrees(self.aim_radians)
+
         if self.change_x < 0 and self.facing_direction == RIGHT_FACING:
             self.facing_direction = LEFT_FACING
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
