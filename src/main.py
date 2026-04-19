@@ -24,11 +24,10 @@ WINDOW_HEIGHT = 720
 WINDOW_TITLE = "Platformer"
 
 # Constants used to scale our sprites from their original size
-TILE_SCALING = 0.5
-COIN_SCALING = 0.5
+TILE_SCALING = 1
 
 # Movement speed of player, in pixels per frame
-PLAYER_MOVEMENT_SPEED = 5
+PLAYER_MOVEMENT_SPEED = 7
 GRAVITY = 1
 PLAYER_JUMP_SPEED = 20
 
@@ -82,8 +81,15 @@ class GameView(arcade.View):
         # Separate variable that holds the player sprite
         self.player_sprite = None
 
+        # Inicialización del motor de físicas
+
+        self.physics_engine = None
+
         # Variable to hold our Tiled Map
         self.tile_map = None
+
+        # Variable para guardar el mapa a cargar
+        self.map_num = None
 
         # Replacing all of our SpriteLists with a Scene variable
         self.scene = None
@@ -120,20 +126,23 @@ class GameView(arcade.View):
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         layer_options = {
-            "Platforms": {
+            "platforms": {
                 "use_spatial_hash": True
             },
-            "Moving Platforms": {
+            "special_platforms": {
                 "use_spatial_hash": False
             },
-            "Ladders": {
+            "limits": {
                 "use_spatial_hash": True
             }
         }
 
+        # Seleccionar mapa (provisionalmente se hará así para el debugging)
+        self.map_num = 2
+
         # Load our TileMap
         self.tile_map = arcade.load_tilemap(
-            ":resources:tiled_maps/map_with_ladders.json",
+            PROJECT_ROOT / "assets" / "levels" / "maps" / f"mapa-{self.map_num}.json",
             scaling=TILE_SCALING,
             layer_options=layer_options,
         )
@@ -141,11 +150,21 @@ class GameView(arcade.View):
         # Create our Scene Based on the TileMap
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
+        # En el mapa introductorio al no haber ciertos elementos se inducen errores, para evitarlos crearemos sus SpriteLists vacías
+        if self.map_num == 1:
+            self.scene.add_sprite_list("special_platforms")
+            self.scene.add_sprite_list("enemies")
+            self.scene.add_sprite_list("ores")
+
 
         self.arma = Arma()
         self.scene.add_sprite("Arma", self.arma)
         self.player_sprite = PlayerCharacter(self.arma)
-        self.player_sprite.center_x = 128
+        # Provisionalmente añadiremos esto para que el personaje no se quede atrapado en la nave de la izquierda del mapa 2
+        if self.map_num == 2:
+            self.player_sprite.center_x = 128 * 8
+        else:
+            self.player_sprite.center_x = 128
         self.player_sprite.center_y = 128
         self.scene.add_sprite("Player", self.player_sprite)
 
@@ -155,31 +174,33 @@ class GameView(arcade.View):
 
 
         # -- Enemies
-        enemies_layer = self.tile_map.object_lists["Enemies"]
+        enemies_layer = self.tile_map.object_lists.get("enemies", [])
 
-        for enemy_marker in enemies_layer:
-            coordinates = self.tile_map.get_cartesian(
-                enemy_marker.shape[0], enemy_marker.shape[1]
-            )
-            enemy_type = enemy_marker.properties["type"]
-            if enemy_type == "robot":
-                enemy = RobotEnemy()
-            elif enemy_type == "zombie":
-                enemy = ZombieEnemy()
-            enemy.center_x = math.floor(
-                coordinates[0] * TILE_SCALING * self.tile_map.tile_width
-            )
-            enemy.center_y = math.floor(
-                (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
-            )
-            if "boundary_left" in enemy_marker.properties:
-                enemy.boundary_left = enemy_marker.properties["boundary_left"]
-            if "boundary_right" in enemy_marker.properties:
-                enemy.boundary_right = enemy_marker.properties["boundary_right"]
-            if "change_x" in enemy_marker.properties:
-                enemy.change_x = enemy_marker.properties["change_x"]
+        # Sección de código comentada hasta que sean añadidos más tipos de enemigos
 
-            self.scene.add_sprite("Enemies", enemy)
+        # for enemy_marker in enemies_layer:
+        #     coordinates = self.tile_map.get_cartesian(
+        #         enemy_marker.shape[0], enemy_marker.shape[1]
+        #     )
+        #     enemy_type = enemy_marker.properties["type"]
+        #     if enemy_type == "robot":
+        #         enemy = RobotEnemy()
+        #     elif enemy_type == "zombie":
+        #         enemy = ZombieEnemy()
+        #     enemy.center_x = math.floor(
+        #         coordinates[0] * TILE_SCALING * self.tile_map.tile_width
+        #     )
+        #     enemy.center_y = math.floor(
+        #         (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
+        #     )
+        #     if "boundary_left" in enemy_marker.properties:
+        #         enemy.boundary_left = enemy_marker.properties["boundary_left"]
+        #     if "boundary_right" in enemy_marker.properties:
+        #         enemy.boundary_right = enemy_marker.properties["boundary_right"]
+        #     if "change_x" in enemy_marker.properties:
+        #         enemy.change_x = enemy_marker.properties["change_x"]
+
+        #     self.scene.add_sprite("enemies", enemy)
 
         # Create a Platformer Physics Engine, this will handle moving our
         # player as well as collisions between the player sprite and
@@ -190,10 +211,9 @@ class GameView(arcade.View):
         # it will not be moved.
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite,
-            walls=self.scene["Platforms"],
+            walls=self.scene["platforms"],
             gravity_constant=GRAVITY,
-            platforms=self.scene["Moving Platforms"],
-            ladders=self.scene["Ladders"]
+            platforms=[self.scene["special_platforms"], self.scene["limits"]],
         )
 
         # Initialize our camera, setting a viewport the size of our window.
@@ -214,8 +234,6 @@ class GameView(arcade.View):
         # Initialize our arcade.Text object for score
         self.score_text = arcade.Text(f"Score: {self.score}", x=0, y=5)
 
-        self.background_color = arcade.csscolor.CORNFLOWER_BLUE
-
         # Calculate the right edge of the map in pixels
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)
         self.end_of_map *= self.tile_map.scaling
@@ -234,6 +252,10 @@ class GameView(arcade.View):
         # Clear the screen to the background color
         self.clear()
 
+        # Hasta que no se cargue la camara no se ejecutará el resto, necesario para evitar errores
+        if self.camera is None:
+            return
+
         # Activate our camera before drawing
         self.camera.use()
 
@@ -248,6 +270,11 @@ class GameView(arcade.View):
 
     def on_update(self, delta_time):
         """Movement and Game Logic"""
+
+
+        # Hasta que no se cargue el motor de físicas no se ejecutará el resto, necesario para evitar errores
+        if self.physics_engine is None:
+            return
 
         # Move the player using our physics engine
         self.physics_engine.update()
@@ -271,87 +298,98 @@ class GameView(arcade.View):
                 self.shoot_timer = 0
 
 
-        # Actually trigger animation updates. We've added the Background and Coins layer
-        # here as well. Our Tiled map has some animated tiles built-in, check out the flags
-        # and torches on the map.
+        # Actualizar animaciones
         self.scene.update_animation(
             delta_time,
             [
-                "Coins",
-                "Background",
                 "Player",
-                "Enemies"
+                "enemies",
+                "ores"
             ]
         )
 
-        self.scene.update(delta_time, ["Enemies", "Bullets"])
+        self.scene.update(delta_time, ["enemies", "Bullets"])
+
+        # Sección comentada hasta que se añadan más enemigos y se configuren
 
         # Keep enemies walking within their boundaries configured in Tiled
-        for enemy in self.scene["Enemies"]:
-            if enemy.right > enemy.boundary_right and enemy.change_x > 0:
-                enemy.change_x *= -1
-            elif enemy.left < enemy.boundary_left and enemy.change_x < 0:
-                enemy.change_x *= -1
+        # for enemy in self.scene["enemies"]:
+        #     if enemy.right > enemy.boundary_right and enemy.change_x > 0:
+        #         enemy.change_x *= -1
+        #     elif enemy.left < enemy.boundary_left and enemy.change_x < 0:
+        #         enemy.change_x *= -1
 
         for bullet in self.scene["Bullets"]:
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
                 [
-                    self.scene["Enemies"],
-                    self.scene["Platforms"],
-                    self.scene["Moving Platforms"]
+                    self.scene["enemies"],
+                    self.scene["platforms"],
+                    self.scene["special_platforms"]
                 ]
             )
 
-            if hit_list:
-                bullet.remove_from_sprite_lists()
+            # Sección comentada hasta que se decida que cantidad de vida tendrá cada tipo de enemigo
 
-                for collision in hit_list:
-                    if self.scene["Enemies"] in collision.sprite_lists:
-                        collision.health -= 25
+            # if hit_list:
+            #     bullet.remove_from_sprite_lists()
 
-                        if collision.health <= 0:
-                            collision.remove_from_sprite_lists()
-                            self.score += 150
+            #     for collision in hit_list:
+            #         if self.scene["enemies"] in collision.sprite_lists:
+            #             collision.health -= 25
 
-                        arcade.play_sound(self.hit_sound)
+            #             if collision.health <= 0:
+            #                 collision.remove_from_sprite_lists()
+            #                 self.score += 150
 
-                return
+            #             arcade.play_sound(self.hit_sound)
+
+            #     return
 
             # Remove bullet if it leaves the map area.
             # Bullets only travel horizontally, so we only need to check left and right.
             if (bullet.right < 0) or (bullet.left > self.end_of_map):
                 bullet.remove_from_sprite_lists()
 
-        # See if we hit any coins
+        # Lista de colisiones con enemigos y ores
         player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
-                self.scene["Coins"],
-                self.scene["Enemies"]
+                self.scene["ores"],
+                self.scene["enemies"]
             ]
         )
 
         for collision in player_collision_list:
-            if self.scene["Enemies"] in collision.sprite_lists:
+            if self.scene["enemies"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 game_over = GameOverView()
                 self.window.show_view(game_over)
                 return
             else:
-                # Our collision is a coin, remove it
+                # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
+                self.score += collision.properties["value"]
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
-                self.score += 75
                 self.score_text.text = f"Score: {self.score}"
 
-        # Center our camera on the player
-        self.camera.position = self.player_sprite.position
+        # Centrar la cámara en el jugador y dejarla fija cuando se acerca a los bordes del mapa para que no se salga la cámara
+        if self.player_sprite.center_x <= WINDOW_WIDTH / 2:
+            self.camera.position = WINDOW_WIDTH / 2, self.tile_map.tile_height * 2 + self.player_sprite.height
+        elif self.player_sprite.center_x >= self.end_of_map - WINDOW_WIDTH / 2:
+            self.camera.position = self.end_of_map - WINDOW_WIDTH / 2, self.tile_map.tile_height * 2 + self.player_sprite.height
+        else:
+            self.camera.position = self.player_sprite.position[0], self.tile_map.tile_height * 2 + self.player_sprite.height
 
     def on_mouse_motion(self, x: int, y: int, dx: int, dy: int) -> bool | None:
         """
             lógica de apuntaje
         """
+
+        # Hasta que no se declare el jugador, en los milisegundos previos puede inducir un error NoneType
+        if self.player_sprite is None:
+            return
+
         self.player_sprite.mousex = x
         self.player_sprite.mousey = y
 

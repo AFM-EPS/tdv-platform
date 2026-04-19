@@ -234,6 +234,12 @@
                  "height":128,
                  "id":18,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":10
+                        }],
                  "rotation":0,
                  "type":"Blue_ore",
                  "visible":true,
@@ -246,6 +252,12 @@
                  "height":128,
                  "id":19,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":50
+                        }],
                  "rotation":0,
                  "type":"Green_ore",
                  "visible":true,
@@ -258,6 +270,12 @@
                  "height":128,
                  "id":20,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":100
+                        }],
                  "rotation":0,
                  "type":"Golden_ore",
                  "visible":true,
