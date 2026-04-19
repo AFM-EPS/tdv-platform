@@ -1,0 +1,143 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "properties": [
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "value",
+                    "type": "int",
+                    "value": 10
+                }
+            ],
+            "name": "Blue_ore",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 5,
+            "members": [
+                {
+                    "name": "can_fly",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "value": "\"robot\""
+                }
+            ],
+            "name": "Enemy",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 4,
+            "members": [
+                {
+                    "name": "value",
+                    "type": "int",
+                    "value": 100
+                }
+            ],
+            "name": "Golden_ore",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 3,
+            "members": [
+                {
+                    "name": "value",
+                    "type": "int",
+                    "value": 50
+                }
+            ],
+            "name": "Green_ore",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "destructible",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "movable",
+                    "type": "bool",
+                    "value": false
+                }
+            ],
+            "name": "Special_platform",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 6,
+            "members": [
+                {
+                    "name": "damage",
+                    "type": "int",
+                    "value": 20
+                },
+                {
+                    "name": "type",
+                    "type": "string",
+                    "value": "basic_gun"
+                }
+            ],
+            "name": "Gun",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        }
+    ]
+}

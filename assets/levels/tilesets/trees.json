@@ -1,0 +1,14 @@
+{ "columns":3,
+ "image":"..\/..\/img\/trees.png",
+ "imageheight":378,
+ "imagewidth":1557,
+ "margin":0,
+ "name":"trees",
+ "spacing":0,
+ "tilecount":3,
+ "tiledversion":"1.11.2",
+ "tileheight":376,
+ "tilewidth":512,
+ "type":"tileset",
+ "version":"1.10"
+}

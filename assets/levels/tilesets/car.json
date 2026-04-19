@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"..\/..\/img\/car.png",
+ "imageheight":128,
+ "imagewidth":300,
+ "margin":0,
+ "name":"car",
+ "spacing":0,
+ "tilecount":1,
+ "tiledversion":"1.11.2",
+ "tileheight":128,
+ "tilewidth":300,
+ "type":"tileset",
+ "version":"1.10"
+}
