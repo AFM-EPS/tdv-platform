@@ -36,19 +36,33 @@ class PlayerCharacter(Character):
         #Cálculo de posición de arma
         self.arma.center_x = self.center_x + ((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
         self.arma.center_y = self.center_y + ((self.mousey - SCREEN_HEIGHT // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
+        #versión mucho más optimizada
+        dx = self.mousex - SCREEN_WIDTH // 2
+        dy = self.mousey - SCREEN_HEIGHT // 2
+        self.aim_radians = math.atan2(dy, dx)
         #Calculo de Orientacioón de arma (Radians)
-        if (self.mousey - SCREEN_HEIGHT // 2) >= 0:
-            self.aim_radians = (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5))
-        else:
-            self.aim_radians = (2 * math.pi - (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2) ** 2 + (self.mousey - SCREEN_HEIGHT // 2) ** 2) ** 0.5)))
+        #if (self.mousey - SCREEN_HEIGHT // 2) >= 0:
+        #    self.aim_radians = (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5+0.0001))
+        #else:
+        #    self.aim_radians = (2 * math.pi - (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2) ** 2 + (self.mousey - SCREEN_HEIGHT // 2) ** 2) ** 0.5)+0.0001))
 
         #Pasar orientación al arma
         self.arma.angle = 360 - math.degrees(self.aim_radians)
+        if (self.mousex - SCREEN_WIDTH // 2) >= 0:
+            self.arma.flip(RIGHT_FACING)
+        else:
+            self.arma.flip(LEFT_FACING)
+
+
 
         if self.change_x < 0 and self.facing_direction == RIGHT_FACING:
             self.facing_direction = LEFT_FACING
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
             self.facing_direction = RIGHT_FACING
+
+
+
+
 
         # Handle animations for climbing on ladders. We use the absolute value
         # of change_y here because we don't care if the character is moving up

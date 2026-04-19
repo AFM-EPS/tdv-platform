@@ -22,6 +22,5 @@ class Proyectil(arcade.Sprite):
         #Cálculo de dirección:
         self.change_x = math.cos(orientation) * VELOCIDAD
         self.change_y = math.sin(orientation) * VELOCIDAD
-
         self.angle = 360 - math.degrees(orientation)
 
