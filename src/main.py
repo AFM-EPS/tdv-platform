@@ -9,6 +9,7 @@ from pathlib import Path
 
 import arcade
 
+from character.air_enemy import Air_enemy
 #Importar Clases de otros archivos
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
@@ -178,7 +179,15 @@ class GameView(arcade.View):
 
         # Sección de código comentada hasta que sean añadidos más tipos de enemigos
 
-        # for enemy_marker in enemies_layer:
+        ## Debug
+        enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene)
+        enemy.center_x = self.player_sprite.center_x
+        enemy.center_y = self.player_sprite.center_y + 300
+        self.scene.add_sprite("enemies", enemy)
+        ## Debug
+
+
+        #for enemy_marker in enemies_layer:
         #     coordinates = self.tile_map.get_cartesian(
         #         enemy_marker.shape[0], enemy_marker.shape[1]
         #     )
@@ -240,6 +249,8 @@ class GameView(arcade.View):
 
         # Add an empty bullet SpriteList to our scene
         self.scene.add_sprite_list("Bullets")
+
+        self.scene.add_sprite_list("Enemy_bullets")
 
         self.window.background_color = self.tile_map.background_color
 
@@ -308,7 +319,7 @@ class GameView(arcade.View):
             ]
         )
 
-        self.scene.update(delta_time, ["enemies", "Bullets"])
+        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets"])
 
         # Sección comentada hasta que se añadan más enemigos y se configuren
 
@@ -318,6 +329,26 @@ class GameView(arcade.View):
         #         enemy.change_x *= -1
         #     elif enemy.left < enemy.boundary_left and enemy.change_x < 0:
         #         enemy.change_x *= -1
+        for bullet in self.scene["Enemy_bullets"]:
+            hit_list = arcade.check_for_collision_with_lists(
+                bullet,
+                [
+                    self.scene["platforms"],
+                    self.scene["special_platforms"],
+                    self.scene["Player"]
+                ]
+            )
+            if hit_list:
+                bullet.remove_from_sprite_lists()
+                for collision in hit_list:
+                    if self.scene["Player"] in collision.sprite_lists:
+                        arcade.play_sound(self.gameover_sound)
+                        game_over = GameOverView()
+                        self.window.show_view(game_over)
+                        return
+
+
+
 
         for bullet in self.scene["Bullets"]:
             hit_list = arcade.check_for_collision_with_lists(
@@ -329,25 +360,21 @@ class GameView(arcade.View):
                 ]
             )
 
+
             # Sección comentada hasta que se decida que cantidad de vida tendrá cada tipo de enemigo
 
-            # if hit_list:
-            #     bullet.remove_from_sprite_lists()
-
-            #     for collision in hit_list:
-            #         if self.scene["enemies"] in collision.sprite_lists:
-            #             collision.health -= 25
-
-            #             if collision.health <= 0:
-            #                 collision.remove_from_sprite_lists()
-            #                 self.score += 150
-
-            #             arcade.play_sound(self.hit_sound)
-
-            #     return
-
-            # Remove bullet if it leaves the map area.
-            # Bullets only travel horizontally, so we only need to check left and right.
+            if hit_list:
+                bullet.remove_from_sprite_lists()
+                for collision in hit_list:
+                    if self.scene["enemies"] in collision.sprite_lists:
+                        collision.health -= 25
+                        if collision.health <= 0:
+                            collision.remove_from_sprite_lists()
+                            #self.score += 150 -puntuación
+                        arcade.play_sound(self.hit_sound)
+                return
+            #Remove bullet if it leaves the map area.
+            #Bullets only travel horizontally, so we only need to check left and right.
             if (bullet.right < 0) or (bullet.left > self.end_of_map):
                 bullet.remove_from_sprite_lists()
 

@@ -14,7 +14,7 @@ SCREEN_HEIGHT = 720
 
 class PlayerCharacter(Character):
     def __init__(self,arma):
-        super().__init__("female_adventurer", "femaleAdventurer")
+        super().__init__(":resources:images/animated_characters/female_adventurer/femaleAdventurer")
 
         # Track extra state related to the player. We will use these for change
         # textures in animations
@@ -34,6 +34,7 @@ class PlayerCharacter(Character):
         # and previous direction.
 
         #Cálculo de posición de arma
+
         self.arma.center_x = self.center_x + ((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
         self.arma.center_y = self.center_y + ((self.mousey - SCREEN_HEIGHT // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
         #versión mucho más optimizada
