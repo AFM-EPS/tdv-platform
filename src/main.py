@@ -122,6 +122,8 @@ class GameView(arcade.View):
         self.gameover_sound = arcade.load_sound(":resources:sounds/gameover1.wav")
         self.shoot_sound = arcade.load_sound(":resources:sounds/hurt5.wav")
         self.hit_sound = arcade.load_sound(":resources:sounds/hit5.wav")
+        self.background_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "Asteroid_Runway.mp3")
+        self.music_player = None
 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
@@ -502,11 +504,6 @@ def main():
 
 
 if __name__ == "__main__":
-
-    # Obtenemos la ruta del proyecto utilizando PathLib,
-    # necesitamos esta ruta para poder acceder a los archivos con recursos
-    # de forma independiente desde donde se ejecute el script.
-    PROJECT_ROOT = Path(__file__).parent.parent
 
     print(f"Project root is: {PROJECT_ROOT}")
 
