@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"..\/..\/img\/planet_ground.png",
+ "imageheight":132,
+ "imagewidth":132,
+ "margin":0,
+ "name":"planet_ground",
+ "spacing":0,
+ "tilecount":1,
+ "tiledversion":"1.11.2",
+ "tileheight":128,
+ "tilewidth":128,
+ "type":"tileset",
+ "version":"1.10"
+}
