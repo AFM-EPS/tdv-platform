@@ -13,14 +13,14 @@ SCREEN_HEIGHT = 720
 
 
 class PlayerCharacter(Character):
-    def __init__(self,arma):
+    def __init__(self,arma,camera:arcade.Camera2D):
         super().__init__(":resources:images/animated_characters/female_adventurer/femaleAdventurer")
 
         # Track extra state related to the player. We will use these for change
         # textures in animations
         self.climbing = False
         self.should_update_walk = 0
-
+        self.camera = camera
         #Clase arma
         self.arma = arma
 
@@ -30,22 +30,20 @@ class PlayerCharacter(Character):
         #Orientación relativa del mouse (para arma)
         self.aim_radians = 0
     def update_animation(self, delta_time):
-        # Figure out the direction the character is facing based on the movement
-        # and previous direction.
-
         #Cálculo de posición de arma
+        camara_x = self.camera.position.x  # El borde izquierdo de lo que ve la cámara
+        camara_y = self.camera.position.y  # El borde inferior de lo que ve la cámara
 
-        self.arma.center_x = self.center_x + ((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
-        self.arma.center_y = self.center_y + ((self.mousey - SCREEN_HEIGHT // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5 ) * self.arma.dist
-        #versión mucho más optimizada
-        dx = self.mousex - SCREEN_WIDTH // 2
-        dy = self.mousey - SCREEN_HEIGHT // 2
+        char_screen_x = self.center_x - camara_x
+        char_screen_y = self.center_y - camara_y
+        print(char_screen_x, char_screen_y)
+        dx = (self.mousex - SCREEN_WIDTH//2) - char_screen_x
+        dy = (self.mousey - SCREEN_HEIGHT//2) - char_screen_y
         self.aim_radians = math.atan2(dy, dx)
-        #Calculo de Orientacioón de arma (Radians)
-        #if (self.mousey - SCREEN_HEIGHT // 2) >= 0:
-        #    self.aim_radians = (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2)**2 + (self.mousey - SCREEN_HEIGHT // 2)**2) ** 0.5+0.0001))
-        #else:
-        #    self.aim_radians = (2 * math.pi - (math.acos((self.mousex - SCREEN_WIDTH // 2) / ((self.mousex - SCREEN_WIDTH // 2) ** 2 + (self.mousey - SCREEN_HEIGHT // 2) ** 2) ** 0.5)+0.0001))
+        self.arma.center_x = self.center_x + (math.cos(self.aim_radians) * self.arma.dist)
+        self.arma.center_y = self.center_y + (math.sin(self.aim_radians) * self.arma.dist)
+        self.arma.angle = math.degrees(self.aim_radians)
+
 
         #Pasar orientación al arma
         self.arma.angle = 360 - math.degrees(self.aim_radians)

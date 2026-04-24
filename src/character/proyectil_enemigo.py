@@ -15,7 +15,6 @@ class Proyectil_enemigo(arcade.Sprite):
     def __init__(self,enemigo,velocidad:float=8):
         super().__init__(":resources:images/space_shooter/laserBlue01.png",0.8)
         self.jugador = enemigo
-        print(enemigo.center_y)
         self.center_x = enemigo.center_x
         self.center_y = enemigo.center_y
         #Cálculo de dirección:

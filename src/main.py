@@ -149,9 +149,10 @@ class GameView(arcade.View):
             scaling=TILE_SCALING,
             layer_options=layer_options,
         )
-
         # Create our Scene Based on the TileMap
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
+        # Initialize our camera, setting a viewport the size of our window.
+        self.camera = arcade.Camera2D()
 
         # En el mapa introductorio al no haber ciertos elementos se inducen errores, para evitarlos crearemos sus SpriteLists vacías
         if self.map_num == 1:
@@ -162,7 +163,7 @@ class GameView(arcade.View):
 
         self.arma = Arma()
         self.scene.add_sprite("Arma", self.arma)
-        self.player_sprite = PlayerCharacter(self.arma)
+        self.player_sprite = PlayerCharacter(self.arma,self.camera)
         # Provisionalmente añadiremos esto para que el personaje no se quede atrapado en la nave de la izquierda del mapa 2
         if self.map_num == 2:
             self.player_sprite.center_x = 128 * 8
@@ -227,8 +228,7 @@ class GameView(arcade.View):
             platforms=[self.scene["special_platforms"], self.scene["limits"]],
         )
 
-        # Initialize our camera, setting a viewport the size of our window.
-        self.camera = arcade.Camera2D()
+
 
         # Initialize our gui camera, initial settings are the same as our world camera.
         self.gui_camera = arcade.Camera2D()
@@ -480,7 +480,7 @@ class GameView(arcade.View):
         elif key == arcade.key.RIGHT or key == arcade.key.D:
             self.right_pressed = True
 
-        if key == arcade.key.Q:
+        if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = True
 
         self.process_keychange()
@@ -497,7 +497,7 @@ class GameView(arcade.View):
         elif key == arcade.key.DOWN or key == arcade.key.S:
             self.down_pressed = False
 
-        if key == arcade.key.Q:
+        if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = False
 
         self.process_keychange()
@@ -531,7 +531,7 @@ def main():
 
 
 if __name__ == "__main__":
-
+    PROJECT_ROOT = Path(__file__).parent.parent
     print(f"Project root is: {PROJECT_ROOT}")
 
     # Ejemplo de acceso a un archivo dentro de recursos

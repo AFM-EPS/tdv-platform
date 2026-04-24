@@ -40,5 +40,4 @@ class Air_enemy(arcade.Sprite):
     def disparar(self):
         proyectil = Proyectil_enemigo(self, self.velocidad_proyectil)
         self.scena.add_sprite("Enemy_bullets",proyectil)
-        print("hola")
 
