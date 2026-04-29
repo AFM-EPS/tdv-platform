@@ -3,24 +3,57 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "maps/mapa-3.json",
     "expandedProjectPaths": [
         ".",
-        "maps",
-        "tilesets"
+        "tilesets",
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/dirt.json": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/grass.json": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/items.json": {
             "dynamicWrapping": true,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/level_1.json": {
+            "scale": 0.2115234375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2560,
+                "y": 1278.8180978762696
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map.json": {
+            "scale": 0.16921875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 3199.9999999999995,
+                "y": 446.16805170821794
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map.json#my_tileset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json": {
+            "scale": 0.18814453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2559.202740579259,
+                "y": 959.3688362919133
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json#tiles": {
             "scaleInDock": 1
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json": {
@@ -30,15 +63,37 @@
                 13
             ],
             "scale": 0.33,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1486.3636363636365,
-                "y": 1953.030303030303
+                "x": 1259.090909090909,
+                "y": 1207.5757575757575
             }
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/more_tiles.json": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/standard_tileset.json": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/test_objects.json": {
+            "expandedGroupLayers": [
+                5
+            ],
+            "scale": 0.316171875,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1279.3674326661724,
+                "y": 1279.3674326661724
+            }
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/dirt.json": {
             "scaleInDock": 1
@@ -47,6 +102,33 @@
             "scaleInDock": 1
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/items.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_1.json": {
+            "scale": 0.18814453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2559.202740579259,
+                "y": 1278.2726045883942
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_2.json": {
+            "scale": 0.20335937499999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1600.614675374568,
+                "y": 1280.9834805993085
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map2_level_2.json": {
+            "scale": 0.18814453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2559.202740579259,
+                "y": 959.3688362919132
+            }
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map2_level_2.json#tiles": {
             "scaleInDock": 1
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map_with_ladders.json": {
@@ -58,32 +140,71 @@
             }
         },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/more_tiles.json": {
-            "scaleInDock": 1
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/spritesheet.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/standard_tileset.json": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/test_map_7.json": {
+            "scale": 0.18814453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2559.202740579259,
+                "y": 1373.9437350773383
+            }
         },
         "maps/mapa-1.json": {
             "expandedGroupLayers": [
                 7
             ],
             "scale": 0.5,
-            "selectedLayer": 4,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 765,
-                "y": 449
+                "x": 833,
+                "y": 383
             }
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                16
+                16,
+                5
             ],
-            "scale": 0.5,
-            "selectedLayer": 4,
+            "scale": 0.25,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 579,
-                "y": 541
+                "x": 3226,
+                "y": 1406
+            }
+        },
+        "maps/mapa-3.json": {
+            "expandedObjectLayers": [
+                8,
+                5,
+                7,
+                6
+            ],
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1025.7575757575758,
+                "y": 1101.5151515151515
             }
         },
         "tilesets/alien_spaceship.json": {
             "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/arcade_examples_tileset.json": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -114,12 +235,18 @@
             "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
+        "tilesets/examples_tileset.json": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
         "tilesets/fence.json": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/flying_robot.json": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -128,6 +255,7 @@
             "scaleInEditor": 1
         },
         "tilesets/green_ore.json": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -169,10 +297,12 @@
             "scaleInEditor": 1
         },
         "tilesets/space_gun.json": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_rock.json": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -187,29 +317,32 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/PC/Documents/VSCode/Proyectos Arcade/PROYECTO/tdv-platform/assets/img",
-    "map.height": 6,
+    "last.imagePath": "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/images/spritesheets",
+    "map.height": 17,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 128,
     "map.tileWidth": 128,
-    "map.width": 60,
+    "map.width": 20,
     "openFiles": [
+        "maps/mapa-2.json",
+        "maps/mapa-3.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "maps/mapa-2.json",
-        "tilesets/space_rock.json",
-        "tilesets/destructible_rock.json",
-        "tilesets/space_gun.json",
-        "tilesets/gun_rack.json",
-        "tilesets/flying_robot.json",
-        "tilesets/blue_ore.json",
-        "tilesets/green_ore.json",
-        "tilesets/golden_ore.json",
-        "tilesets/moving_platform.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map_with_ladders.json"
+        "maps/mapa-3.json",
+        "maps/mapa-1.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",
+        "tilesets/examples_tileset.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map2_level_2.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_1.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/spritesheet.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_2.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/grass.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,

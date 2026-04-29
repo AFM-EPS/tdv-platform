@@ -135,7 +135,10 @@ class GameView(arcade.View):
             "special_platforms": {
                 "use_spatial_hash": False
             },
-            "limits": {
+            "extras": {
+                "use_spatial_hash": True
+            },
+            "ladders": {
                 "use_spatial_hash": True
             }
         }
@@ -159,6 +162,9 @@ class GameView(arcade.View):
             self.scene.add_sprite_list("special_platforms")
             self.scene.add_sprite_list("enemies")
             self.scene.add_sprite_list("ores")
+        # En los mapas que no haya escaleras (de momento el 1 y 2), se creará una SpriteList vacía para estas y evitar errores
+        if self.map_num in [1, 2]:
+            self.scene.add_sprite_list("ladders")
 
 
         self.arma = Arma()
@@ -180,39 +186,48 @@ class GameView(arcade.View):
         # -- Enemies
         enemies_layer = self.tile_map.object_lists.get("enemies", [])
 
-        # Sección de código comentada hasta que sean añadidos más tipos de enemigos
+        for enemy_marker in enemies_layer:
 
-        ## Debug
-        enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene)
-        enemy.center_x = self.player_sprite.center_x
-        enemy.center_y = self.player_sprite.center_y + 300
-        self.scene.add_sprite("enemies", enemy)
-        ## Debug
+            coordinates = self.tile_map.get_cartesian(
+                enemy_marker.shape[0], enemy_marker.shape[1]
+            )
+
+            enemy_type = enemy_marker.properties["type"]
+            enemy_health = enemy_marker.properties["health"]
+            enemy_shot_cadence = enemy_marker.properties["shot_cadence"]
+            enemy_shot_speed = enemy_marker.properties["shot_speed"]
+            enemy_speed = enemy_marker.properties["speed"]
+            enemy_vision = enemy_marker.properties["vision"]
+
+            if enemy_type == "robot":
+                enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+            # elif enemy_type == "zombie":
+            #     enemy = ZombieEnemy()
+            enemy.center_x = math.floor(
+                coordinates[0] * TILE_SCALING * self.tile_map.tile_width
+            )
+            enemy.center_y = math.floor(
+                (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
+            )
+            # if "boundary_left" in enemy_marker.properties:
+            #     enemy.boundary_left = enemy_marker.properties["boundary_left"]
+            # if "boundary_right" in enemy_marker.properties:
+            #     enemy.boundary_right = enemy_marker.properties["boundary_right"]
+            # if "change_x" in enemy_marker.properties:
+            #     enemy.change_x = enemy_marker.properties["change_x"]
+
+            self.scene.add_sprite("enemies", enemy)
 
 
-        #for enemy_marker in enemies_layer:
-        #     coordinates = self.tile_map.get_cartesian(
-        #         enemy_marker.shape[0], enemy_marker.shape[1]
-        #     )
-        #     enemy_type = enemy_marker.properties["type"]
-        #     if enemy_type == "robot":
-        #         enemy = RobotEnemy()
-        #     elif enemy_type == "zombie":
-        #         enemy = ZombieEnemy()
-        #     enemy.center_x = math.floor(
-        #         coordinates[0] * TILE_SCALING * self.tile_map.tile_width
-        #     )
-        #     enemy.center_y = math.floor(
-        #         (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
-        #     )
-        #     if "boundary_left" in enemy_marker.properties:
-        #         enemy.boundary_left = enemy_marker.properties["boundary_left"]
-        #     if "boundary_right" in enemy_marker.properties:
-        #         enemy.boundary_right = enemy_marker.properties["boundary_right"]
-        #     if "change_x" in enemy_marker.properties:
-        #         enemy.change_x = enemy_marker.properties["change_x"]
+        # Plataformas especiales (móviles / destructibles)
+        for special_platform in self.scene["special_platforms"]:
 
-        #     self.scene.add_sprite("enemies", enemy)
+            # En caso de plataforma destructible, se le asigna una vida
+            if special_platform.properties["destructible"]:
+                special_platform.properties["health"] = 100
+
+                self.scene.add_sprite("destructible_platforms", special_platform)
+
 
         # Create a Platformer Physics Engine, this will handle moving our
         # player as well as collisions between the player sprite and
@@ -225,7 +240,8 @@ class GameView(arcade.View):
             self.player_sprite,
             walls=self.scene["platforms"],
             gravity_constant=GRAVITY,
-            platforms=[self.scene["special_platforms"], self.scene["limits"]],
+            platforms=[self.scene["special_platforms"], self.scene["extras"]],
+            ladders=self.scene["ladders"]
         )
 
 
@@ -265,8 +281,8 @@ class GameView(arcade.View):
         # Clear the screen to the background color
         self.clear()
 
-        # Hasta que no se cargue la camara no se ejecutará el resto, necesario para evitar errores
-        if self.camera is None:
+        # Hasta que no se carguen las cámaras no se ejecutará el resto, necesario para evitar errores
+        if self.camera is None or self.gui_camera is None:
             return
 
         # Activate our camera before drawing
@@ -323,7 +339,7 @@ class GameView(arcade.View):
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets"])
 
-        # Sección comentada hasta que se añadan más enemigos y se configuren
+        # Sección comentada hasta que se ajusten los límites de movimiento de los enemigos
 
         # Keep enemies walking within their boundaries configured in Tiled
         # for enemy in self.scene["enemies"]:
@@ -363,17 +379,22 @@ class GameView(arcade.View):
             )
 
 
-            # Sección comentada hasta que se decida que cantidad de vida tendrá cada tipo de enemigo
 
             if hit_list:
                 bullet.remove_from_sprite_lists()
+
                 for collision in hit_list:
+
                     if self.scene["enemies"] in collision.sprite_lists:
                         collision.health -= 25
                         if collision.health <= 0:
                             collision.remove_from_sprite_lists()
-                            #self.score += 150 -puntuación
                         arcade.play_sound(self.hit_sound)
+                    
+                    if self.scene["destructible_platforms"] in collision.sprite_lists:
+                        collision.properties["health"] -= 25
+                        if collision.properties["health"] <= 0:
+                            collision.remove_from_sprite_lists()
                 return
             #Remove bullet if it leaves the map area.
             #Bullets only travel horizontally, so we only need to check left and right.

@@ -36,7 +36,6 @@ class PlayerCharacter(Character):
 
         char_screen_x = self.center_x - camara_x
         char_screen_y = self.center_y - camara_y
-        print(char_screen_x, char_screen_y)
         dx = (self.mousex - SCREEN_WIDTH//2) - char_screen_x
         dy = (self.mousey - SCREEN_HEIGHT//2) - char_screen_y
         self.aim_radians = math.atan2(dy, dx)
