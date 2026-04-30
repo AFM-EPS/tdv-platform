@@ -363,7 +363,12 @@ class GameView(arcade.View):
                         arcade.play_sound(self.gameover_sound)
                         game_over = GameOverView()
                         self.window.show_view(game_over)
-                        return
+                    if self.scene["destructible_platforms"] in collision.sprite_lists:
+                        collision.properties["health"] -= 25
+                        if collision.properties["health"] <= 0:
+                            collision.remove_from_sprite_lists()
+                return
+
 
 
 
