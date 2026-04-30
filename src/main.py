@@ -128,6 +128,10 @@ class GameView(arcade.View):
         self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
         self.walk_player = None
         self.is_walking_sound_on = False
+        self.final_hit_platform_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_platform.wav")
+        self.hit_platform_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hit_platform.mp3")
+        self.final_hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_enemy.mp3")
+
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         layer_options = {
@@ -374,11 +378,18 @@ class GameView(arcade.View):
                     if self.scene["Player"] in collision.sprite_lists:
                         arcade.play_sound(self.gameover_sound)
                         game_over = GameOverView()
+                        if self.walk_player is not None:
+                            arcade.stop_sound(self.walk_player)
+                            self.walk_player = None
+                            self.is_walking_sound_on = False
                         self.window.show_view(game_over)
+                        arcade.stop_sound(self.music_player)
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
                         collision.properties["health"] -= 25
+                        arcade.play_sound(self.hit_platform_sound)
                         if collision.properties["health"] <= 0:
                             collision.remove_from_sprite_lists()
+                            arcade.play_sound(self.final_hit_platform_sound, volume=2.5)
                 return
 
 
@@ -404,14 +415,18 @@ class GameView(arcade.View):
 
                     if self.scene["enemies"] in collision.sprite_lists:
                         collision.health -= 25
+                        arcade.play_sound(self.hit_sound)
                         if collision.health <= 0:
                             collision.remove_from_sprite_lists()
-                        arcade.play_sound(self.hit_sound)
+                            arcade.play_sound(self.final_hit_enemy_sound, volume=2.5)
+                        
                     
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
                         collision.properties["health"] -= 25
+                        arcade.play_sound(self.hit_platform_sound)
                         if collision.properties["health"] <= 0:
                             collision.remove_from_sprite_lists()
+                            arcade.play_sound(self.final_hit_platform_sound, volume=2.5)
                 return
             #Remove bullet if it leaves the map area.
             #Bullets only travel horizontally, so we only need to check left and right.
@@ -432,6 +447,10 @@ class GameView(arcade.View):
                 arcade.play_sound(self.gameover_sound)
                 self.background_music.stop(self.music_player)
                 game_over = GameOverView()
+                if self.walk_player is not None:
+                    arcade.stop_sound(self.walk_player)
+                    self.walk_player = None
+                    self.is_walking_sound_on = False
                 self.window.show_view(game_over)
                 return
             else:
