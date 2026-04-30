@@ -13,11 +13,13 @@ DISTANCIA_DEL_PERSONAJE = 50
 
 print(TEXTURE_PATH)
 class Arma(arcade.Sprite):
-    def __init__(self):
+    def __init__(self,danno:int = 25, fireRate:int = 30):
         super().__init__(TEXTURE_PATH,SCALE)
         self.center_x = 300
         self.center_y = 300
         self.dist = DISTANCIA_DEL_PERSONAJE
+        self.danno = danno
+        self.fireRate = fireRate
 
 
     def flip(self, direction:int):
