@@ -6,8 +6,8 @@ import pathlib
 RIGHT_FACING = 0
 LEFT_FACING = 1
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent
-TEXTURE_PATH = PROJECT_ROOT / "assets" / "debug" / "textures" / "debug_gun.png"
-SCALE = 0.2
+TEXTURE_PATH = PROJECT_ROOT / "assets" / "img" / "space_gun.png"
+SCALE = 1.2
 
 DISTANCIA_DEL_PERSONAJE = 50
 

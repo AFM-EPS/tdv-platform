@@ -15,7 +15,6 @@ from character.air_enemy import Air_enemy
 from character.player import PlayerCharacter as PlayerCharacter
 from character.character import Character as Character
 from character.enemy import Enemy as Enemy
-from character.walking_enemy import  ZombieEnemy,RobotEnemy as ZombieEnemy,RobotEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 
