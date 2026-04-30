@@ -149,6 +149,11 @@
                     "name": "movable",
                     "type": "bool",
                     "value": false
+                },
+                {
+                    "name": "move_on_x",
+                    "type": "bool",
+                    "value": false
                 }
             ],
             "name": "Special_platforms",

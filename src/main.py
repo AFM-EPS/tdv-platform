@@ -36,6 +36,9 @@ PLAYER_JUMP_SPEED = 20
 RIGHT_FACING = 0
 LEFT_FACING = 1
 
+# Velocidad de movimiento de las plataformas móviles
+MOVABLE_PLATFORM_SPEED = 1
+
 
 
 class MainMenu(arcade.View):
@@ -98,6 +101,9 @@ class GameView(arcade.View):
         # A variable to store our camera object
         self.camera = None
 
+        # Posición Y de la cámara
+        self.y_camera_pos = None
+
         # A variable to store our gui camera object
         self.gui_camera = None
 
@@ -116,6 +122,9 @@ class GameView(arcade.View):
         # Shooting mechanics
         self.can_shoot = False
         self.shoot_timer = 0
+
+        # Desplazamiento plataformas móviles
+        self.movable_platforms_displacement = 0
 
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
@@ -144,7 +153,8 @@ class GameView(arcade.View):
         }
 
         # Seleccionar mapa (provisionalmente se hará así para el debugging)
-        self.map_num = 2
+        self.map_num = 3
+
 
         # Load our TileMap
         self.tile_map = arcade.load_tilemap(
@@ -154,17 +164,20 @@ class GameView(arcade.View):
         )
         # Create our Scene Based on the TileMap
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
+
+
         # Initialize our camera, setting a viewport the size of our window.
         self.camera = arcade.Camera2D()
 
-        # En el mapa introductorio al no haber ciertos elementos se inducen errores, para evitarlos crearemos sus SpriteLists vacías
+        # En ciertos mapas no hay ciertos elementos que en otros si, para evitar errores crearemos sus SpriteLists vacías
         if self.map_num == 1:
             self.scene.add_sprite_list("special_platforms")
+            self.scene.add_sprite_list("movable_platforms")
             self.scene.add_sprite_list("enemies")
             self.scene.add_sprite_list("ores")
-        # En los mapas que no haya escaleras (de momento el 1 y 2), se creará una SpriteList vacía para estas y evitar errores
         if self.map_num in [1, 2]:
             self.scene.add_sprite_list("ladders")
+            self.scene.add_sprite_list("player_death_zones")
 
 
         self.arma = Arma()
@@ -177,6 +190,11 @@ class GameView(arcade.View):
             self.player_sprite.center_x = 128
         self.player_sprite.center_y = 128
         self.scene.add_sprite("Player", self.player_sprite)
+
+
+        # Si el jugador no puede avanzar verticalmente, la posición Y de la cámara se fijará
+        self.y_camera_pos = self.tile_map.tile_height * 2 + self.player_sprite.height
+
 
         ###Debug
 
@@ -209,12 +227,6 @@ class GameView(arcade.View):
             enemy.center_y = math.floor(
                 (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
             )
-            # if "boundary_left" in enemy_marker.properties:
-            #     enemy.boundary_left = enemy_marker.properties["boundary_left"]
-            # if "boundary_right" in enemy_marker.properties:
-            #     enemy.boundary_right = enemy_marker.properties["boundary_right"]
-            # if "change_x" in enemy_marker.properties:
-            #     enemy.change_x = enemy_marker.properties["change_x"]
 
             self.scene.add_sprite("enemies", enemy)
 
@@ -227,7 +239,20 @@ class GameView(arcade.View):
                 special_platform.properties["health"] = 100
 
                 self.scene.add_sprite("destructible_platforms", special_platform)
+            
+            if special_platform.properties["movable"]:
+                special_platform.properties["initial_pos"] = (special_platform.center_x, special_platform.center_y)
 
+                if special_platform.properties["move_on_x"]:
+                    special_platform.change_x = MOVABLE_PLATFORM_SPEED
+                else:
+                    special_platform.change_y = MOVABLE_PLATFORM_SPEED
+
+                self.scene.add_sprite("movable_platforms", special_platform)
+
+
+
+        self.movable_platforms_displacement = self.tile_map.tile_height * 4
 
         # Create a Platformer Physics Engine, this will handle moving our
         # player as well as collisions between the player sprite and
@@ -305,8 +330,6 @@ class GameView(arcade.View):
         if self.physics_engine is None:
             return
 
-        # Move the player using our physics engine
-        self.physics_engine.update()
 
         # Update our characters animation state
         if self.physics_engine.is_on_ladder():
@@ -325,6 +348,25 @@ class GameView(arcade.View):
             if self.shoot_timer == 15:
                 self.can_shoot = True
                 self.shoot_timer = 0
+        
+
+        # Mover plataformas móviles alternando sentido de velocidad
+        for movable_platform in self.scene["movable_platforms"]:
+            
+            if movable_platform.properties["move_on_x"]:
+                
+                initial_pos = movable_platform.properties["initial_pos"][0]
+                # Alternar sentido movimiento plataforma
+                if (movable_platform.center_x >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_x <= initial_pos - self.movable_platforms_displacement): movable_platform.change_x = - movable_platform.change_x
+            else:
+                
+                initial_pos = movable_platform.properties["initial_pos"][1]
+                # Alternar sentido movimiento plataforma
+                if (movable_platform.center_y >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_y <= initial_pos - self.movable_platforms_displacement): movable_platform.change_y = - movable_platform.change_y
+
+
+        # Move the player using our physics engine
+        self.physics_engine.update()
 
 
         # Actualizar animaciones
@@ -333,11 +375,12 @@ class GameView(arcade.View):
             [
                 "Player",
                 "enemies",
-                "ores"
+                "ores",
+                "special_platforms"
             ]
         )
 
-        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets"])
+        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
         # Sección comentada hasta que se ajusten los límites de movimiento de los enemigos
 
@@ -406,12 +449,13 @@ class GameView(arcade.View):
             self.player_sprite,
             [
                 self.scene["ores"],
-                self.scene["enemies"]
+                self.scene["enemies"],
+                self.scene["player_death_zones"]
             ]
         )
 
         for collision in player_collision_list:
-            if self.scene["enemies"] in collision.sprite_lists:
+            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 game_over = GameOverView()
                 self.window.show_view(game_over)
@@ -422,14 +466,21 @@ class GameView(arcade.View):
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
                 self.score_text.text = f"Score: {self.score}"
+        
+        
+        # Si se puede avanzar verticalmente en el mapa (mapa 3 de momento), la posición en Y de la cámara variará
+        if self.map_num == 3:
+            # Solo se actualiza la posición Y de la cámara si esta no se sale del mapa
+            if (self.player_sprite.center_y <= (self.tile_map.height - 1) * self.tile_map.tile_height - WINDOW_HEIGHT / 2) and (self.player_sprite.center_y >= self.tile_map.tile_height + self.player_sprite.height / 2):
+                self.y_camera_pos = self.player_sprite.position[1] + self.tile_map.tile_height + self.player_sprite.height / 2
 
         # Centrar la cámara en el jugador y dejarla fija cuando se acerca a los bordes del mapa para que no se salga la cámara
         if self.player_sprite.center_x <= WINDOW_WIDTH / 2:
-            self.camera.position = WINDOW_WIDTH / 2, self.tile_map.tile_height * 2 + self.player_sprite.height
+            self.camera.position = WINDOW_WIDTH / 2, self.y_camera_pos
         elif self.player_sprite.center_x >= self.end_of_map - WINDOW_WIDTH / 2:
-            self.camera.position = self.end_of_map - WINDOW_WIDTH / 2, self.tile_map.tile_height * 2 + self.player_sprite.height
+            self.camera.position = self.end_of_map - WINDOW_WIDTH / 2, self.y_camera_pos
         else:
-            self.camera.position = self.player_sprite.position[0], self.tile_map.tile_height * 2 + self.player_sprite.height
+            self.camera.position = self.player_sprite.position[0], self.y_camera_pos
 
     def on_mouse_motion(self, x: int, y: int, dx: int, dy: int) -> bool | None:
         """

@@ -55,11 +55,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"change_x",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
                          "name":"destructible",
                          "type":"bool",
                          "value":false
@@ -68,12 +63,17 @@
                          "name":"movable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"Special_platforms",
                  "visible":true,
                  "width":256,
-                 "x":2112,
+                 "x":2410,
                  "y":537
                 }, 
                 {
@@ -83,11 +83,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"change_x",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
                          "name":"destructible",
                          "type":"bool",
                          "value":false
@@ -96,12 +91,17 @@
                          "name":"movable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"Special_platforms",
                  "visible":true,
                  "width":256,
-                 "x":2462,
+                 "x":2760,
                  "y":420
                 }, 
                 {
