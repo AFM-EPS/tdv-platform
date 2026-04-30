@@ -1,7 +1,7 @@
 import arcade
 from character.proyectil_enemigo import Proyectil_enemigo
 
-MAX_REACTION_TIME = 50
+MAX_REACTION_TIME = 25
 
 class Air_enemy(arcade.Sprite):
     def __init__(self,paths, jugador:arcade.Sprite,scena:arcade.Scene, vida:int=100,velocidad:float=3,velocidad_disparo:float=2,vision:int=500,velocidad_proyectil:float=8):
@@ -40,7 +40,6 @@ class Air_enemy(arcade.Sprite):
                 self.disparar()
 
     def movimiento(self):
-        print(self.reactionT)
         if self.agro:
             if self.jugador.center_x - self.center_x > 18 and self.reactionT == 0:
                 self.center_x += self.velocidad
