@@ -18,3 +18,10 @@ class Arma(arcade.Sprite):
         self.center_x = 300
         self.center_y = 300
         self.dist = DISTANCIA_DEL_PERSONAJE
+
+
+    def flip(self, direction:int):
+        if direction == RIGHT_FACING:
+            self.height = abs(self.height)
+        else:
+            self.height = - abs(self.height)

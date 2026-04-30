@@ -128,7 +128,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":6,
          "id":6,
-         "name":"limits",
+         "name":"extras",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,

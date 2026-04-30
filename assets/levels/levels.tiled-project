@@ -35,14 +35,34 @@
             "id": 5,
             "members": [
                 {
-                    "name": "can_fly",
-                    "type": "bool",
-                    "value": false
+                    "name": "health",
+                    "type": "int",
+                    "value": 100
+                },
+                {
+                    "name": "shot_cadence",
+                    "type": "float",
+                    "value": 2
+                },
+                {
+                    "name": "shot_speed",
+                    "type": "float",
+                    "value": 10
+                },
+                {
+                    "name": "speed",
+                    "type": "float",
+                    "value": 6
                 },
                 {
                     "name": "type",
                     "type": "string",
                     "value": "\"robot\""
+                },
+                {
+                    "name": "vision",
+                    "type": "int",
+                    "value": 300
                 }
             ],
             "name": "Enemy",
@@ -94,30 +114,6 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
-            "id": 1,
-            "members": [
-                {
-                    "name": "destructible",
-                    "type": "bool",
-                    "value": false
-                },
-                {
-                    "name": "movable",
-                    "type": "bool",
-                    "value": false
-                }
-            ],
-            "name": "Special_platform",
-            "type": "class",
-            "useAs": [
-                "property",
-                "object",
-                "project"
-            ]
-        },
-        {
-            "color": "#ffa0a0a4",
-            "drawFill": true,
             "id": 6,
             "members": [
                 {
@@ -132,6 +128,30 @@
                 }
             ],
             "name": "Gun",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 8,
+            "members": [
+                {
+                    "name": "destructible",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "movable",
+                    "type": "bool",
+                    "value": false
+                }
+            ],
+            "name": "Special_platforms",
             "type": "class",
             "useAs": [
                 "property",

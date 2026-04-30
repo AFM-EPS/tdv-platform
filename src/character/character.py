@@ -7,14 +7,14 @@ LEFT_FACING = 1
 
 
 class Character(arcade.Sprite):
-    def __init__(self, name_folder, name_file):
+    def __init__(self, mainPath):
         super().__init__()
 
         self.facing_direction = RIGHT_FACING
 
         self.cur_texture = 0
 
-        main_path = f":resources:images/animated_characters/{name_folder}/{name_file}"
+        main_path = mainPath
         # Load textures for idle, jump, and fall states
         idle_texture = arcade.load_texture(f"{main_path}_idle.png")
         jump_texture = arcade.load_texture(f"{main_path}_jump.png")
