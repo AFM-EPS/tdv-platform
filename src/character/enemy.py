@@ -7,7 +7,7 @@ LEFT_FACING = 1
 
 
 class Enemy(Character):
-    def __init__(self, name_folder, ):
+    def __init__(self, name_folder):
         super().__init__(name_folder)
 
         self.should_update_walk = 0

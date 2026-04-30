@@ -6,18 +6,20 @@ import pathlib
 RIGHT_FACING = 0
 LEFT_FACING = 1
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent
-TEXTURE_PATH = PROJECT_ROOT / "assets" / "debug" / "textures" / "debug_gun.png"
-SCALE = 0.2
+TEXTURE_PATH = PROJECT_ROOT / "assets" / "img" / "space_gun.png"
+SCALE = 1.2
 
 DISTANCIA_DEL_PERSONAJE = 50
 
 print(TEXTURE_PATH)
 class Arma(arcade.Sprite):
-    def __init__(self):
+    def __init__(self,danno:int = 25, fireRate:int = 30):
         super().__init__(TEXTURE_PATH,SCALE)
         self.center_x = 300
         self.center_y = 300
         self.dist = DISTANCIA_DEL_PERSONAJE
+        self.danno = danno
+        self.fireRate = fireRate
 
 
     def flip(self, direction:int):

@@ -15,7 +15,6 @@ from character.air_enemy import Air_enemy
 from character.player import PlayerCharacter as PlayerCharacter
 from character.character import Character as Character
 from character.enemy import Enemy as Enemy
-from character.walking_enemy import  ZombieEnemy,RobotEnemy as ZombieEnemy,RobotEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 
@@ -134,7 +133,9 @@ class GameView(arcade.View):
         self.hit_sound = arcade.load_sound(":resources:sounds/hit5.wav")
         self.background_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "Asteroid_Runway.mp3")
         self.music_player = None
-
+        self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
+        self.walk_player = None
+        self.is_walking_sound_on = False
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         layer_options = {
@@ -180,7 +181,7 @@ class GameView(arcade.View):
             self.scene.add_sprite_list("player_death_zones")
 
 
-        self.arma = Arma()
+        self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
         self.scene.add_sprite("Arma", self.arma)
         self.player_sprite = PlayerCharacter(self.arma,self.camera)
         # Provisionalmente añadiremos esto para que el personaje no se quede atrapado en la nave de la izquierda del mapa 2
@@ -298,8 +299,8 @@ class GameView(arcade.View):
         self.window.background_color = self.tile_map.background_color
 
     def on_show_view(self):
-        self.setup()
-
+        self.setup()        
+        self.music_player = self.background_music.play(volume=0.7, loop=True)
     def on_draw(self):
         """Render the screen."""
 
@@ -345,7 +346,7 @@ class GameView(arcade.View):
                 self.can_shoot = False
         else:
             self.shoot_timer += 1
-            if self.shoot_timer == 15:
+            if self.shoot_timer == self.arma.fireRate:
                 self.can_shoot = True
                 self.shoot_timer = 0
         
@@ -368,6 +369,16 @@ class GameView(arcade.View):
         # Move the player using our physics engine
         self.physics_engine.update()
 
+        # Walking sound logic
+        if self.player_sprite.change_x != 0 and self.physics_engine.can_jump():
+            if not self.is_walking_sound_on:
+                self.walk_player = self.step_default_music.play(loop=True, volume=1.0)
+                self.is_walking_sound_on = True
+        else:
+            if self.is_walking_sound_on and self.walk_player is not None:
+                arcade.stop_sound(self.walk_player)
+                self.is_walking_sound_on = False
+                self.walk_player = None
 
         # Actualizar animaciones
         self.scene.update_animation(
@@ -406,7 +417,12 @@ class GameView(arcade.View):
                         arcade.play_sound(self.gameover_sound)
                         game_over = GameOverView()
                         self.window.show_view(game_over)
-                        return
+                    if self.scene["destructible_platforms"] in collision.sprite_lists:
+                        collision.properties["health"] -= 25
+                        if collision.properties["health"] <= 0:
+                            collision.remove_from_sprite_lists()
+                return
+
 
 
 
@@ -429,8 +445,7 @@ class GameView(arcade.View):
                 for collision in hit_list:
 
                     if self.scene["enemies"] in collision.sprite_lists:
-                        collision.health -= 25
-                        if collision.health <= 0:
+                        if collision.impactado(self.arma.danno):
                             collision.remove_from_sprite_lists()
                         arcade.play_sound(self.hit_sound)
                     
@@ -457,6 +472,7 @@ class GameView(arcade.View):
         for collision in player_collision_list:
             if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
+                self.background_music.stop(self.music_player)
                 game_over = GameOverView()
                 self.window.show_view(game_over)
                 return
@@ -603,6 +619,12 @@ def main():
 
 
 if __name__ == "__main__":
+
+    # Obtenemos la ruta del proyecto utilizando PathLib,
+    # necesitamos esta ruta para poder acceder a los archivos con recursos
+    # de forma independiente desde donde se ejecute el script.
+    PROJECT_ROOT = Path(__file__).parent.parent
+
     PROJECT_ROOT = Path(__file__).parent.parent
     print(f"Project root is: {PROJECT_ROOT}")
 

@@ -5,8 +5,8 @@ RIGHT_FACING = 1
 #Reorganización de los enemigos andantes
 
 class WalingEnemy(Enemy):
-    def __init__(self):
-        super().__init__()
+    def __init__(self,path):
+        super().__init__(path)
 
     def update_animation(self, delta_time):
         # Figure out the direction the character is facing based on the
@@ -33,13 +33,13 @@ class WalingEnemy(Enemy):
         self.should_update_walk += 1
 
 
-class RobotEnemy(Enemy):
-    def __init__(self):
-        super().__init__("robot", "robot")
-        self.health = 100
-
-
-class ZombieEnemy(Enemy):
-    def __init__(self):
-        super().__init__("zombie", "zombie")
-        self.health = 50
+#class RobotEnemy(Enemy):
+#    def __init__(self):
+#        super().__init__("robot", "robot")
+#        self.health = 100
+#
+#
+#class ZombieEnemy(Enemy):
+#    def __init__(self):
+#        super().__init__("zombie", "zombie")
+#        self.health = 50
