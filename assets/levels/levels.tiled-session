@@ -5,12 +5,16 @@
     },
     "activeFile": "maps/mapa-3.json",
     "expandedProjectPaths": [
-        "tilesets",
         ".",
-        "maps"
+        "maps",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "C:/Users/Casa/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/more_tiles.json": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/dirt.json": {
             "dynamicWrapping": true,
             "scaleInDock": 1,
@@ -175,28 +179,28 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                5,
-                16
+                16,
+                5
             ],
-            "scale": 0.5,
+            "scale": 0.125,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 3826,
-                "y": 1141
+                "x": 4016,
+                "y": 88
             }
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                8,
                 7,
+                8,
                 6,
                 5
             ],
-            "scale": 0.25,
-            "selectedLayer": 2,
+            "scale": 0.33,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1584,
-                "y": 2294
+                "x": 1221.2121212121215,
+                "y": 1078.7878787878785
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -324,15 +328,14 @@
     "map.tileWidth": 128,
     "map.width": 20,
     "openFiles": [
-        "maps/mapa-2.json",
         "maps/mapa-3.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "maps/mapa-3.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
         "maps/mapa-2.json",
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
         "maps/mapa-1.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",
         "tilesets/examples_tileset.json",
