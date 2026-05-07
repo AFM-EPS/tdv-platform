@@ -14,7 +14,7 @@ from character.air_enemy import Air_enemy
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
 from character.character import Character as Character
-from character.enemy import Enemy as Enemy
+from character.walking_enemy import WalingEnemy as WalkingEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 
@@ -171,10 +171,14 @@ class GameView(arcade.View):
         self.camera = arcade.Camera2D()
 
         # En ciertos mapas no hay ciertos elementos que en otros si, para evitar errores crearemos sus SpriteLists vacías
-        if self.map_num == 1:
+
+        self.scene.add_sprite_list("enemies")
+        self.scene.add_sprite_list("walking_enemies")
+
+        if self.map_num in [1]:
             self.scene.add_sprite_list("special_platforms")
             self.scene.add_sprite_list("movable_platforms")
-            self.scene.add_sprite_list("enemies")
+            self.scene.add_sprite_list("destructible_platforms")
             self.scene.add_sprite_list("ores")
         if self.map_num in [1, 2]:
             self.scene.add_sprite_list("ladders")
@@ -219,9 +223,19 @@ class GameView(arcade.View):
             enemy_vision = enemy_marker.properties["vision"]
 
             if enemy_type == "robot":
-                enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
-            # elif enemy_type == "zombie":
-            #     enemy = ZombieEnemy()
+
+                #Comentado por debgging
+                #enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                enemy = WalkingEnemy(PROJECT_ROOT / "assets" / "sprites" / "walking_robot" / "WalkingRobot_idle.png",self.player_sprite,self.scene)
+                self.scene.add_sprite("walking_enemies", enemy)
+                enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(
+                    enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=GRAVITY,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
+                #fin debug
+                #self.scene.add_sprite("enemies", enemy)
             enemy.center_x = math.floor(
                 coordinates[0] * TILE_SCALING * self.tile_map.tile_width
             )
@@ -229,7 +243,6 @@ class GameView(arcade.View):
                 (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
             )
 
-            self.scene.add_sprite("enemies", enemy)
 
 
         # Plataformas especiales (móviles / destructibles)
@@ -295,8 +308,12 @@ class GameView(arcade.View):
         self.scene.add_sprite_list("Bullets")
 
         self.scene.add_sprite_list("Enemy_bullets")
-
-        self.window.background_color = self.tile_map.background_color
+        #cambio para arreglar errores
+        if self.tile_map.background_color:
+            self.window.background_color = self.tile_map.background_color
+        else:
+            # Pon un color por defecto si el mapa no lo tiene configurado
+            self.window.background_color = arcade.color.SKY_BLUE
 
     def on_show_view(self):
         self.setup()        
@@ -368,6 +385,9 @@ class GameView(arcade.View):
 
         # Move the player using our physics engine
         self.physics_engine.update()
+        for i in self.scene["walking_enemies"]:
+            if hasattr(i, "motor_enemigo"):
+                i.motor_enemigo.update()
 
         # Walking sound logic
         if self.player_sprite.change_x != 0 and self.physics_engine.can_jump():
@@ -391,7 +411,7 @@ class GameView(arcade.View):
             ]
         )
 
-        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
+        self.scene.update(delta_time, ["walking_enemies","enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
         # Sección comentada hasta que se ajusten los límites de movimiento de los enemigos
 
@@ -431,6 +451,7 @@ class GameView(arcade.View):
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
                 [
+                    self.scene["walking_enemies"],
                     self.scene["enemies"],
                     self.scene["platforms"],
                     self.scene["special_platforms"]
@@ -444,7 +465,7 @@ class GameView(arcade.View):
 
                 for collision in hit_list:
 
-                    if self.scene["enemies"] in collision.sprite_lists:
+                    if self.scene["enemies"] in collision.sprite_lists or self.scene["walking_enemies"] in collision.sprite_lists:
                         if collision.impactado(self.arma.danno):
                             collision.remove_from_sprite_lists()
                         arcade.play_sound(self.hit_sound)
@@ -463,6 +484,7 @@ class GameView(arcade.View):
         player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
+                self.scene["walking_enemies"],
                 self.scene["ores"],
                 self.scene["enemies"],
                 self.scene["player_death_zones"]
@@ -470,7 +492,7 @@ class GameView(arcade.View):
         )
 
         for collision in player_collision_list:
-            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists:
+            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists or self.scene["walking_enemies"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 self.background_music.stop(self.music_player)
                 game_over = GameOverView()
