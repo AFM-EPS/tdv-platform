@@ -179,28 +179,28 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                16,
-                5
+                5,
+                16
             ],
             "scale": 0.125,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 4016,
-                "y": 88
+                "x": 4104,
+                "y": 1364
             }
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                7,
+                5,
                 8,
-                6,
-                5
+                7,
+                6
             ],
             "scale": 0.33,
-            "selectedLayer": 6,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 1221.2121212121215,
-                "y": 1078.7878787878785
+                "y": 1077.2727272727275
             }
         },
         "tilesets/alien_spaceship.json": {

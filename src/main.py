@@ -46,14 +46,9 @@ class MainMenu(arcade.View):
 
     def on_draw(self):
         self.clear()
-        arcade.draw_text(
-            "Main Menu - Click To Play",
-            WINDOW_WIDTH // 2,
-            WINDOW_HEIGHT // 2,
-            arcade.color.BLACK,
-            font_size=30,
-            anchor_x="center"
-        )
+
+        texto = arcade.Text("Main Menu - Click To Play", WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, arcade.color.BLACK, font_size=30, anchor_x="center")
+        texto.draw()
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         game_view = GameView()
@@ -173,7 +168,6 @@ class GameView(arcade.View):
         # En ciertos mapas no hay ciertos elementos que en otros si, para evitar errores crearemos sus SpriteLists vacías
 
         self.scene.add_sprite_list("enemies")
-        self.scene.add_sprite_list("walking_enemies")
 
         if self.map_num in [1]:
             self.scene.add_sprite_list("special_platforms")
@@ -225,17 +219,17 @@ class GameView(arcade.View):
 
             if enemy_type == "flying_1":
                 enemy = Air_enemy(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
-                self.scene.add_sprite("enemies", enemy)
 
             elif enemy_type == "walking_1":
                 enemy = WalkingEnemy(PROJECT_ROOT / "assets" / "sprites" / "walking_robot" / "WalkingRobot_idle.png",self.player_sprite,self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
-                self.scene.add_sprite("walking_enemies", enemy)
                 enemy.motor_enemigo = arcade.PhysicsEnginePlatformer( #Gravedad
                     enemy,
                     walls=self.scene["platforms"],
                     gravity_constant=GRAVITY,
                     platforms=[self.scene["special_platforms"], self.scene["extras"]],
                 )
+            
+            self.scene.add_sprite("enemies", enemy)
 
             enemy.center_x = math.floor(
                 coordinates[0] * TILE_SCALING * self.tile_map.tile_width
@@ -386,9 +380,10 @@ class GameView(arcade.View):
 
         # Move the player using our physics engine
         self.physics_engine.update()
-        for i in self.scene["walking_enemies"]:
-            if hasattr(i, "motor_enemigo"):
-                i.motor_enemigo.update()
+        for enemy in self.scene["enemies"]:
+            if isinstance(enemy, WalkingEnemy):
+                if hasattr(enemy, "motor_enemigo"):
+                    enemy.motor_enemigo.update()
 
         # Walking sound logic
         if self.player_sprite.change_x != 0 and self.physics_engine.can_jump():
@@ -412,7 +407,7 @@ class GameView(arcade.View):
             ]
         )
 
-        self.scene.update(delta_time, ["walking_enemies","enemies", "Bullets","Enemy_bullets", "special_platforms"])
+        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
         # Sección comentada hasta que se ajusten los límites de movimiento de los enemigos
 
@@ -452,7 +447,6 @@ class GameView(arcade.View):
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
                 [
-                    self.scene["walking_enemies"],
                     self.scene["enemies"],
                     self.scene["platforms"],
                     self.scene["special_platforms"]
@@ -466,7 +460,7 @@ class GameView(arcade.View):
 
                 for collision in hit_list:
 
-                    if self.scene["enemies"] in collision.sprite_lists or self.scene["walking_enemies"] in collision.sprite_lists:
+                    if self.scene["enemies"] in collision.sprite_lists:
                         if collision.impactado(self.arma.danno):
                             collision.remove_from_sprite_lists()
                         arcade.play_sound(self.hit_sound)
@@ -485,7 +479,6 @@ class GameView(arcade.View):
         player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
-                self.scene["walking_enemies"],
                 self.scene["ores"],
                 self.scene["enemies"],
                 self.scene["player_death_zones"]
@@ -493,7 +486,7 @@ class GameView(arcade.View):
         )
 
         for collision in player_collision_list:
-            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists or self.scene["walking_enemies"] in collision.sprite_lists:
+            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 self.background_music.stop(self.music_player)
                 game_over = GameOverView()
@@ -620,14 +613,9 @@ class GameOverView(arcade.View):
 
     def on_draw(self):
         self.clear()
-        arcade.draw_text(
-            "Game Over - Click to Restart",
-            WINDOW_WIDTH // 2,
-            WINDOW_HEIGHT // 2,
-            arcade.color.WHITE,
-            30,
-            anchor_x="center"
-        )
+
+        texto = arcade.Text("Game Over - Click to Restart", WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, arcade.color.WHITE, 30, anchor_x="center")
+        texto.draw()
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         game_view = GameView()
