@@ -54,7 +54,6 @@
                  "height":64,
                  "id":1,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -78,7 +77,6 @@
                  "height":64,
                  "id":3,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -102,7 +100,6 @@
                  "height":64,
                  "id":4,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -126,7 +123,6 @@
                  "height":128,
                  "id":6,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -165,7 +161,6 @@
                  "height":0,
                  "id":20,
                  "name":"",
-                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -191,7 +186,7 @@
                         {
                          "name":"type",
                          "type":"string",
-                         "value":"robot"
+                         "value":"flying_1"
                         }, 
                         {
                          "name":"vision",
@@ -207,9 +202,8 @@
                 }, 
                 {
                  "height":0,
-                 "id":23,
+                 "id":30,
                  "name":"",
-                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -235,7 +229,50 @@
                         {
                          "name":"type",
                          "type":"string",
-                         "value":"robot"
+                         "value":"flying_1"
+                        }, 
+                        {
+                         "name":"vision",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":0,
+                 "x":1345.45454545455,
+                 "y":748.484848484849
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":150
+                        }, 
+                        {
+                         "name":"shot_cadence",
+                         "type":"float",
+                         "value":2
+                        }, 
+                        {
+                         "name":"shot_speed",
+                         "type":"float",
+                         "value":10
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"float",
+                         "value":3
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"walking_1"
                         }, 
                         {
                          "name":"vision",
@@ -253,13 +290,12 @@
                  "height":0,
                  "id":24,
                  "name":"",
-                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
                          "name":"health",
                          "type":"int",
-                         "value":100
+                         "value":150
                         }, 
                         {
                          "name":"shot_cadence",
@@ -274,12 +310,12 @@
                         {
                          "name":"speed",
                          "type":"float",
-                         "value":6
+                         "value":3
                         }, 
                         {
                          "name":"type",
                          "type":"string",
-                         "value":"robot"
+                         "value":"walking_1"
                         }, 
                         {
                          "name":"vision",
@@ -309,7 +345,6 @@
                  "height":128,
                  "id":7,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -328,7 +363,6 @@
                  "height":128,
                  "id":8,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -347,7 +381,6 @@
                  "height":128,
                  "id":9,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -366,7 +399,6 @@
                  "height":128,
                  "id":10,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -385,7 +417,6 @@
                  "height":128,
                  "id":11,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -404,7 +435,6 @@
                  "height":128,
                  "id":12,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -423,7 +453,6 @@
                  "height":128,
                  "id":13,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -442,7 +471,6 @@
                  "height":128,
                  "id":14,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -461,7 +489,6 @@
                  "height":128,
                  "id":15,
                  "name":"",
-                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -491,7 +518,6 @@
                  "height":128,
                  "id":25,
                  "name":"",
-                 "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -504,7 +530,6 @@
                  "height":128,
                  "id":26,
                  "name":"",
-                 "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -517,7 +542,6 @@
                  "height":128,
                  "id":27,
                  "name":"",
-                 "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -616,10 +640,10 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":30,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.12.1",
+ "tiledversion":"1.11.2",
  "tileheight":128,
  "tilesets":[
         {

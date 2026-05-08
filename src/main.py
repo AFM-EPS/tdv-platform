@@ -222,14 +222,12 @@ class GameView(arcade.View):
             enemy_speed = enemy_marker.properties["speed"]
             enemy_vision = enemy_marker.properties["vision"]
 
-            #Comentado por debgging (Descomentar cuando se implemente bien los enemigos andates por TILED)
 
-            #if enemy_type == "robot":
-                #enemy = Air_enemy(PROJECT_ROOT / "assets" / "img" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
-                #self.scene.add_sprite("enemies", enemy)
+            if enemy_type == "flying_1":
+                enemy = Air_enemy(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                self.scene.add_sprite("enemies", enemy)
 
-            #Fin de comentario
-            if enemy_type == "robot": #!!!!! Cambiar cuando se tenga marcadores específicos de Walking Enemy
+            elif enemy_type == "walking_1":
                 enemy = WalkingEnemy(PROJECT_ROOT / "assets" / "sprites" / "walking_robot" / "WalkingRobot_idle.png",self.player_sprite,self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
                 self.scene.add_sprite("walking_enemies", enemy)
                 enemy.motor_enemigo = arcade.PhysicsEnginePlatformer( #Gravedad
@@ -238,7 +236,7 @@ class GameView(arcade.View):
                     gravity_constant=GRAVITY,
                     platforms=[self.scene["special_platforms"], self.scene["extras"]],
                 )
-                #fin debug
+
             enemy.center_x = math.floor(
                 coordinates[0] * TILE_SCALING * self.tile_map.tile_width
             )
