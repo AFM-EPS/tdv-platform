@@ -173,7 +173,7 @@ class GameView(arcade.View):
             self.scene.add_sprite_list("ladders")
 
 
-        self.arma = Arma()
+        self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
         self.scene.add_sprite("Arma", self.arma)
         self.player_sprite = PlayerCharacter(self.arma,self.camera)
         # Provisionalmente añadiremos esto para que el personaje no se quede atrapado en la nave de la izquierda del mapa 2
@@ -328,7 +328,7 @@ class GameView(arcade.View):
                 self.can_shoot = False
         else:
             self.shoot_timer += 1
-            if self.shoot_timer == 15:
+            if self.shoot_timer == self.arma.fireRate:
                 self.can_shoot = True
                 self.shoot_timer = 0
 
@@ -414,9 +414,7 @@ class GameView(arcade.View):
                 for collision in hit_list:
 
                     if self.scene["enemies"] in collision.sprite_lists:
-                        collision.health -= 25
-                        arcade.play_sound(self.hit_sound)
-                        if collision.health <= 0:
+                        if collision.properties["health"] <= 0:
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_enemy_sound, volume=2.5)
                         

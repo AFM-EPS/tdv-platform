@@ -1,8 +1,8 @@
 import arcade
 from character.proyectil_enemigo import Proyectil_enemigo
 
-MAX_REACTION_TIME = 25
-
+MAX_REACTION_TIME = 25 #frames parado cuando llega a estar encima
+MAX_BUSCA_TIME = 3 #segundos
 class Air_enemy(arcade.Sprite):
     def __init__(self,paths, jugador:arcade.Sprite,scena:arcade.Scene, vida:int=100,velocidad:float=3,velocidad_disparo:float=2,vision:int=500,velocidad_proyectil:float=8):
         super().__init__(paths)
@@ -20,6 +20,7 @@ class Air_enemy(arcade.Sprite):
         self.disparando = False
         self.disparo_cooldown = 5
         self.reactionT = 0
+        self.busca = 0
 
 
 
@@ -32,8 +33,12 @@ class Air_enemy(arcade.Sprite):
         ##cálculo Agro
         if self.distancia <= self.vision:
             self.agro = True
+            self.busca = MAX_BUSCA_TIME
         else:
-            self.agro = False
+            if self.busca <= 0:
+                self.agro = False
+            else:
+                self.busca -= delta_time
         if self.agro:
             if  self.disparo_cooldown <= 0:
                 self.disparo_cooldown = self.velocidad_disparo
@@ -41,9 +46,9 @@ class Air_enemy(arcade.Sprite):
 
     def movimiento(self):
         if self.agro:
-            if self.jugador.center_x - self.center_x > 18 and self.reactionT == 0:
+            if self.jugador.center_x - self.center_x > 12 and self.reactionT == 0:
                 self.center_x += self.velocidad
-            elif self.jugador.center_x - self.center_x < -18 and self.reactionT == 0:
+            elif self.jugador.center_x - self.center_x < -12 and self.reactionT == 0:
                 self.center_x -= self.velocidad
             else:
                 if self.reactionT == 0:
@@ -51,7 +56,11 @@ class Air_enemy(arcade.Sprite):
                 else:
                     self.reactionT -= 1
 
-
+    def impactado(self, danno):
+        self.health -= danno
+        self.agro = True
+        self.busca = MAX_BUSCA_TIME +1
+        return self.health <= 0
 
 
     def disparar(self):
