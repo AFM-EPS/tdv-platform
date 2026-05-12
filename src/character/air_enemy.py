@@ -60,7 +60,16 @@ class Air_enemy(arcade.Sprite):
         self.health -= danno
         self.agro = True
         self.busca = MAX_BUSCA_TIME +1
+        self.color = arcade.color.RED
+        arcade.schedule(self.restaurar_color, 0.2) #funcion interesante para ejecutar un comando en cierto tiempo
         return self.health <= 0
+
+    def restaurar_color(self, delta_time):
+        # 3. Volver al color original (blanco significa sin tinte)
+        self.color = arcade.color.WHITE
+
+        # 4. Es MUY importante desprogramar la función, de lo contrario se ejecutará cada 0.2 segundos
+        arcade.unschedule(self.restaurar_color)
 
 
     def disparar(self):

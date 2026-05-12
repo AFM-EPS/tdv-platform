@@ -55,11 +55,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"change_x",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
                          "name":"destructible",
                          "type":"bool",
                          "value":false
@@ -68,12 +63,17 @@
                          "name":"movable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"Special_platforms",
                  "visible":true,
                  "width":256,
-                 "x":2112,
+                 "x":2410,
                  "y":537
                 }, 
                 {
@@ -83,11 +83,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"change_x",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
                          "name":"destructible",
                          "type":"bool",
                          "value":false
@@ -96,16 +91,21 @@
                          "name":"movable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"Special_platforms",
                  "visible":true,
                  "width":256,
-                 "x":2462,
+                 "x":2760,
                  "y":420
                 }, 
                 {
-                 "gid":14,
+                 "gid":13,
                  "height":64,
                  "id":30,
                  "name":"",
@@ -128,7 +128,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":13,
+                 "gid":12,
                  "height":64,
                  "id":31,
                  "name":"",
@@ -151,7 +151,7 @@
                  "y":512
                 }, 
                 {
-                 "gid":15,
+                 "gid":14,
                  "height":64,
                  "id":32,
                  "name":"",
@@ -213,7 +213,7 @@
                         {
                          "name":"type",
                          "type":"string",
-                         "value":"robot"
+                         "value":"flying_1"
                         }, 
                         {
                          "name":"vision",
@@ -282,7 +282,7 @@
          "name":"guns",
          "objects":[
                 {
-                 "gid":9,
+                 "gid":8,
                  "height":128,
                  "id":26,
                  "name":"",
@@ -369,7 +369,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101, 103, 100, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 102, 99, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
          "height":6,
          "id":2,
@@ -431,26 +431,22 @@
         }, 
         {
          "firstgid":7,
-         "source":"..\/tilesets\/flying_robot.json"
-        }, 
-        {
-         "firstgid":8,
          "source":"..\/tilesets\/gun_rack.json"
         }, 
         {
-         "firstgid":9,
+         "firstgid":8,
          "source":"..\/tilesets\/space_gun.json"
         }, 
         {
-         "firstgid":10,
+         "firstgid":9,
          "source":"..\/tilesets\/destructible_rock.json"
         }, 
         {
-         "firstgid":19,
+         "firstgid":18,
          "source":"..\/tilesets\/space_rock.json"
         }, 
         {
-         "firstgid":28,
+         "firstgid":27,
          "source":"..\/tilesets\/examples_tileset.json"
         }],
  "tilewidth":128,

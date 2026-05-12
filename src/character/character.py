@@ -11,7 +11,6 @@ class Character(arcade.Sprite):
         super().__init__()
 
         self.facing_direction = RIGHT_FACING
-
         self.cur_texture = 0
 
         main_path = mainPath
