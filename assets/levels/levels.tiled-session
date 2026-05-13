@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mapa-3.json",
+    "activeFile": "",
     "expandedProjectPaths": [
         ".",
         "maps",
@@ -179,8 +179,8 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                5,
-                16
+                16,
+                5
             ],
             "scale": 0.125,
             "selectedLayer": 4,
@@ -191,10 +191,10 @@
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                5,
-                8,
                 7,
-                6
+                8,
+                6,
+                5
             ],
             "scale": 0.33,
             "selectedLayer": 3,
@@ -328,13 +328,12 @@
     "map.tileWidth": 128,
     "map.width": 20,
     "openFiles": [
-        "maps/mapa-3.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "maps/mapa-3.json",
         "maps/mapa-2.json",
+        "maps/mapa-3.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
         "maps/mapa-1.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",

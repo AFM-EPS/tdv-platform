@@ -256,7 +256,7 @@
                         {
                          "name":"type",
                          "type":"string",
-                         "value":"robot"
+                         "value":"flying_1"
                         }, 
                         {
                          "name":"vision",

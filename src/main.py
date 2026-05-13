@@ -38,6 +38,9 @@ LEFT_FACING = 1
 # Velocidad de movimiento de las plataformas móviles
 MOVABLE_PLATFORM_SPEED = 1
 
+# Cantidad de mapas
+MAP_AMOUNT = 3
+
 
 
 class MainMenu(arcade.View):
@@ -87,7 +90,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = None
+        self.map_num = 2
 
         # Replacing all of our SpriteLists with a Scene variable
         self.scene = None
@@ -131,6 +134,9 @@ class GameView(arcade.View):
         self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
         self.walk_player = None
         self.is_walking_sound_on = False
+
+
+
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         layer_options = {
@@ -147,9 +153,6 @@ class GameView(arcade.View):
                 "use_spatial_hash": True
             }
         }
-
-        # Seleccionar mapa (provisionalmente se hará así para el debugging)
-        self.map_num = 3
 
 
         # Load our TileMap
@@ -169,6 +172,7 @@ class GameView(arcade.View):
 
         self.scene.add_sprite_list("enemies")
 
+        # Pronto se arreglará esto en la medida de lo posible
         if self.map_num in [1]:
             self.scene.add_sprite_list("special_platforms")
             self.scene.add_sprite_list("movable_platforms")
@@ -177,6 +181,7 @@ class GameView(arcade.View):
         if self.map_num in [1, 2]:
             self.scene.add_sprite_list("ladders")
             self.scene.add_sprite_list("player_death_zones")
+            
 
 
         self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
@@ -313,6 +318,9 @@ class GameView(arcade.View):
     def on_show_view(self):
         self.setup()        
         self.music_player = self.background_music.play(volume=0.7, loop=True)
+
+
+
     def on_draw(self):
         """Render the screen."""
 
@@ -586,6 +594,12 @@ class GameView(arcade.View):
 
         if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = True
+        
+        if key == arcade.key.L:
+            if self.map_num < MAP_AMOUNT:
+                self.map_num += 1
+                self.setup()
+            else: self.map_num = 0
 
         self.process_keychange()
 
