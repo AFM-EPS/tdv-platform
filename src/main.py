@@ -228,7 +228,12 @@ class GameView(arcade.View):
 
             if enemy_type == "flying_1":
                 enemy = Air_enemy(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
-
+                enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(  # Gravedad
+                    enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=0,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
             elif enemy_type == "walking_1":
                 enemy = WalkingEnemy(PROJECT_ROOT / "assets" / "sprites" / "walking_robot" / "WalkingRobot_idle.png",self.player_sprite,self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
                 enemy.motor_enemigo = arcade.PhysicsEnginePlatformer( #Gravedad
