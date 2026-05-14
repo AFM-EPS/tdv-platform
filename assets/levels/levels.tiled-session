@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "maps/mapa-3.json",
     "expandedProjectPaths": [
         ".",
-        "maps",
-        "tilesets"
+        "tilesets",
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -166,6 +166,32 @@
                 "y": 1373.9437350773383
             }
         },
+        "C:/Users/PC/Downloads/mapa-3.json": {
+            "scale": 0.12129878048780487,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4089.0765595938265,
+                "y": 2312.4717237219124
+            }
+        },
+        "C:/Users/PC/tilesets/blue_ore.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/tilesets/destructible_rock.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/tilesets/examples_tileset.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/tilesets/golden_ore.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/tilesets/green_ore.json": {
+            "scaleInDock": 1
+        },
+        "C:/Users/PC/tilesets/moving_platform.json": {
+            "scaleInDock": 1
+        },
         "maps/mapa-1.json": {
             "expandedGroupLayers": [
                 7
@@ -182,25 +208,25 @@
                 16,
                 5
             ],
-            "scale": 0.125,
+            "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 4104,
-                "y": 1364
+                "x": 3080,
+                "y": 404.66666666666674
             }
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                7,
                 8,
-                6,
-                5
+                7,
+                5,
+                6
             ],
-            "scale": 0.33,
-            "selectedLayer": 3,
+            "scale": 0.25,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 1221.2121212121215,
-                "y": 1077.2727272727275
+                "x": 5052,
+                "y": 814
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -328,12 +354,14 @@
     "map.tileWidth": 128,
     "map.width": 20,
     "openFiles": [
+        "maps/mapa-3.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "maps/mapa-2.json",
         "maps/mapa-3.json",
+        "C:/Users/PC/Downloads/mapa-3.json",
+        "maps/mapa-2.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
         "maps/mapa-1.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",
@@ -342,8 +370,7 @@
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_1.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/spritesheet.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_2.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/grass.json"
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_2.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,

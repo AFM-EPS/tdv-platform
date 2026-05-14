@@ -23,7 +23,7 @@ class WalingEnemy(arcade.Sprite):
         self.health = vida
         self.velocidad = velocidad / 2
         self.velocidad_disparo = velocidad_disparo
-        self.vision = vision * 1.5
+        self.vision = vision * 2
         self.velocidad_proyectil = velocidad_proyectil
         # lógica de IA
         self.agro = False
