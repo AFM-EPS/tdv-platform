@@ -124,11 +124,10 @@ class GameView(arcade.View):
         self.movable_platforms_displacement = 0
 
         # Load sounds
-        self.collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
-        self.jump_sound = arcade.load_sound(":resources:sounds/jump1.wav")
-        self.gameover_sound = arcade.load_sound(":resources:sounds/gameover1.wav")
-        self.shoot_sound = arcade.load_sound(":resources:sounds/hurt5.wav")
-        self.hit_sound = arcade.load_sound(":resources:sounds/hit5.wav")
+        self.collect_coin_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "coin1.wav")
+        self.jump_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "jump1.wav")
+        self.gameover_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "gameover1.wav")
+        self.shoot_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hurt5.wav")
         self.background_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "Asteroid_Runway.mp3")
         self.music_player = None
         self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
@@ -140,6 +139,8 @@ class GameView(arcade.View):
         self.final_hit_platform_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_platform.wav")
         self.hit_platform_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hit_platform.mp3")
         self.final_hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_enemy.mp3")
+        self.hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hit_enemy.mp3")
+        self.climbing_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "climbing.mp3")
 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
@@ -484,6 +485,7 @@ class GameView(arcade.View):
                         if collision.health <= 0:
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_enemy_sound, volume=2.5)
+                        arcade.play_sound(self.hit_enemy_sound)
                         
                     
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
