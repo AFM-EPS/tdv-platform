@@ -10,6 +10,7 @@ from pathlib import Path
 import arcade
 
 from character.air_enemy import Air_enemy
+from character.air_enemy2 import Air_enemy2
 #Importar Clases de otros archivos
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
@@ -39,7 +40,7 @@ LEFT_FACING = 1
 MOVABLE_PLATFORM_SPEED = 1
 
 # Cantidad de mapas
-MAP_AMOUNT = 3
+MAP_AMOUNT = 4
 
 
 
@@ -186,7 +187,14 @@ class GameView(arcade.View):
         if self.map_num in [1, 2]:
             self.scene.add_sprite_list("ladders")
             self.scene.add_sprite_list("player_death_zones")
-            
+        if self.map_num in [4]:
+            self.scene.add_sprite_list("ladders")
+            self.scene.add_sprite_list("player_death_zones")
+            self.scene.add_sprite_list("special_platforms")
+            self.scene.add_sprite_list("movable_platforms")
+            self.scene.add_sprite_list("destructible_platforms")
+
+
 
 
         self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
@@ -235,6 +243,16 @@ class GameView(arcade.View):
                     gravity_constant=0,
                     platforms=[self.scene["special_platforms"], self.scene["extras"]],
                 )
+            elif enemy_type == "flying_2":
+                enemy = Air_enemy2(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(  # Gravedad
+                    enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=0,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
+
+
             elif enemy_type == "walking_1":
                 enemy = WalkingEnemy(PROJECT_ROOT / "assets" / "sprites" / "walking_robot" / "WalkingRobot_idle.png",self.player_sprite,self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
                 enemy.motor_enemigo = arcade.PhysicsEnginePlatformer( #Gravedad
@@ -399,7 +417,7 @@ class GameView(arcade.View):
         # Move the player using our physics engine
         self.physics_engine.update()
         for enemy in self.scene["enemies"]:
-            if isinstance(enemy, WalkingEnemy):
+            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy):
                 if hasattr(enemy, "motor_enemigo"):
                     enemy.motor_enemigo.update()
 
