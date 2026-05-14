@@ -90,7 +90,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 2
+        self.map_num = 3
 
         # Replacing all of our SpriteLists with a Scene variable
         self.scene = None
