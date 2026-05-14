@@ -480,7 +480,8 @@ class GameView(arcade.View):
                 for collision in hit_list:
 
                     if self.scene["enemies"] in collision.sprite_lists:
-                        if collision.properties["health"] <= 0:
+                        collision.impactado(25)
+                        if collision.health <= 0:
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_enemy_sound, volume=2.5)
                         
