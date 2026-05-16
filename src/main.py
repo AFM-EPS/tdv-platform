@@ -129,7 +129,7 @@ class GameView(arcade.View):
         self.jump_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "jump1.wav")
         self.gameover_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "gameover1.wav")
         self.shoot_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hurt5.wav")
-        self.background_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "Asteroid_Runway.mp3")
+        self.background_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "asteroid_runway.mp3")
         self.music_player = None
         self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
         self.walk_player = None
@@ -566,7 +566,7 @@ class GameView(arcade.View):
         else:
             self.camera.position = self.player_sprite.position[0], self.y_camera_pos
 
-    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int) -> bool | None:
+    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
         """
             lógica de apuntaje
         """
