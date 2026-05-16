@@ -15,9 +15,10 @@ from character.air_enemy2 import Air_enemy2
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
 from character.character import Character as Character
-from character.walking_enemy import WalingEnemy as WalkingEnemy
+from character.walking_enemy import WalkingEnemy as WalkingEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
+from character.teleporter_particle_system import TeleporterParticleSystem as TeleporterParticles
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -93,6 +94,9 @@ class GameView(arcade.View):
         # Variable para guardar el mapa a cargar
         self.map_num = 3
 
+        # Variable para guardar el destino de un teleporter activado
+        self.map_destination = None
+
         # Replacing all of our SpriteLists with a Scene variable
         self.scene = None
 
@@ -123,6 +127,15 @@ class GameView(arcade.View):
 
         # Desplazamiento plataformas móviles
         self.movable_platforms_displacement = 0
+
+        # Hit list teleporters
+        self.hit_list_teleporters = None
+
+        # Sistemas de partículas
+        self.particle_systems = None
+
+        # Flag para indicar si el jugador se está teletransportando
+        self.is_teleporting = None
 
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "coin1.wav")
@@ -157,6 +170,9 @@ class GameView(arcade.View):
             },
             "ladders": {
                 "use_spatial_hash": True
+            },
+            "teleporters": {
+                "use_spatial_hash": True
             }
         }
 
@@ -184,6 +200,7 @@ class GameView(arcade.View):
             self.scene.add_sprite_list("movable_platforms")
             self.scene.add_sprite_list("destructible_platforms")
             self.scene.add_sprite_list("ores")
+            self.scene.add_sprite_list("teleporters")
         if self.map_num in [1, 2]:
             self.scene.add_sprite_list("ladders")
             self.scene.add_sprite_list("player_death_zones")
@@ -241,7 +258,7 @@ class GameView(arcade.View):
                     enemy,
                     walls=self.scene["platforms"],
                     gravity_constant=0,
-                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                    platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
                 )
             elif enemy_type == "flying_2":
                 enemy = Air_enemy2(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
@@ -259,7 +276,7 @@ class GameView(arcade.View):
                     enemy,
                     walls=self.scene["platforms"],
                     gravity_constant=GRAVITY,
-                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                    platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
                 )
             
             self.scene.add_sprite("enemies", enemy)
@@ -296,18 +313,18 @@ class GameView(arcade.View):
 
         self.movable_platforms_displacement = self.tile_map.tile_height * 4
 
-        # Create a Platformer Physics Engine, this will handle moving our
-        # player as well as collisions between the player sprite and
-        # whatever SpriteList we specify for the walls.
-        # It is important to supply static to the walls parameter. There is a
-        # platforms parameter that is intended for moving platforms.
-        # If a platform is supposed to move, and is added to the walls list,
-        # it will not be moved.
+
+        self.particle_systems = []
+
+
+        self.is_teleporting = False
+
+
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite,
-            walls=self.scene["platforms"],
+            walls=[self.scene["platforms"]],
             gravity_constant=GRAVITY,
-            platforms=[self.scene["special_platforms"], self.scene["extras"]],
+            platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
             ladders=self.scene["ladders"]
         )
 
@@ -365,6 +382,10 @@ class GameView(arcade.View):
         # Draw our Scene
         self.scene.draw()
 
+        # Dibujar partículas
+        for particle_system in self.particle_systems:
+            particle_system.draw()
+
         # Activate our GUI camera
         self.gui_camera.use()
 
@@ -385,6 +406,7 @@ class GameView(arcade.View):
             self.player_sprite.climbing = True
         else:
             self.player_sprite.climbing = False
+
 
         if self.can_shoot:
             if self.shoot_pressed:
@@ -414,8 +436,6 @@ class GameView(arcade.View):
                 if (movable_platform.center_y >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_y <= initial_pos - self.movable_platforms_displacement): movable_platform.change_y = - movable_platform.change_y
 
 
-        # Move the player using our physics engine
-        self.physics_engine.update()
         for enemy in self.scene["enemies"]:
             if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy):
                 if hasattr(enemy, "motor_enemigo"):
@@ -443,16 +463,7 @@ class GameView(arcade.View):
             ]
         )
 
-        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
-        # Sección comentada hasta que se ajusten los límites de movimiento de los enemigos
-
-        # Keep enemies walking within their boundaries configured in Tiled
-        # for enemy in self.scene["enemies"]:
-        #     if enemy.right > enemy.boundary_right and enemy.change_x > 0:
-        #         enemy.change_x *= -1
-        #     elif enemy.left < enemy.boundary_left and enemy.change_x < 0:
-        #         enemy.change_x *= -1
         for bullet in self.scene["Enemy_bullets"]:
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
@@ -523,7 +534,7 @@ class GameView(arcade.View):
             if (bullet.right < 0) or (bullet.left > self.end_of_map):
                 bullet.remove_from_sprite_lists()
 
-        # Lista de colisiones con enemigos y ores
+        # Lista de colisiones del jugador
         player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
@@ -544,7 +555,8 @@ class GameView(arcade.View):
                     self.is_walking_sound_on = False
                 self.window.show_view(game_over)
                 return
-            else:
+            
+            elif self.scene["ores"] in collision.sprite_lists:
                 # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
                 self.score += collision.properties["value"]
                 collision.remove_from_sprite_lists()
@@ -565,6 +577,47 @@ class GameView(arcade.View):
             self.camera.position = self.end_of_map - WINDOW_WIDTH / 2, self.y_camera_pos
         else:
             self.camera.position = self.player_sprite.position[0], self.y_camera_pos
+        
+        
+        
+        # Detección colisiones teleporters (como el motor de físicas interpreta los teleporters como platforms, no detectará la colisión de manera habitual, así que hay que hacer un ajuste de posición)
+        self.player_sprite.center_y -= 1
+        hit_list_teleporters = arcade.check_for_collision_with_list(self.player_sprite, self.scene["teleporters"])
+        self.player_sprite.center_y += 1
+
+        # Generación de partículas en caso de colisión con teleporter
+        for collision in hit_list_teleporters:
+            
+            if not collision.properties["is_activated"]:
+                particles = TeleporterParticles(collision.center_x, collision.center_y, PROJECT_ROOT / "assets" / "img" / "particle.png")
+
+                self.particle_systems.append(particles)
+
+                collision.properties["is_activated"] = True
+
+                self.is_teleporting = True
+
+                self.map_destination = collision.properties["destination"]
+        
+
+        # Teletransporte cuando finaliza la animación
+        for particle_system in self.particle_systems:
+
+            particle_system.update()
+
+            if particle_system.is_finished():
+                
+                self.particle_systems.remove(particle_system)
+
+                self.map_num = self.map_destination
+
+                self.setup()
+        
+
+
+        self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
+
+        self.physics_engine.update()
 
     def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
         """
@@ -580,6 +633,11 @@ class GameView(arcade.View):
 
 
     def process_keychange(self):
+
+        if self.is_teleporting:
+            self.player_sprite.change_x = 0
+            return
+
         # First handle the case where we have moved up. This needs to be handled
         # differently to move the player upwards if they are on a ladder, or
         # perform a jump if they are not on a ladder. This code might look

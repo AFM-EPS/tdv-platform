@@ -9,7 +9,7 @@ SCALE = 0.8
 #Reorganización de los enemigos andantes
 MAX_REACTION_TIME = 25 #frames parado cuando llega a estar encima
 MAX_BUSCA_TIME = 3 #segundos
-class WalingEnemy(arcade.Sprite):
+class WalkingEnemy(arcade.Sprite):
     motor_enemigo = None
     def __init__(self,path,jugador:arcade.Sprite,scena:arcade.Scene, vida:int=100,velocidad:float=3,velocidad_disparo:float=2,vision:int=500,velocidad_proyectil:float=8):
         super().__init__(path,SCALE)
