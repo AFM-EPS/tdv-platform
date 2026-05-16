@@ -45,6 +45,40 @@
         }, 
         {
          "draworder":"topdown",
+         "id":18,
+         "name":"teleporters",
+         "objects":[
+                {
+                 "gid":183,
+                 "height":128,
+                 "id":35,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destination",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
+                         "name":"is_activated",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Teleporter",
+                 "visible":true,
+                 "width":128,
+                 "x":3328,
+                 "y":640
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":16,
          "name":"special_platforms",
          "objects":[
@@ -398,8 +432,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":18,
- "nextobjectid":35,
+ "nextlayerid":19,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -448,6 +482,10 @@
         {
          "firstgid":27,
          "source":"..\/tilesets\/examples_tileset.json"
+        }, 
+        {
+         "firstgid":183,
+         "source":"..\/tilesets\/teleporter.json"
         }],
  "tilewidth":128,
  "type":"map",
