@@ -1,9 +1,9 @@
 from arcade.math import rand_in_circle
 from arcade import particles
 
-PARTICLE_SPEED_FAST = 2
-DEFAULT_SCALE = 0.4
-DEFAULT_ALPHA = 32
+PARTICLE_SPEED_FAST = 3
+DEFAULT_SCALE = 0.3
+DEFAULT_ALPHA = 100
 DEFAULT_EMIT_INTERVAL = 0.001
 DEFAULT_EMIT_DURATION = 1.5
 
@@ -19,7 +19,7 @@ class TeleporterParticleSystem:
             particle_factory=lambda emitter: particles.LifetimeParticle(
                 filename_or_texture = particle_path,
                 change_xy = rand_in_circle((0.0, 0.0), PARTICLE_SPEED_FAST),
-                lifetime = 1,
+                lifetime = 0.5,
                 scale = DEFAULT_SCALE,
                 alpha = DEFAULT_ALPHA
             )

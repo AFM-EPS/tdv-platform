@@ -597,6 +597,10 @@ class GameView(arcade.View):
 
                 self.is_teleporting = True
 
+                # Se frena al jugador antes de congelarle mediante "self.is_teleporting" para evitar bugs
+                self.player_sprite.change_x = 0
+                self.player_sprite.change_y = 0
+
                 self.map_destination = collision.properties["destination"]
         
 
