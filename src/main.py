@@ -155,6 +155,8 @@ class GameView(arcade.View):
         self.final_hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_enemy.mp3")
         self.hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hit_enemy.mp3")
         self.climbing_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "climbing.mp3")
+        self.player_teleporting_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleporting.mp3")
+        self.player_teleported_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleported.mp3")
 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
@@ -602,6 +604,7 @@ class GameView(arcade.View):
                 self.player_sprite.change_y = 0
 
                 self.map_destination = collision.properties["destination"]
+                arcade.play_sound(self.player_teleporting_sound)
         
 
         # Teletransporte cuando finaliza la animación
@@ -614,7 +617,7 @@ class GameView(arcade.View):
                 self.particle_systems.remove(particle_system)
 
                 self.map_num = self.map_destination
-
+                arcade.play_sound(self.player_teleported_sound)
                 self.setup()
         
 
