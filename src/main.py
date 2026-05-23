@@ -92,7 +92,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 3
+        self.map_num = 5
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -565,7 +565,7 @@ class GameView(arcade.View):
         
         
         # Si se puede avanzar verticalmente en el mapa (mapa 3 de momento), la posición en Y de la cámara variará
-        if self.map_num == 3:
+        if self.map_num in [3, 5]:
             # Solo se actualiza la posición Y de la cámara si esta no se sale del mapa
             if (self.player_sprite.center_y <= (self.tile_map.height - 1) * self.tile_map.tile_height - WINDOW_HEIGHT / 2) and (self.player_sprite.center_y >= self.tile_map.tile_height + self.player_sprite.height / 2):
                 self.y_camera_pos = self.player_sprite.position[1] + self.tile_map.tile_height + self.player_sprite.height / 2

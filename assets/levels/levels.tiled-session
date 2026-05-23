@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mapa-3.json",
+    "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
         "maps",
-        "tilesets",
-        "."
+        ".",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -205,30 +205,56 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                5,
                 18,
+                5,
                 16
             ],
             "scale": 0.5,
-            "selectedLayer": 3,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 3534,
-                "y": 383
+                "x": 2310,
+                "y": 629
             }
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                5,
-                6,
-                7,
                 17,
+                5,
+                7,
+                6,
                 8
             ],
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1442.4242424242423,
-                "y": 1880.3030303030305
+                "x": 636,
+                "y": 1902.3333333333333
+            }
+        },
+        "maps/mapa-4.json": {
+            "expandedObjectLayers": [
+                7,
+                6,
+                5,
+                3,
+                4
+            ],
+            "scale": 0.5,
+            "selectedLayer": 9,
+            "viewCenter": {
+                "x": 684,
+                "y": 4481
+            }
+        },
+        "maps/mapa-5.json": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.25,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": -24,
+                "y": 3894
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -309,6 +335,14 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilesets/metal_ladders.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/metal_platform.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/moving_platform.json": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
@@ -326,6 +360,18 @@
         "tilesets/provisional-player.json": {
             "dynamicWrapping": false,
             "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "tilesets/rocket.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "tilesets/scaffold_platform.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/scaffold_tile.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_gun.json": {
@@ -354,30 +400,29 @@
         }
     },
     "last.imagePath": "C:/Users/PC/Desktop/repo/tdv-platform/assets/img",
-    "map.height": 17,
+    "map.height": 40,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 128,
     "map.tileWidth": 128,
-    "map.width": 20,
+    "map.width": 13,
     "openFiles": [
-        "maps/mapa-3.json",
-        "maps/mapa-2.json"
+        "maps/mapa-5.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "maps/mapa-2.json",
+        "maps/mapa-5.json",
+        "tilesets/rocket.json",
         "maps/mapa-3.json",
+        "maps/mapa-4.json",
+        "tilesets/scaffold_tile.json",
+        "tilesets/scaffold_platform.json",
+        "tilesets/metal_ladders.json",
+        "maps/mapa-2.json",
+        "tilesets/metal_platform.json",
         "tilesets/teleporter.json",
         "maps/mapa-1.json",
-        "C:/Users/PC/Downloads/mapa-3.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",
-        "tilesets/examples_tileset.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map2_level_2.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_1.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/spritesheet.json"
+        "C:/Users/PC/Downloads/mapa-3.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,

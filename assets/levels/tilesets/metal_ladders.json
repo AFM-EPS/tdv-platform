@@ -1,0 +1,14 @@
+{ "columns":2,
+ "image":"..\/..\/img\/metal_ladders.png",
+ "imageheight":128,
+ "imagewidth":256,
+ "margin":0,
+ "name":"metal_ladders",
+ "spacing":0,
+ "tilecount":2,
+ "tiledversion":"1.11.2",
+ "tileheight":128,
+ "tilewidth":128,
+ "type":"tileset",
+ "version":"1.10"
+}
