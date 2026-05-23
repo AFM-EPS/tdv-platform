@@ -147,6 +147,8 @@ class GameView(arcade.View):
         self.step_default_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "step_default.mp3")
         self.walk_player = None
         self.is_walking_sound_on = False
+        self.climb_player = None
+        self.is_climbing_sound_on = False
 
 
 
@@ -155,6 +157,8 @@ class GameView(arcade.View):
         self.final_hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "final_hit_enemy.mp3")
         self.hit_enemy_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "hit_enemy.mp3")
         self.climbing_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "climbing.mp3")
+        self.player_teleporting_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleporting.mp3")
+        self.player_teleported_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleported.mp3")
 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
@@ -442,7 +446,7 @@ class GameView(arcade.View):
                     enemy.motor_enemigo.update()
 
         # Walking sound logic
-        if self.player_sprite.change_x != 0 and self.physics_engine.can_jump():
+        if self.player_sprite.change_x != 0 and self.physics_engine.can_jump() and not self.physics_engine.is_on_ladder():
             if not self.is_walking_sound_on:
                 self.walk_player = self.step_default_music.play(loop=True, volume=1.0)
                 self.is_walking_sound_on = True
@@ -451,6 +455,17 @@ class GameView(arcade.View):
                 arcade.stop_sound(self.walk_player)
                 self.is_walking_sound_on = False
                 self.walk_player = None
+
+        # Climbing sound logic
+        if self.physics_engine.is_on_ladder() and (self.player_sprite.change_x != 0 or self.player_sprite.change_y != 0):
+            if not self.is_climbing_sound_on:
+                self.climb_player = arcade.play_sound(self.climbing_sound, loop=True, volume=7.0)
+                self.is_climbing_sound_on = True
+        else:
+            if self.is_climbing_sound_on and self.climb_player is not None:
+                arcade.stop_sound(self.climb_player)
+                self.climb_player = None
+                self.is_climbing_sound_on = False
 
         # Actualizar animaciones
         self.scene.update_animation(
@@ -483,6 +498,10 @@ class GameView(arcade.View):
                             arcade.stop_sound(self.walk_player)
                             self.walk_player = None
                             self.is_walking_sound_on = False
+                        if self.climb_player is not None:
+                            arcade.stop_sound(self.climb_player)
+                            self.climb_player = None
+                            self.is_climbing_sound_on = False
                         self.window.show_view(game_over)
                         arcade.stop_sound(self.music_player)
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
@@ -553,6 +572,10 @@ class GameView(arcade.View):
                     arcade.stop_sound(self.walk_player)
                     self.walk_player = None
                     self.is_walking_sound_on = False
+                if self.climb_player is not None:
+                    arcade.stop_sound(self.climb_player)
+                    self.climb_player = None
+                    self.is_climbing_sound_on = False
                 self.window.show_view(game_over)
                 return
             
@@ -602,6 +625,7 @@ class GameView(arcade.View):
                 self.player_sprite.change_y = 0
 
                 self.map_destination = collision.properties["destination"]
+                arcade.play_sound(self.player_teleporting_sound)
         
 
         # Teletransporte cuando finaliza la animación
@@ -614,7 +638,7 @@ class GameView(arcade.View):
                 self.particle_systems.remove(particle_system)
 
                 self.map_num = self.map_destination
-
+                arcade.play_sound(self.player_teleported_sound)
                 self.setup()
         
 
