@@ -32,8 +32,14 @@ class Air_enemy2(arcade.Sprite):
         self.disparo_cooldown -= delta_time
         ##Distancia
         self.distancia = ((self.jugador.center_x - self.center_x)**2 + (self.jugador.center_y - self.center_y)**2)**0.5
-        ##cálculo Agro
+        # Comprobar línea de visión directa
+        has_vision = False
         if self.distancia <= self.vision:
+            if arcade.has_line_of_sight(self.position, self.jugador.position, self.scena["platforms"], self.vision):
+                has_vision = True
+
+        ##cálculo Agro
+        if has_vision:
             self.agro = True
             self.busca = MAX_BUSCA_TIME
         else:
@@ -41,7 +47,7 @@ class Air_enemy2(arcade.Sprite):
                 self.agro = False
             else:
                 self.busca -= delta_time
-        if self.agro:
+        if self.agro and has_vision:
             if  self.disparo_cooldown <= 0:
                 self.disparo_cooldown = self.velocidad_disparo
                 self.disparar()
