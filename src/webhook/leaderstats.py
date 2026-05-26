@@ -49,6 +49,10 @@ class ControlDeDatos:
                 return datos_json #Listas de Diccionarios
         except Exception as e:
             print(f"Error al obtener los datos: {e}")
+
+
+ControlDeDatos.guardarDatos("dani2",6767)
+
 """
 USOS POR DEFECTO:
 ControlDeDatos.guardarDatos("dani",255)

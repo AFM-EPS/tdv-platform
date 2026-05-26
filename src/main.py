@@ -282,7 +282,7 @@ class GameView(arcade.View):
                     gravity_constant=GRAVITY,
                     platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
                 )
-            
+
             self.scene.add_sprite("enemies", enemy)
 
             enemy.center_x = math.floor(
@@ -302,7 +302,7 @@ class GameView(arcade.View):
                 special_platform.properties["health"] = 100
 
                 self.scene.add_sprite("destructible_platforms", special_platform)
-            
+
             if special_platform.properties["movable"]:
                 special_platform.properties["initial_pos"] = (special_platform.center_x, special_platform.center_y)
 
@@ -365,7 +365,7 @@ class GameView(arcade.View):
             self.window.background_color = arcade.color.SKY_BLUE
 
     def on_show_view(self):
-        self.setup()        
+        self.setup()
         self.music_player = self.background_music.play(volume=0.7, loop=True)
 
 
@@ -423,25 +423,25 @@ class GameView(arcade.View):
             if self.shoot_timer == self.arma.fireRate:
                 self.can_shoot = True
                 self.shoot_timer = 0
-        
+
 
         # Mover plataformas móviles alternando sentido de velocidad
         for movable_platform in self.scene["movable_platforms"]:
-            
+
             if movable_platform.properties["move_on_x"]:
-                
+
                 initial_pos = movable_platform.properties["initial_pos"][0]
                 # Alternar sentido movimiento plataforma
                 if (movable_platform.center_x >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_x <= initial_pos - self.movable_platforms_displacement): movable_platform.change_x = - movable_platform.change_x
             else:
-                
+
                 initial_pos = movable_platform.properties["initial_pos"][1]
                 # Alternar sentido movimiento plataforma
                 if (movable_platform.center_y >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_y <= initial_pos - self.movable_platforms_displacement): movable_platform.change_y = - movable_platform.change_y
 
 
         for enemy in self.scene["enemies"]:
-            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy):
+            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2):
                 if hasattr(enemy, "motor_enemigo"):
                     enemy.motor_enemigo.update()
 
@@ -480,6 +480,8 @@ class GameView(arcade.View):
 
 
         for bullet in self.scene["Enemy_bullets"]:
+            if getattr(bullet, "no_collision", False):
+                continue
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
                 [
@@ -578,7 +580,7 @@ class GameView(arcade.View):
                     self.is_climbing_sound_on = False
                 self.window.show_view(game_over)
                 return
-            
+
             elif self.scene["ores"] in collision.sprite_lists:
                 # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
                 self.score += collision.properties["value"]
@@ -600,9 +602,9 @@ class GameView(arcade.View):
             self.camera.position = self.end_of_map - WINDOW_WIDTH / 2, self.y_camera_pos
         else:
             self.camera.position = self.player_sprite.position[0], self.y_camera_pos
-        
-        
-        
+
+
+
         # Detección colisiones teleporters (como el motor de físicas interpreta los teleporters como platforms, no detectará la colisión de manera habitual, así que hay que hacer un ajuste de posición)
         self.player_sprite.center_y -= 1
         hit_list_teleporters = arcade.check_for_collision_with_list(self.player_sprite, self.scene["teleporters"])
@@ -610,7 +612,7 @@ class GameView(arcade.View):
 
         # Generación de partículas en caso de colisión con teleporter
         for collision in hit_list_teleporters:
-            
+
             if not collision.properties["is_activated"]:
                 particles = TeleporterParticles(collision.center_x, collision.center_y, PROJECT_ROOT / "assets" / "img" / "particle.png")
 
@@ -626,7 +628,7 @@ class GameView(arcade.View):
 
                 self.map_destination = collision.properties["destination"]
                 arcade.play_sound(self.player_teleporting_sound)
-        
+
 
         # Teletransporte cuando finaliza la animación
         for particle_system in self.particle_systems:
@@ -634,13 +636,13 @@ class GameView(arcade.View):
             particle_system.update()
 
             if particle_system.is_finished():
-                
+
                 self.particle_systems.remove(particle_system)
 
                 self.map_num = self.map_destination
                 arcade.play_sound(self.player_teleported_sound)
                 self.setup()
-        
+
 
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
