@@ -1,5 +1,6 @@
 import arcade
 from character.proyectil_enemigo import Proyectil_enemigo
+import math
 
 MAX_REACTION_TIME = 25 #frames parado cuando llega a estar encima
 MAX_BUSCA_TIME = 3 #segundos
@@ -21,11 +22,13 @@ class Air_enemy(arcade.Sprite):
         self.disparo_cooldown = 5
         self.reactionT = 0
         self.busca = 0
+        self.tiempo_balanceo = 0.0
 
 
 
 
     def update(self,delta_time):
+        self.tiempo_balanceo += delta_time
         self.movimiento()
         self.disparo_cooldown -= delta_time
         ##Distancia
@@ -55,6 +58,20 @@ class Air_enemy(arcade.Sprite):
                     self.reactionT = MAX_REACTION_TIME
                 else:
                     self.reactionT -= 1
+            # Movimiento vertical (acercamiento y balanceo sinusoidal)
+            # El enemigo intenta posicionarse 200px por encima del jugador
+            bobbing_offset = math.sin(self.tiempo_balanceo * 3.0) * 15.0
+            target_y = self.jugador.center_y + 200.0 + bobbing_offset
+            y_diff = target_y - self.center_y
+            if abs(y_diff) > 2:
+                step = math.copysign(self.velocidad, y_diff)
+                if abs(y_diff) < abs(step):
+                    self.center_y = target_y
+                else:
+                    self.center_y += step
+        else:
+            #balanceo de reposo
+            self.center_y += math.sin(self.tiempo_balanceo * 2.0) * 0.15
 
     def impactado(self, danno):
         self.health -= danno
