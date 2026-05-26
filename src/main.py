@@ -636,6 +636,15 @@ class GameView(arcade.View):
                 self.setup()
 
 
+        # Evitar que el jugador se salga del mapa
+        if self.player_sprite.left < 0:
+            self.player_sprite.left = 0
+            self.player_sprite.change_x = 0
+
+        if self.player_sprite.right > self.end_of_map:
+            self.player_sprite.right = self.end_of_map
+            self.player_sprite.change_x = 0
+
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
