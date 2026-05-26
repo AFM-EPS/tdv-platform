@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
-        "maps",
         ".",
-        "tilesets"
+        "tilesets",
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -251,10 +251,10 @@
                 4
             ],
             "scale": 0.25,
-            "selectedLayer": 7,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": -24,
-                "y": 3894
+                "x": 1168,
+                "y": 4014
             }
         },
         "tilesets/alien_spaceship.json": {

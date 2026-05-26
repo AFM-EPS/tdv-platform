@@ -19,11 +19,14 @@ from character.walking_enemy import WalkingEnemy as WalkingEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 from character.teleporter_particle_system import TeleporterParticleSystem as TeleporterParticles
+from gui.menu import MainMenu as MainMenu
 
 # Constants
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
-WINDOW_TITLE = "Platformer"
+WINDOW_TITLE = "Space Escape"
+
+PROJECT_ROOT = Path(__file__).parent.parent
 
 # Constants used to scale our sprites from their original size
 TILE_SCALING = 1
@@ -45,19 +48,6 @@ MAP_AMOUNT = 4
 
 
 
-class MainMenu(arcade.View):
-    def on_show_view(self):
-        self.window.background_color = arcade.color.WHITE
-
-    def on_draw(self):
-        self.clear()
-
-        texto = arcade.Text("Main Menu - Click To Play", WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, arcade.color.BLACK, font_size=30, anchor_x="center")
-        texto.draw()
-
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        game_view = GameView()
-        self.window.show_view(game_view)
 
 
 class GameView(arcade.View):
@@ -774,18 +764,5 @@ def main():
 
 
 if __name__ == "__main__":
-
-    # Obtenemos la ruta del proyecto utilizando PathLib,
-    # necesitamos esta ruta para poder acceder a los archivos con recursos
-    # de forma independiente desde donde se ejecute el script.
-    PROJECT_ROOT = Path(__file__).parent.parent
-
-    PROJECT_ROOT = Path(__file__).parent.parent
-    print(f"Project root is: {PROJECT_ROOT}")
-
-    # Ejemplo de acceso a un archivo dentro de recursos
-    filetest = PROJECT_ROOT / "assets" / "dialogs.txt"
-    print(f"Test file size: {filetest.stat().st_size} bytes")
-    
 
     main()
