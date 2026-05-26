@@ -72,7 +72,7 @@ class Misil_enemigo(arcade.Sprite):
 
         # Temporizadores de guiado y vida útil
         self.tiempo_guiado = 2  # 2.5 segundos con teleguía activa
-        self.tiempo_vida = 2.5  # 3.5 segundos de vida total antes de explotar sola
+        self.tiempo_vida = 3.5  # 3.5 segundos de vida total antes de explotar sola
 
         # Cálculo de dirección inicial:
         self.angle = 90 - math.degrees(

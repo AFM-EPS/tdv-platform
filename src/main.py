@@ -214,6 +214,8 @@ class GameView(arcade.View):
             self.scene.add_sprite_list("special_platforms")
             self.scene.add_sprite_list("movable_platforms")
             self.scene.add_sprite_list("destructible_platforms")
+            self.scene.add_sprite_list("teleporters")
+
 
 
 
