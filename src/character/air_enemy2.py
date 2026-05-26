@@ -1,37 +1,41 @@
 import arcade
+import math
 
 from character.misil_enemigo import Misil_enemigo
 from character.proyectil_enemigo import Proyectil_enemigo
 
-MAX_REACTION_TIME = 25 #frames parado cuando llega a estar encima
-MAX_BUSCA_TIME = 3 #segundos
+MAX_REACTION_TIME = 25  # frames parado cuando llega a estar encima
+MAX_BUSCA_TIME = 3  # segundos
+
+
 class Air_enemy2(arcade.Sprite):
-    def __init__(self,paths, jugador:arcade.Sprite,scena:arcade.Scene, vida:int=100,velocidad:float=3,velocidad_disparo:float=2,vision:int=500,velocidad_proyectil:float=8):
+    def __init__(self, paths, jugador: arcade.Sprite, scena: arcade.Scene, vida: int = 100, velocidad: float = 3,
+                 velocidad_disparo: float = 2, vision: int = 500, velocidad_proyectil: float = 8):
         super().__init__(paths)
         self.jugador = jugador
         self.scena = scena
-        #Propiedades físicas
+        # Propiedades físicas
         self.health = vida
         self.velocidad = velocidad / 2
         self.velocidad_disparo = velocidad_disparo
         self.vision = vision * 2
         self.velocidad_proyectil = velocidad_proyectil
-        #lógica de IA
+        # lógica de IA
         self.agro = False
         self.distancia = 1000
         self.disparando = False
         self.disparo_cooldown = 5
         self.reactionT = 0
         self.busca = 0
+        self.tiempo_balanceo = 0.0
 
-
-
-
-    def update(self,delta_time):
+    def update(self, delta_time):
+        self.tiempo_balanceo += delta_time
         self.movimiento()
         self.disparo_cooldown -= delta_time
         ##Distancia
-        self.distancia = ((self.jugador.center_x - self.center_x)**2 + (self.jugador.center_y - self.center_y)**2)**0.5
+        self.distancia = ((self.jugador.center_x - self.center_x) ** 2 + (
+                    self.jugador.center_y - self.center_y) ** 2) ** 0.5
         # Comprobar línea de visión directa
         has_vision = False
         if self.distancia <= self.vision:
@@ -48,7 +52,7 @@ class Air_enemy2(arcade.Sprite):
             else:
                 self.busca -= delta_time
         if self.agro and has_vision:
-            if  self.disparo_cooldown <= 0:
+            if self.disparo_cooldown <= 0:
                 self.disparo_cooldown = self.velocidad_disparo
                 self.disparar()
 
@@ -64,12 +68,28 @@ class Air_enemy2(arcade.Sprite):
                 else:
                     self.reactionT -= 1
 
+            # Movimiento vertical (acercamiento y balanceo sinusoidal)
+            # El enemigo intenta posicionarse 300px por encima del jugador (un poco más arriba)
+            bobbing_offset = math.sin(self.tiempo_balanceo * 3.0) * 15.0
+            target_y = self.jugador.center_y + 300.0 + bobbing_offset
+
+            y_diff = target_y - self.center_y
+            if abs(y_diff) > 2:
+                step = math.copysign(self.velocidad, y_diff)
+                if abs(y_diff) < abs(step):
+                    self.center_y = target_y
+                else:
+                    self.center_y += step
+        else:
+            # Balanceo suave en reposo (idle)
+            self.center_y += math.sin(self.tiempo_balanceo * 2.0) * 0.15
+
     def impactado(self, danno):
         self.health -= danno
         self.agro = True
-        self.busca = MAX_BUSCA_TIME +1
+        self.busca = MAX_BUSCA_TIME + 1
         self.color = arcade.color.RED
-        arcade.schedule(self.restaurar_color, 0.2) #funcion interesante para ejecutar un comando en cierto tiempo
+        arcade.schedule(self.restaurar_color, 0.2)  # funcion interesante para ejecutar un comando en cierto tiempo
         return self.health <= 0
 
     def restaurar_color(self, delta_time):
@@ -79,10 +99,9 @@ class Air_enemy2(arcade.Sprite):
         # 4. Es MUY importante desprogramar la función, de lo contrario se ejecutará cada 0.2 segundos
         arcade.unschedule(self.restaurar_color)
 
-
     def disparar(self):
-        #proyectil = Proyectil_enemigo(self, self.velocidad_proyectil)
-        #self.scena.add_sprite("Enemy_bullets",proyectil)
+        # proyectil = Proyectil_enemigo(self, self.velocidad_proyectil)
+        # self.scena.add_sprite("Enemy_bullets",proyectil)
         proyectil = Misil_enemigo(self)
-        self.scena.add_sprite("Enemy_bullets",proyectil)
+        self.scena.add_sprite("Enemy_bullets", proyectil)
 

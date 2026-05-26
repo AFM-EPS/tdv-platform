@@ -82,7 +82,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 5
+        self.map_num = 4
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -152,6 +152,16 @@ class GameView(arcade.View):
 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
+        # Reset Map 4 trap variables
+        self.map4_trap_triggered = False
+        self.map4_door_sprites = []
+        self.map4_boss_enemy = None
+
+        # Parámetros configurables de la arena del Mapa 4 (puedes cambiarlos aquí)
+        self.map4_arena_trigger_x = 2780
+        self.map4_door_left_x = 2560
+        self.map4_door_right_x = 4480
+
         layer_options = {
             "platforms": {
                 "use_spatial_hash": True
@@ -187,24 +197,26 @@ class GameView(arcade.View):
         # En ciertos mapas no hay ciertos elementos que en otros si, para evitar errores crearemos sus SpriteLists vacías
 
         self.scene.add_sprite_list("enemies")
-
-        # Pronto se arreglará esto en la medida de lo posible
-        if self.map_num in [1]:
-            self.scene.add_sprite_list("special_platforms")
-            self.scene.add_sprite_list("movable_platforms")
-            self.scene.add_sprite_list("destructible_platforms")
-            self.scene.add_sprite_list("ores")
-            self.scene.add_sprite_list("teleporters")
-        if self.map_num in [1, 2]:
-            self.scene.add_sprite_list("ladders")
-            self.scene.add_sprite_list("player_death_zones")
-        if self.map_num in [4]:
-            self.scene.add_sprite_list("ladders")
-            self.scene.add_sprite_list("player_death_zones")
-            self.scene.add_sprite_list("special_platforms")
-            self.scene.add_sprite_list("movable_platforms")
-            self.scene.add_sprite_list("destructible_platforms")
-            self.scene.add_sprite_list("teleporters")
+        #metodo arreglado
+        expected_layers = [
+            "enemies",
+            "platforms",
+            "special_platforms",
+            "movable_platforms",
+            "destructible_platforms",
+            "ores",
+            "teleporters",
+            "ladders",
+            "player_death_zones",
+            "extras",
+            "Bullets",
+            "Enemy_bullets",
+        ]
+        for layer in expected_layers:
+            try:
+                self.scene[layer]
+            except KeyError:
+                self.scene.add_sprite_list(layer)
 
 
 
@@ -239,13 +251,13 @@ class GameView(arcade.View):
             coordinates = self.tile_map.get_cartesian(
                 enemy_marker.shape[0], enemy_marker.shape[1]
             )
-
-            enemy_type = enemy_marker.properties["type"]
-            enemy_health = enemy_marker.properties["health"]
-            enemy_shot_cadence = enemy_marker.properties["shot_cadence"]
-            enemy_shot_speed = enemy_marker.properties["shot_speed"]
-            enemy_speed = enemy_marker.properties["speed"]
-            enemy_vision = enemy_marker.properties["vision"]
+            #Usamos .get para que no de excepción en caso de no encontrar, también pong casos base por si acaso
+            enemy_type = enemy_marker.properties.get("type", "walking_1")
+            enemy_health = enemy_marker.properties.get("health", 100)
+            enemy_shot_cadence = enemy_marker.properties.get("shot_cadence", 2)
+            enemy_shot_speed = enemy_marker.properties.get("shot_speed", 8)
+            enemy_speed = enemy_marker.properties.get("speed", 3)
+            enemy_vision = enemy_marker.properties.get("vision", 500)
 
 
             if enemy_type == "flying_1":
@@ -257,7 +269,7 @@ class GameView(arcade.View):
                     platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
                 )
             elif enemy_type == "flying_2":
-                enemy = Air_enemy2(PROJECT_ROOT / "assets" / "sprites" / "flying_robot" / "flying_robot.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                enemy = Air_enemy2(PROJECT_ROOT / "assets" / "sprites" / "flying_robot2" / "flying_robot2.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
                 enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(  # Gravedad
                     enemy,
                     walls=self.scene["platforms"],
@@ -283,22 +295,31 @@ class GameView(arcade.View):
             enemy.center_y = math.floor(
                 (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
             )
-
-
+            # Si estamos en el Mapa 4, guardar referencia al flying_2 (boss de la arena)
+            # Buscamos primero al enemigo que esté físicamente dentro de la arena (entre las dos compuertas).
+            # Si no hay ninguno dentro del rango configurado, se hace un fallback al primer flying_2 que se encuentre.
+            if enemy_type == "flying_2" and self.map_num == 4:
+                if self.map4_door_left_x <= enemy.center_x <= self.map4_door_right_x:
+                    self.map4_boss_enemy = enemy
+                elif self.map4_boss_enemy is None:
+                    # Fallback por si las coordenadas no encierran al boss inicial
+                    self.map4_boss_enemy = enemy
 
         # Plataformas especiales (móviles / destructibles)
         for special_platform in self.scene["special_platforms"]:
 
+            #Actualizadas algunas líneas para control de excepciones
+
             # En caso de plataforma destructible, se le asigna una vida
-            if special_platform.properties["destructible"]:
+            if special_platform.properties.get("destructible", False):
                 special_platform.properties["health"] = 100
 
                 self.scene.add_sprite("destructible_platforms", special_platform)
 
-            if special_platform.properties["movable"]:
+            if special_platform.properties.get("movable", False):
                 special_platform.properties["initial_pos"] = (special_platform.center_x, special_platform.center_y)
 
-                if special_platform.properties["move_on_x"]:
+                if special_platform.properties.get("move_on_x", False):
                     special_platform.change_x = MOVABLE_PLATFORM_SPEED
                 else:
                     special_platform.change_y = MOVABLE_PLATFORM_SPEED
@@ -533,8 +554,8 @@ class GameView(arcade.View):
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_enemy_sound, volume=2.5)
                         arcade.play_sound(self.hit_enemy_sound)
-                        
-                    
+
+
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
                         collision.properties["health"] -= 25
                         arcade.play_sound(self.hit_platform_sound)
@@ -579,8 +600,8 @@ class GameView(arcade.View):
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
                 self.score_text.text = f"Score: {self.score}"
-        
-        
+
+
         # Si se puede avanzar verticalmente en el mapa (mapa 3 de momento), la posición en Y de la cámara variará
         if self.map_num in [3, 5]:
             # Solo se actualiza la posición Y de la cámara si esta no se sale del mapa
@@ -635,6 +656,47 @@ class GameView(arcade.View):
                 arcade.play_sound(self.player_teleported_sound)
                 self.setup()
 
+        # Lógica de la trampa de compuertas en el Mapa 4
+        if self.map_num == 4:
+            # 1. Activar trigger al cruzar la zona de entrada si el boss está con vida
+            if not self.map4_trap_triggered and self.player_sprite.center_x >= self.map4_arena_trigger_x:
+                if self.map4_boss_enemy and self.map4_boss_enemy.health > 0:
+                    self.map4_trap_triggered = True
+
+                    # Cerrar compuerta izquierda (retroceso)
+                    for y_pos in [128, 256, 384, 512]:
+                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "space_rock.png", scale=TILE_SCALING)
+                        door.center_x = self.map4_door_left_x + 64
+                        door.center_y = y_pos + 64
+                        self.scene.add_sprite("platforms", door)
+                        self.map4_door_sprites.append(door)
+
+                    # Cerrar compuerta derecha (avance)
+                    for y_pos in [128, 256, 384, 512]:
+                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "space_rock.png", scale=TILE_SCALING)
+                        door.center_x = self.map4_door_right_x + 64
+                        door.center_y = y_pos + 64
+                        self.scene.add_sprite("platforms", door)
+                        self.map4_door_sprites.append(door)
+
+                    # Reproducir sonido de impacto de plataforma para alertar del cierre
+                    if self.final_hit_platform_sound:
+                        arcade.play_sound(self.final_hit_platform_sound, volume=1.5)
+
+            # 2. Desactivar compuertas al derrotar al air_enemy2 (boss)
+            if self.map4_trap_triggered and len(self.map4_door_sprites) > 0:
+                boss_dead = True
+                if self.map4_boss_enemy in self.scene["enemies"] and self.map4_boss_enemy.health > 0:
+                    boss_dead = False
+
+                if boss_dead:
+                    for door in self.map4_door_sprites:
+                        door.remove_from_sprite_lists()
+                    self.map4_door_sprites.clear()
+
+                    # Reproducir sonido de teletransporte para indicar desbloqueo
+                    if self.player_teleported_sound:
+                        arcade.play_sound(self.player_teleported_sound, volume=1.5)
 
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
@@ -676,7 +738,7 @@ class GameView(arcade.View):
             if self.physics_engine.is_on_ladder():
                 self.player_sprite.change_y = -PLAYER_MOVEMENT_SPEED
 
-        # Now we need a special handling of our vertical movement while we are 
+        # Now we need a special handling of our vertical movement while we are
         # on a ladder, but have no input specified. When we jump, the physics
         # engine takes care of resetting our vertical movement to zero once we've
         # hit the ground. However for ladders, we need to ensure that we set the
@@ -718,7 +780,7 @@ class GameView(arcade.View):
 
         if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = True
-        
+
         if key == arcade.key.L:
             if self.map_num < MAP_AMOUNT:
                 self.map_num += 1
