@@ -255,11 +255,11 @@
                 6,
                 17
             ],
-            "scale": 0.33,
+            "scale": 0.25,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 6687.878787878788,
-                "y": 607.5757575757575
+                "x": 2908,
+                "y": 1406
             }
         },
         "maps/mapa-5.json": {
@@ -268,7 +268,7 @@
                 3
             ],
             "scale": 0.25,
-            "selectedLayer": 4,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 1192,
                 "y": 5022

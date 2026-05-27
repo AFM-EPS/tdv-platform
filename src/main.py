@@ -312,7 +312,7 @@ class GameView(arcade.View):
 
             # En caso de plataforma destructible, se le asigna una vida
             if special_platform.properties.get("destructible", False):
-                #special_platform.properties["health"] = 100
+                special_platform.properties["health"] = special_platform.properties.get("health",100)
                 #La vida de la plataforma se asigna desde tiled
                 self.scene.add_sprite("destructible_platforms", special_platform)
 
@@ -669,16 +669,16 @@ class GameView(arcade.View):
                     self.map4_trap_triggered = True
 
                     # Cerrar compuerta izquierda (retroceso)
-                    for y_pos in [128, 256, 384, 512]:
-                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "space_rock.png", scale=TILE_SCALING)
+                    for y_pos in [128]:
+                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "metal_platform.png", scale=TILE_SCALING)
                         door.center_x = self.map4_door_left_x + 64
                         door.center_y = y_pos + 64
                         self.scene.add_sprite("platforms", door)
                         self.map4_door_sprites.append(door)
 
                     # Cerrar compuerta derecha (avance)
-                    for y_pos in [128, 256, 384, 512]:
-                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "space_rock.png", scale=TILE_SCALING)
+                    for y_pos in [128]:
+                        door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "metal_platform.png", scale=TILE_SCALING)
                         door.center_x = self.map4_door_right_x + 64
                         door.center_y = y_pos + 64
                         self.scene.add_sprite("platforms", door)
