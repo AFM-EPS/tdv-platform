@@ -5,8 +5,8 @@
     },
     "activeFile": "maps/mapa-2-actualizado.json",
     "expandedProjectPaths": [
-        "tilesets",
         "maps",
+        "tilesets",
         "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -272,7 +272,8 @@
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
-                4
+                4,
+                3
             ],
             "scale": 0.25,
             "selectedLayer": 5,
@@ -475,5 +476,6 @@
     "tileset.tileSize": {
         "height": 128,
         "width": 128
-    }
+    },
+    "tileset.type": 1
 }

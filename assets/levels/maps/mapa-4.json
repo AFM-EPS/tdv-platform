@@ -8,8 +8,37 @@
          "image":"..\/..\/img\/planet_background.png",
          "imageheight":640,
          "imagewidth":2560,
+         "name":"background_img4",
+         "offsetx":7040,
+         "offsety":0,
+         "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "id":26,
+         "image":"..\/..\/img\/planet_background.png",
+         "imageheight":640,
+         "imagewidth":2560,
          "name":"background_img1",
          "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "id":24,
+         "image":"..\/..\/img\/planet_background2.png",
+         "imageheight":640,
+         "imagewidth":2560,
+         "name":"background_img3",
+         "offsetx":4480,
+         "offsety":0,
+         "opacity":1,
+         "parallaxx":1,
          "type":"imagelayer",
          "visible":true,
          "x":0,
@@ -26,6 +55,23 @@
          "opacity":1,
          "type":"imagelayer",
          "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 184, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":6,
+         "id":25,
+         "name":"background",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":60,
          "x":0,
          "y":0
         }, 
@@ -49,22 +95,22 @@
                          "name":"shot_cadence",
                          "type":"float",
                          "value":1.5
-                        },
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":8
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":4
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"walking_1"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
@@ -76,7 +122,7 @@
                  "width":0,
                  "x":1152,
                  "y":640
-                },
+                }, 
                 {
                  "height":0,
                  "id":34,
@@ -87,27 +133,27 @@
                          "name":"health",
                          "type":"int",
                          "value":100
-                        },
+                        }, 
                         {
                          "name":"shot_cadence",
                          "type":"float",
                          "value":1.5
-                        },
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":8
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":5
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"flying_1"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
@@ -119,7 +165,7 @@
                  "width":0,
                  "x":1792,
                  "y":256
-                },
+                }, 
                 {
                  "height":0,
                  "id":35,
@@ -129,28 +175,28 @@
                         {
                          "name":"health",
                          "type":"int",
-                         "value":100
-                        },
+                         "value":250
+                        }, 
                         {
                          "name":"shot_cadence",
                          "type":"float",
-                         "value":2.0
-                        },
+                         "value":2
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":10
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":6
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"flying_2"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
@@ -160,9 +206,9 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":3200,
-                 "y":256
-                },
+                 "x":3584,
+                 "y":384
+                }, 
                 {
                  "height":0,
                  "id":36,
@@ -173,27 +219,27 @@
                          "name":"health",
                          "type":"int",
                          "value":100
-                        },
+                        }, 
                         {
                          "name":"shot_cadence",
                          "type":"float",
                          "value":1.5
-                        },
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":8
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":4
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"walking_1"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
@@ -203,9 +249,9 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":3968,
-                 "y":640
-                },
+                 "x":2501.33333333333,
+                 "y":627.878787878788
+                }, 
                 {
                  "height":0,
                  "id":37,
@@ -216,39 +262,39 @@
                          "name":"health",
                          "type":"int",
                          "value":100
-                        },
+                        }, 
                         {
                          "name":"shot_cadence",
                          "type":"float",
                          "value":2.5
-                        },
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":8
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":6
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"flying_2"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
-                         "value":500
+                         "value":350
                         }],
                  "rotation":0,
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":5120,
-                 "y":192
-                },
+                 "x":5376,
+                 "y":384
+                }, 
                 {
                  "height":0,
                  "id":38,
@@ -259,27 +305,27 @@
                          "name":"health",
                          "type":"int",
                          "value":150
-                        },
+                        }, 
                         {
                          "name":"shot_cadence",
                          "type":"float",
-                         "value":1.0
-                        },
+                         "value":1
+                        }, 
                         {
                          "name":"shot_speed",
                          "type":"float",
                          "value":9
-                        },
+                        }, 
                         {
                          "name":"speed",
                          "type":"float",
                          "value":4
-                        },
+                        }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"walking_1"
-                        },
+                        }, 
                         {
                          "name":"vision",
                          "type":"int",
@@ -289,15 +335,58 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":6912,
+                 "x":7296,
                  "y":640
+                }, 
+                {
+                 "height":0,
+                 "id":58,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"shot_cadence",
+                         "type":"float",
+                         "value":2.5
+                        }, 
+                        {
+                         "name":"shot_speed",
+                         "type":"float",
+                         "value":8
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"float",
+                         "value":10
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"flying_1"
+                        }, 
+                        {
+                         "name":"vision",
+                         "type":"int",
+                         "value":350
+                        }],
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":0,
+                 "x":7424,
+                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "id":6,
@@ -308,7 +397,7 @@
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "id":17,
@@ -331,7 +420,7 @@
                  "width":128,
                  "x":1664,
                  "y":384
-                },
+                }, 
                 {
                  "gid":5,
                  "height":128,
@@ -349,7 +438,7 @@
                  "width":128,
                  "x":1792,
                  "y":384
-                },
+                }, 
                 {
                  "gid":6,
                  "height":128,
@@ -367,7 +456,7 @@
                  "width":128,
                  "x":1920,
                  "y":384
-                },
+                }, 
                 {
                  "gid":4,
                  "height":128,
@@ -383,9 +472,9 @@
                  "type":"Blue_ore",
                  "visible":true,
                  "width":128,
-                 "x":3200,
-                 "y":512
-                },
+                 "x":4224,
+                 "y":256
+                }, 
                 {
                  "gid":5,
                  "height":128,
@@ -401,9 +490,9 @@
                  "type":"Green_ore",
                  "visible":true,
                  "width":128,
-                 "x":5120,
+                 "x":6016,
                  "y":256
-                },
+                }, 
                 {
                  "gid":6,
                  "height":128,
@@ -419,9 +508,9 @@
                  "type":"Golden_ore",
                  "visible":true,
                  "width":128,
-                 "x":7040,
-                 "y":512
-                },
+                 "x":6912,
+                 "y":640
+                }, 
                 {
                  "gid":6,
                  "height":128,
@@ -437,9 +526,9 @@
                  "type":"Golden_ore",
                  "visible":true,
                  "width":128,
-                 "x":7168,
-                 "y":512
-                },
+                 "x":7040,
+                 "y":640
+                }, 
                 {
                  "gid":6,
                  "height":128,
@@ -455,21 +544,55 @@
                  "type":"Golden_ore",
                  "visible":true,
                  "width":128,
-                 "x":7296,
-                 "y":512
+                 "x":7168,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 102, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18,
+         "draworder":"topdown",
+         "id":22,
+         "name":"teleporters",
+         "objects":[
+                {
+                 "gid":183,
+                 "height":128,
+                 "id":53,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destination",
+                         "type":"int",
+                         "value":5
+                        }, 
+                        {
+                         "name":"is_activated",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":7424,
+                 "y":640
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 102, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2],
          "height":6,
          "id":2,
@@ -480,14 +603,14 @@
          "width":60,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":6,
          "id":4,
          "name":"extras",
@@ -497,99 +620,15 @@
          "width":60,
          "x":0,
          "y":0
-        },
+        }, 
         {
          "draworder":"topdown",
          "id":20,
          "name":"special_platforms",
          "objects":[
                 {
-                 "gid":3,
-                 "height":128,
-                 "id":1,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"destructible",
-                         "type":"bool",
-                         "value":false
-                        },
-                        {
-                         "name":"movable",
-                         "type":"bool",
-                         "value":true
-                        },
-                        {
-                         "name":"move_on_x",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"Special_platforms",
-                 "visible":true,
-                 "width":256,
-                 "x":4608,
-                 "y":512
-                },
-                {
-                 "gid":3,
-                 "height":128,
-                 "id":2,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"destructible",
-                         "type":"bool",
-                         "value":false
-                        },
-                        {
-                         "name":"movable",
-                         "type":"bool",
-                         "value":true
-                        },
-                        {
-                         "name":"move_on_x",
-                         "type":"bool",
-                         "value":false
-                        }],
-                 "rotation":0,
-                 "type":"Special_platforms",
-                 "visible":true,
-                 "width":256,
-                 "x":5760,
-                 "y":384
-                },
-                {
                  "gid":9,
-                 "height":128,
-                 "id":3,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"destructible",
-                         "type":"bool",
-                         "value":true
-                        },
-                        {
-                         "name":"movable",
-                         "type":"bool",
-                         "value":false
-                        },
-                        {
-                         "name":"health",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "rotation":0,
-                 "type":"Special_platforms",
-                 "visible":true,
-                 "width":128,
-                 "x":6528,
-                 "y":512
-                },
-                {
-                 "gid":9,
-                 "height":128,
+                 "height":64,
                  "id":4,
                  "name":"",
                  "properties":[
@@ -597,54 +636,273 @@
                          "name":"destructible",
                          "type":"bool",
                          "value":true
-                        },
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
                         {
                          "name":"movable",
                          "type":"bool",
                          "value":false
-                        },
-                        {
-                         "name":"health",
-                         "type":"int",
-                         "value":100
                         }],
                  "rotation":0,
                  "type":"Special_platforms",
                  "visible":true,
                  "width":128,
-                 "x":6528,
-                 "y":384
+                 "x":3456,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":43,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":3584,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":44,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":2816,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":45,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":2944,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":46,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":3968,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":47,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":4096,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":48,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":3328,
+                 "y":512
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":49,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":400
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":6012.9696969697,
+                 "y":319.636363636364
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":54,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":400
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":4736,
+                 "y":640
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
-        },
+        }, 
         {
-         "draworder":"topdown",
-         "id":21,
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 78, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":6,
+         "id":23,
          "name":"player_death_zones",
-         "objects":[
-                {
-                 "height":128,
-                 "id":1,
-                 "name":"death_zone",
-                 "rotation":0,
-                 "type":"Death_zone",
-                 "visible":true,
-                 "width":1920,
-                 "x":4608,
-                 "y":700
-                }],
          "opacity":1,
-         "type":"objectgroup",
+         "type":"tilelayer",
          "visible":true,
+         "width":60,
          "x":0,
          "y":0
         }],
- "nextlayerid":22,
- "nextobjectid":39,
+ "nextlayerid":27,
+ "nextobjectid":59,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -693,6 +951,14 @@
         {
          "firstgid":27,
          "source":"..\/tilesets\/examples_tileset.json"
+        }, 
+        {
+         "firstgid":183,
+         "source":"..\/tilesets\/teleporter.json"
+        }, 
+        {
+         "firstgid":184,
+         "source":"..\/tilesets\/scaffold_platform.json"
         }],
  "tilewidth":128,
  "type":"map",
