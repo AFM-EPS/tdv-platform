@@ -474,6 +474,11 @@ class GameView(arcade.View):
         for bullet in self.scene["Enemy_bullets"]:
             if getattr(bullet, "no_collision", False):
                 continue
+
+            if (bullet.right < 0) or (bullet.left > self.end_of_map):
+                bullet.remove_from_sprite_lists()
+                continue
+
             hit_list = arcade.check_for_collision_with_lists(
                 bullet,
                 [

@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/mapa-3.json",
     "expandedProjectPaths": [
-        ".",
         "tilesets",
-        "maps"
+        "maps",
+        "."
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -203,6 +203,14 @@
                 "y": 383
             }
         },
+        "maps/mapa-2-actualizado.json": {
+            "scale": 0.0971337890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 5116.654099431961,
+                "y": 1086.1307997788167
+            }
+        },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
                 16,
@@ -211,23 +219,31 @@
             "scale": 0.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 6266,
+                "x": 452,
                 "y": 275
+            }
+        },
+        "maps/mapa-2bueno.json": {
+            "scale": 0.0971337890625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 3541.5070627859045,
+                "y": 1086.1307997788167
             }
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                17,
-                7,
                 5,
-                6,
-                8
+                8,
+                7,
+                17,
+                6
             ],
-            "scale": 1.5,
-            "selectedLayer": 3,
+            "scale": 0.33,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 636,
-                "y": 1902.3333333333333
+                "x": 751.5151515151515,
+                "y": 1256.060606060606
             }
         },
         "maps/mapa-4.json": {
@@ -239,10 +255,10 @@
                 3
             ],
             "scale": 0.125,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 2688,
-                "y": 1108
+                "x": 3880,
+                "y": 2068
             }
         },
         "maps/mapa-5.json": {
@@ -399,19 +415,21 @@
         }
     },
     "last.imagePath": "C:/Users/PC/Desktop/repo/tdv-platform/assets/img",
-    "map.height": 40,
+    "map.height": 17,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 128,
     "map.tileWidth": 128,
-    "map.width": 13,
+    "map.width": 80,
     "openFiles": [
         "maps/mapa-3.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "maps/mapa-4.json",
         "maps/mapa-3.json",
+        "maps/mapa-2-actualizado.json",
+        "maps/mapa-2bueno.json",
+        "maps/mapa-4.json",
         "C:/Users/PC/Downloads/mapa-3.json",
         "maps/mapa-2.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map_with_ladders.json",
@@ -419,9 +437,7 @@
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/map2_level_2.json",
         "tilesets/examples_tileset.json",
         "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/map2_level_2.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/level_1.json",
-        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/tiled_maps/spritesheet.json"
+        "C:/Users/PC/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/spritesheet.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,
