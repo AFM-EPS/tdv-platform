@@ -127,6 +127,14 @@ class GameView(arcade.View):
         # Flag para indicar si el jugador se está teletransportando
         self.is_teleporting = None
 
+        # Texto objetos presionables por el jugador
+        self.pressable_text = arcade.Text("", 0, 0, arcade.color.WHITE, 14, anchor_x="center", font_name="Impact")
+        # Letra E presionada
+        self.e_pressed = False
+
+        # Variabla para almacenar si el jugador tiene arma
+        self.has_gun = False
+
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "coin1.wav")
         self.jump_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "jump1.wav")
@@ -211,6 +219,7 @@ class GameView(arcade.View):
             "extras",
             "Bullets",
             "Enemy_bullets",
+            "pressable_objects",
         ]
         for layer in expected_layers:
             try:
@@ -223,8 +232,23 @@ class GameView(arcade.View):
 
 
         self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
+
+        #####
+        # BORRAR ANTES DE ENTREGAR
+        # Al poner estas líneas, el arma estará disponible incluso si el jugador no la ha recogido en el mapa 2
+        # Únicamente para debug
+        self.has_gun = True
+        self.arma.active = True
+        self.arma.visible = True
+        #####
+
         self.scene.add_sprite("Arma", self.arma)
         self.player_sprite = PlayerCharacter(self.arma,self.camera)
+
+        if self.has_gun:
+            self.arma.active = True
+        else:
+            self.player_sprite.arma.visible = False
         
         self.player_sprite.center_x = 128
         self.player_sprite.center_y = 128
@@ -396,6 +420,9 @@ class GameView(arcade.View):
         # Draw our Scene
         self.scene.draw()
 
+        # Dibujar texto de objetos presionables
+        self.pressable_text.draw()
+
         # Dibujar partículas
         for particle_system in self.particle_systems:
             particle_system.draw()
@@ -422,11 +449,15 @@ class GameView(arcade.View):
             self.player_sprite.climbing = False
 
 
-        if self.can_shoot:
+        if self.can_shoot and self.player_sprite is not None:
+
             if self.shoot_pressed:
-                arcade.play_sound(self.shoot_sound)
-                bullet = Proyectil(self.player_sprite,self.player_sprite.aim_radians)
-                self.scene.add_sprite("Bullets", bullet)
+
+                if self.player_sprite.arma.active:
+                    arcade.play_sound(self.shoot_sound)
+                    bullet = Proyectil(self.player_sprite,self.player_sprite.aim_radians)
+                    self.scene.add_sprite("Bullets", bullet)
+                
                 self.can_shoot = False
         else:
             self.shoot_timer += 1
@@ -708,6 +739,40 @@ class GameView(arcade.View):
         if self.player_sprite.right > self.end_of_map:
             self.player_sprite.right = self.end_of_map
             self.player_sprite.change_x = 0
+        
+
+
+        # Colisiones objetos presionables
+        pressable_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.scene["pressable_objects"])
+        
+        if pressable_hit_list:
+            # Colocar texto
+            self.pressable_text.text = "Presiona E"
+            self.pressable_text.x = pressable_hit_list[0].center_x
+            self.pressable_text.y = pressable_hit_list[0].top + 20
+            
+            # Si se presiona E
+            if self.e_pressed:
+                name = pressable_hit_list[0].properties.get("name")
+
+                if name == "car":
+                    # Empezar animación
+                    print("Animación")
+
+                elif name == "gun":
+
+                    if self.player_sprite is not None:
+
+                        self.player_sprite.arma.active = True
+                        self.has_gun = True
+                        self.player_sprite.arma.visible = True
+
+                    pressable_hit_list[0].remove_from_sprite_lists() # Quitar pistola del mapa
+
+                self.e_pressed = False
+        else:
+            self.pressable_text.text = ""
+        
 
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
@@ -797,6 +862,9 @@ class GameView(arcade.View):
                 self.map_num += 1
                 self.setup()
             else: self.map_num = 0
+        
+        if key == arcade.key.E:
+            self.e_pressed = True
 
         self.process_keychange()
 
@@ -814,6 +882,9 @@ class GameView(arcade.View):
 
         if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = False
+
+        if key == arcade.key.E:
+            self.e_pressed = False
 
         self.process_keychange()
 

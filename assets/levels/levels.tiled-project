@@ -138,6 +138,25 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
+            "id": 10,
+            "members": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "value": "unknown"
+                }
+            ],
+            "name": "Pressable_Object",
+            "type": "class",
+            "useAs": [
+                "property",
+                "object",
+                "project"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
             "id": 8,
             "members": [
                 {

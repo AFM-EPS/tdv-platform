@@ -196,11 +196,14 @@
             "expandedGroupLayers": [
                 7
             ],
-            "scale": 0.5,
-            "selectedLayer": 6,
+            "expandedObjectLayers": [
+                11
+            ],
+            "scale": 0.33,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1138,
-                "y": 383
+                "x": 912.121212121212,
+                "y": 568.1818181818181
             }
         },
         "maps/mapa-2-actualizado.json": {
@@ -228,8 +231,8 @@
             "scale": 0.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 5288,
-                "y": 1793
+                "x": 2374,
+                "y": 1301
             }
         },
         "maps/mapa-2bueno.json": {
@@ -451,7 +454,7 @@
         "maps/mapa-2.json"
     ],
     "project": "levels.tiled-project",
-    "property.type": "bool",
+    "property.type": "string",
     "recentFiles": [
         "maps/mapa-1.json",
         "maps/mapa-3.json",

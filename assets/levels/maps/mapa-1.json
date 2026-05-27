@@ -129,8 +129,14 @@
                  "height":128,
                  "id":1,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"car"
+                        }],
                  "rotation":0,
-                 "type":"",
+                 "type":"Pressable_Object",
                  "visible":true,
                  "width":300,
                  "x":1408,

@@ -118,7 +118,25 @@
          "draworder":"topdown",
          "id":10,
          "name":"pressable_objects",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":177,
+                 "height":128,
+                 "id":20,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"gun"
+                        }],
+                 "rotation":0,
+                 "type":"Pressable_Object",
+                 "visible":true,
+                 "width":128,
+                 "x":2432,
+                 "y":1280
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -590,7 +608,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":20,
+ "nextobjectid":22,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -643,6 +661,10 @@
         {
          "firstgid":176,
          "source":"..\/tilesets\/green_ore.json"
+        }, 
+        {
+         "firstgid":177,
+         "source":"..\/tilesets\/space_gun.json"
         }],
  "tilewidth":128,
  "type":"map",
