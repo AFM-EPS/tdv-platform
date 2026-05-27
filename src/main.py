@@ -44,7 +44,7 @@ LEFT_FACING = 1
 MOVABLE_PLATFORM_SPEED = 1
 
 # Cantidad de mapas
-MAP_AMOUNT = 4
+MAP_AMOUNT = 5
 
 
 
@@ -82,7 +82,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 4
+        self.map_num = 2
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -225,11 +225,8 @@ class GameView(arcade.View):
         self.arma = Arma(danno=25, fireRate=30) #daño del arma y cadencia (frames entre disparo)
         self.scene.add_sprite("Arma", self.arma)
         self.player_sprite = PlayerCharacter(self.arma,self.camera)
-        # Provisionalmente añadiremos esto para que el personaje no se quede atrapado en la nave de la izquierda del mapa 2
-        if self.map_num == 2:
-            self.player_sprite.center_x = 128 * 8
-        else:
-            self.player_sprite.center_x = 128
+        
+        self.player_sprite.center_x = 128
         self.player_sprite.center_y = 128
         self.scene.add_sprite("Player", self.player_sprite)
 
@@ -607,8 +604,8 @@ class GameView(arcade.View):
                 self.score_text.text = f"Score: {self.score}"
 
 
-        # Si se puede avanzar verticalmente en el mapa (mapa 3 de momento), la posición en Y de la cámara variará
-        if self.map_num in [3, 5]:
+        # Si se puede avanzar verticalmente en el mapa, la posición en Y de la cámara variará
+        if self.map_num in [2, 3, 5]:
             # Solo se actualiza la posición Y de la cámara si esta no se sale del mapa
             if (self.player_sprite.center_y <= (self.tile_map.height - 1) * self.tile_map.tile_height - WINDOW_HEIGHT / 2) and (self.player_sprite.center_y >= self.tile_map.tile_height + self.player_sprite.height / 2):
                 self.y_camera_pos = self.player_sprite.position[1] + self.tile_map.tile_height + self.player_sprite.height / 2
