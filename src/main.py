@@ -312,8 +312,8 @@ class GameView(arcade.View):
 
             # En caso de plataforma destructible, se le asigna una vida
             if special_platform.properties.get("destructible", False):
-                special_platform.properties["health"] = 100
-
+                #special_platform.properties["health"] = 100
+                #La vida de la plataforma se asigna desde tiled
                 self.scene.add_sprite("destructible_platforms", special_platform)
 
             if special_platform.properties.get("movable", False):
