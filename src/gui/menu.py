@@ -33,6 +33,10 @@ class MainMenu(arcade.View):
         # Botones sprites
         self.play_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "play_btn.png")
         self.quit_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "quit_btn.png")
+        self.creditos_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "creditos_btn.png")
+        self.instrucciones_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "instrucciones_btn.png")
+        self.niveles_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "niveles_btn.png")
+
 
         # Título textura
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
@@ -53,14 +57,21 @@ class MainMenu(arcade.View):
         # Botones
         play_btn = arcade.gui.UITextureButton(texture=self.play_btn_sprite, width=256, height=80)
         quit_btn = arcade.gui.UITextureButton(texture=self.quit_btn_sprite, width=256, height=80)
-
+        creditos_btn = arcade.gui.UITextureButton(texture=self.creditos_btn_sprite, width=256, height=80)
+        instrucciones_btn = arcade.gui.UITextureButton(texture=self.instrucciones_btn_sprite, width=256, height=80)
+        niveles_btn = arcade.gui.UITextureButton(texture=self.niveles_btn_sprite, width=256, height=80)
 
         # Asociación de eventos de botones
         play_btn.on_click = self.play_game
         quit_btn.on_click = self.exit_game
-
+        creditos_btn.on_click = self.creditos_game
+        instrucciones_btn.on_click = self.instrucciones_game
+        niveles_btn.on_click = self.niveles_game
 
         self.vertical_box.add(play_btn)
+        self.vertical_box.add(creditos_btn)
+        self.vertical_box.add(instrucciones_btn)
+        self.vertical_box.add(niveles_btn)
         self.vertical_box.add(quit_btn)
 
 
@@ -80,6 +91,24 @@ class MainMenu(arcade.View):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         game_view = GameView()
+        self.window.show_view(game_view)
+
+    def creditos_game(self, event):
+        # Se hace el import aquí para evitar error por bucle infinito de import circular
+        from gui.creditos import Creditos
+        game_view = Creditos()
+        self.window.show_view(game_view)
+
+    def instrucciones_game(self, event):
+        # Se hace el import aquí para evitar error por bucle infinito de import circular
+        from gui.instrucciones import  Instrucciones
+        game_view = Instrucciones()
+        self.window.show_view(game_view)
+
+    def niveles_game(self, event):
+        # Se hace el import aquí para evitar error por bucle infinito de import circular
+        from gui.niveles import  Niveles
+        game_view = Niveles()
         self.window.show_view(game_view)
 
     def exit_game(self, event):
