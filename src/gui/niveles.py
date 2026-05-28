@@ -41,6 +41,9 @@ class Niveles(arcade.View):
         # Título textura
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
 
+        # Sonido de boton
+        self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
+
     def on_show_view(self):
 
         self.manager.enable()
@@ -94,17 +97,26 @@ class Niveles(arcade.View):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.menu import MainMenu
         game_view = MainMenu()
+        arcade.play_sound(self.button_press_sound)
         self.window.show_view(game_view)
 
     def play_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         game_view = GameView()
+        arcade.play_sound(self.button_press_sound)
         self.window.show_view(game_view)
 
     def nivel_1_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+
+        # Detener música del menú
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player:
+            self.window.menu_music.stop(self.window.menu_music_player)
+            self.window.menu_music_player = None
+
         game_view = GameView()
         game_view.map_num = 1
         game_view.setup()
@@ -113,6 +125,13 @@ class Niveles(arcade.View):
     def nivel_2_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+
+        # Detener música del menú
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player:
+            self.window.menu_music.stop(self.window.menu_music_player)
+            self.window.menu_music_player = None
+
         game_view = GameView()
         game_view.map_num = 2
         game_view.setup()
@@ -121,6 +140,13 @@ class Niveles(arcade.View):
     def nivel_3_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+
+        # Detener música del menú
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player:
+            self.window.menu_music.stop(self.window.menu_music_player)
+            self.window.menu_music_player = None
+
         game_view = GameView()
         game_view.map_num = 3
         game_view.setup()
@@ -129,6 +155,13 @@ class Niveles(arcade.View):
     def nivel_4_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+
+        # Detener música del menú
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player:
+            self.window.menu_music.stop(self.window.menu_music_player)
+            self.window.menu_music_player = None
+            
         game_view = GameView()
         game_view.map_num = 4
         game_view.setup()
@@ -137,6 +170,11 @@ class Niveles(arcade.View):
     def nivel_final_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+        # Detener música del menú
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player:
+            self.window.menu_music.stop(self.window.menu_music_player)
+            self.window.menu_music_player = None
         game_view = GameView()
         game_view.map_num = 5
         game_view.setup()

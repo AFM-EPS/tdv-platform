@@ -94,6 +94,7 @@ class Instrucciones(arcade.View):
     def atras_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.menu import MainMenu
+        arcade.play_sound(self.button_press_sound)
         game_view = MainMenu()
         self.window.show_view(game_view)
  
