@@ -11,6 +11,7 @@ import arcade
 
 from character.air_enemy import Air_enemy
 from character.air_enemy2 import Air_enemy2
+from character.final_boss import FinalBoss
 #Importar Clases de otros archivos
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
@@ -297,6 +298,16 @@ class GameView(arcade.View):
                     gravity_constant=0,
                     platforms=[self.scene["special_platforms"], self.scene["extras"]],
                 )
+            elif enemy_type == "final_boss":
+                # La salud especificada es de 400
+                enemy_health = 400
+                enemy = FinalBoss(PROJECT_ROOT / "assets" / "sprites" / "final_boss" / "final_boss.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(  # Gravedad
+                    enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=0,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
 
 
             elif enemy_type == "walking_1":
@@ -316,7 +327,6 @@ class GameView(arcade.View):
             enemy.center_y = math.floor(
                 (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
             )
-            # Si estamos en el Mapa 4, guardar referencia al flying_2 (boss de la arena)
             # Buscamos primero al enemigo que esté físicamente dentro de la arena (entre las dos compuertas).
             # Si no hay ninguno dentro del rango configurado, se hace un fallback al primer flying_2 que se encuentre.
             if enemy_type == "flying_2" and self.map_num == 4:
@@ -482,7 +492,7 @@ class GameView(arcade.View):
 
 
         for enemy in self.scene["enemies"]:
-            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2):
+            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2) or isinstance(enemy, FinalBoss):
                 if hasattr(enemy, "motor_enemigo"):
                     enemy.motor_enemigo.update()
 
