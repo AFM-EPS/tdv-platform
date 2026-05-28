@@ -36,6 +36,8 @@ class Creditos(arcade.View):
         
         self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "back_btn.png")
 
+        self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
+
         # Créditos
         self.credits = [
             "Créditos:", 
