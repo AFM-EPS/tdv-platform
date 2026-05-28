@@ -21,6 +21,7 @@ from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 from character.teleporter_particle_system import TeleporterParticleSystem as TeleporterParticles
 from gui.menu import MainMenu as MainMenu
+from gui.game_over import GameOverView as GameOverView
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -853,7 +854,14 @@ class GameView(arcade.View):
         """Called whenever a key is pressed."""
 
         if key == arcade.key.ESCAPE:
-            self.setup()
+
+            # Detener música antes de ir al menú
+            if self.music_player is not None:
+                arcade.stop_sound(self.music_player)
+                self.music_player = None # Limpiamos la referencia
+            
+            menu_view = MainMenu()
+            self.window.show_view(menu_view)
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = True
@@ -898,20 +906,6 @@ class GameView(arcade.View):
 
         self.process_keychange()
 
-
-class GameOverView(arcade.View):
-    def on_show_view(self):
-        self.window.background_color = arcade.color.BLACK
-
-    def on_draw(self):
-        self.clear()
-
-        texto = arcade.Text("Game Over - Click to Restart", WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, arcade.color.WHITE, 30, anchor_x="center")
-        texto.draw()
-
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        game_view = GameView()
-        self.window.show_view(game_view)
 
 def main():
     """Main function"""
