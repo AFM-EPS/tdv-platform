@@ -33,9 +33,9 @@ class MainMenu(arcade.View):
         # Botones sprites
         self.play_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "play_btn.png")
         self.quit_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "quit_btn.png")
-        self.creditos_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "creditos_btn.png")
-        self.instrucciones_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "instrucciones_btn.png")
-        self.niveles_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "niveles_btn.png")
+        self.creditos_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "credits_btn.png")
+        self.instrucciones_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "instructions_btn.png")
+        self.niveles_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "levels_btn.png")
 
 
         # Título textura
@@ -80,7 +80,7 @@ class MainMenu(arcade.View):
         anchor_layout.add(
             child=self.vertical_box,
             anchor_x="center_x",
-            anchor_y="center_y"
+            anchor_y="top"
         )
 
 

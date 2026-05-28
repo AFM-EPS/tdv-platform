@@ -32,12 +32,12 @@ class Niveles(arcade.View):
 
         # Botones sprites
         
-        self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "atras_btn.png")
-        self.nivel_1_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "nivel_1_btn.png")
-        self.nivel_2_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "nivel_2_btn.png")
-        self.nivel_3_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "nivel_3_btn.png")
-        self.nivel_4_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "nivel_4_btn.png")
-        self.nivel_final_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "nivel_final_btn.png")
+        self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "back_btn.png")
+        self.nivel_1_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "level_1_btn.png")
+        self.nivel_2_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "level_2_btn.png")
+        self.nivel_3_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "level_3_btn.png")
+        self.nivel_4_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "level_4_btn.png")
+        self.nivel_final_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "final_level_btn.png")
         # Título textura
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
 
@@ -55,12 +55,12 @@ class Niveles(arcade.View):
 
 
         # Botones
-        atras_btn = arcade.gui.UITextureButton(texture=self.atras_btn_sprite, width=256, height=80)
-        nivel_1_btn = arcade.gui.UITextureButton(texture=self.nivel_1_btn_sprite, width=256, height=80)
-        nivel_2_btn = arcade.gui.UITextureButton(texture=self.nivel_2_btn_sprite, width=256, height=80)
-        nivel_3_btn = arcade.gui.UITextureButton(texture=self.nivel_3_btn_sprite, width=256, height=80)
-        nivel_4_btn = arcade.gui.UITextureButton(texture=self.nivel_4_btn_sprite, width=256, height=80)
-        nivel_final_btn = arcade.gui.UITextureButton(texture=self.nivel_final_btn_sprite, width=256, height=80)
+        atras_btn = arcade.gui.UITextureButton(texture=self.atras_btn_sprite, width=192, height=64)
+        nivel_1_btn = arcade.gui.UITextureButton(texture=self.nivel_1_btn_sprite, width=192, height=64)
+        nivel_2_btn = arcade.gui.UITextureButton(texture=self.nivel_2_btn_sprite, width=192, height=64)
+        nivel_3_btn = arcade.gui.UITextureButton(texture=self.nivel_3_btn_sprite, width=192, height=64)
+        nivel_4_btn = arcade.gui.UITextureButton(texture=self.nivel_4_btn_sprite, width=192, height=64)
+        nivel_final_btn = arcade.gui.UITextureButton(texture=self.nivel_final_btn_sprite, width=192, height=64)
 
         # Asociación de eventos de botones
         atras_btn.on_click = self.atras_game
@@ -84,7 +84,7 @@ class Niveles(arcade.View):
         anchor_layout.add(
             child=self.vertical_box,
             anchor_x="center_x",
-            anchor_y="center_y"
+            anchor_y="top"
         )
 
 

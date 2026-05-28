@@ -1,5 +1,3 @@
-from turtle import title
-
 import arcade
 import arcade.gui
 from pathlib import Path
@@ -36,8 +34,28 @@ class Creditos(arcade.View):
         # Título textura
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
         
-        self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "atras_btn.png")
-        
+        self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "back_btn.png")
+
+        # Créditos
+        self.credits = [
+            "Créditos:", 
+            "Andrew Frassi Machado", 
+            "David Gutiérrez Martínez", 
+            "Marcos Serrano Fernández", 
+            "Alberto Cerezo Jiménez"
+        ]
+
+        self.credits_list = []
+
+        y_pos = WINDOW_HEIGHT / 2
+        gap = 40
+
+        for line in self.credits:
+
+            text = arcade.Text(line, WINDOW_WIDTH // 2, y_pos, arcade.color.WHITE, 24, anchor_x="center", font_name="Impact")
+
+            self.credits_list.append(text)
+            y_pos -= gap
         
 
 
@@ -57,8 +75,6 @@ class Creditos(arcade.View):
 
         
         atras_btn.on_click = self.atras_game
-        #atras_btn.center_x = WINDOW_WIDTH / 2
-        #atras_btn.center_y = WINDOW_HEIGHT / 2
 
         self.vertical_box.add(atras_btn)
 
@@ -67,13 +83,10 @@ class Creditos(arcade.View):
         anchor_layout.add(
             child=self.vertical_box,
             anchor_x="center_x",
-            anchor_y="center_y"
+            anchor_y="top"
         )
         
         self.manager.add(anchor_layout)
-        
-
-        #arcade.draw_lrwh_rectangle_textured(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, self.title_texture)
 
 
     def atras_game(self, event):
@@ -91,9 +104,7 @@ class Creditos(arcade.View):
         # Manager dibuja el menú
         self.manager.draw()
         
-        self.credito_0 = arcade.draw_text("Créditos: ", 500, 210,arcade.color.WHITE,24)
-        self.credito_1 = arcade.draw_text("Andrew Frassi Machado", 500, 160,arcade.color.WHITE,24)
-        self.credito_2 = arcade.draw_text("David Gutiérrez Martínez", 500, 130,arcade.color.WHITE,24)
-        self.credito_3 = arcade.draw_text("Marcos Serrano Fernández", 500, 100,arcade.color.WHITE,24)
-        self.credito_4 = arcade.draw_text("Alberto Cerezo Jiménez", 500, 70,arcade.color.WHITE,24)
+        # Dibujar créditos
+        for line in self.credits_list:
+            line.draw()
         

@@ -199,11 +199,11 @@
             "expandedObjectLayers": [
                 11
             ],
-            "scale": 0.33,
+            "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 912.121212121212,
-                "y": 568.1818181818181
+                "x": 1150,
+                "y": 539
             }
         },
         "maps/mapa-2-actualizado.json": {
@@ -230,10 +230,10 @@
                 6
             ],
             "scale": 0.33,
-            "selectedLayer": 10,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 4300,
-                "y": 943.9393939393938
+                "x": 1254.5454545454545,
+                "y": 1134.848484848485
             }
         },
         "maps/mapa-2bueno.json": {
@@ -247,28 +247,29 @@
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
                 7,
-                17,
                 5,
-                6,
-                8
+                17,
+                8,
+                6
             ],
             "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 575.7575757575758,
-                "y": 1628.787878787879
+                "x": 1657.5757575757575,
+                "y": 1256.060606060606
             }
         },
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
                 5,
+                17,
                 6
             ],
-            "scale": 0.125,
+            "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 3392,
-                "y": 228
+                "x": 596,
+                "y": 387
             }
         },
         "maps/mapa-5.json": {
@@ -279,7 +280,7 @@
             "selectedLayer": 5,
             "viewCenter": {
                 "x": 828,
-                "y": 1306
+                "y": 3766
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -452,17 +453,20 @@
     "map.width": 80,
     "openFiles": [
         "maps/mapa-2.json",
-        "maps/mapa-4.json"
+        "maps/mapa-4.json",
+        "maps/mapa-1.json",
+        "maps/mapa-3.json",
+        "maps/mapa-5.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "string",
     "recentFiles": [
         "maps/mapa-5.json",
+        "maps/mapa-3.json",
+        "maps/mapa-1.json",
         "maps/mapa-4.json",
         "maps/mapa-2.json",
         "tilesets/space_gun.json",
-        "maps/mapa-1.json",
-        "maps/mapa-3.json",
         "maps/mapa-2-actualizado.json",
         "tilesets/rock_ladders.json",
         "tilesets/garbage.json",
