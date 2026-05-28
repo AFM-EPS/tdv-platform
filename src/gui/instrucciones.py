@@ -37,6 +37,9 @@ class Instrucciones(arcade.View):
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
         
         self.atras_btn_sprite = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "atras_btn.png")
+
+        # Sonido de boton
+        self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
         
         
 
@@ -76,6 +79,7 @@ class Instrucciones(arcade.View):
     def atras_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.menu import MainMenu
+        arcade.play_sound(self.button_press_sound)
         game_view = MainMenu()
         self.window.show_view(game_view)
  

@@ -41,10 +41,18 @@ class MainMenu(arcade.View):
         # Título textura
         self.title_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "title.png")
 
+        # Sonido
+        self.menu_music = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "menu.mp3")
+        self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
+        self.menu_music_player = None
+
     def on_show_view(self):
 
         self.manager.enable()
-
+        if self.menu_music_player is None or not self.menu_music_player.playing:
+            self.menu_music_player = self.menu_music.play(volume=0.5, loop=True)
+            self.window.menu_music_player = self.menu_music_player
+            self.window.menu_music = self.menu_music
 
         # Contenedor vertical
         self.vertical_box = arcade.gui.UIBoxLayout(space_between=20, align="center")
@@ -90,28 +98,37 @@ class MainMenu(arcade.View):
     def play_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
+        arcade.play_sound(self.button_press_sound)
+        # Detener música del menú
+        if self.menu_music_player is not None:
+            self.menu_music.stop(self.menu_music_player)
+            self.menu_music_player = None
         game_view = GameView()
         self.window.show_view(game_view)
 
     def creditos_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.creditos import Creditos
+        arcade.play_sound(self.button_press_sound)
         game_view = Creditos()
         self.window.show_view(game_view)
 
     def instrucciones_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.instrucciones import  Instrucciones
+        arcade.play_sound(self.button_press_sound)
         game_view = Instrucciones()
         self.window.show_view(game_view)
 
     def niveles_game(self, event):
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from gui.niveles import  Niveles
+        arcade.play_sound(self.button_press_sound)
         game_view = Niveles()
         self.window.show_view(game_view)
 
     def exit_game(self, event):
+        arcade.play_sound(self.button_press_sound)
         arcade.exit()
 
     def on_hide_view(self):
