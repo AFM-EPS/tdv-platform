@@ -223,14 +223,14 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                10,
-                4,
                 5,
-                6,
-                3
+                3,
+                4,
+                10,
+                6
             ],
             "scale": 0.125,
-            "selectedLayer": 9,
+            "selectedLayer": 7,
             "viewCenter": {
                 "x": 6432,
                 "y": 1308
@@ -246,41 +246,45 @@
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                5,
-                17,
                 7,
-                8,
-                6
+                17,
+                5,
+                6,
+                8
             ],
             "scale": 0.33,
-            "selectedLayer": 6,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 5103.030303030303,
-                "y": 1031.818181818182
+                "x": 1400,
+                "y": 1404.5454545454545
             }
         },
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
-                5,
                 17,
-                6
+                5,
+                6,
+                22
             ],
             "scale": 0.5,
-            "selectedLayer": 7,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 4800,
+                "x": 4188,
                 "y": 225
             }
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
-                4
+                5,
+                4,
+                6,
+                13
             ],
-            "scale": 0.25,
+            "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 884,
-                "y": 2518
+                "x": 765.3333333333333,
+                "y": 4622
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -461,9 +465,9 @@
     "project": "levels.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "maps/mapa-1.json",
         "maps/mapa-5.json",
         "maps/mapa-3.json",
-        "maps/mapa-1.json",
         "maps/mapa-4.json",
         "maps/mapa-2.json",
         "tilesets/space_gun.json",

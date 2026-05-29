@@ -14,8 +14,10 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
 class PlayerCharacter(Character):
-    def __init__(self,arma,camera:arcade.Camera2D):
+    def __init__(self,arma,camera:arcade.Camera2D, physics_engine):
         super().__init__(PROJECT_ROOT / "assets" / "sprites" / "player" / "player")
+
+        self.physics_engine = physics_engine
 
         # Track extra state related to the player. We will use these for change
         # textures in animations
@@ -83,7 +85,7 @@ class PlayerCharacter(Character):
         if self.change_y > 0 and not self.climbing:
             self.texture = self.jump_texture_pair[self.facing_direction]
             return
-        elif self.change_y < 0 and not self.climbing:
+        elif self.change_y < -1.5 and not self.climbing and self.physics_engine and not self.physics_engine.can_jump():
             self.texture = self.fall_texture_pair[self.facing_direction]
             return
 

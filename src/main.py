@@ -45,7 +45,7 @@ RIGHT_FACING = 0
 LEFT_FACING = 1
 
 # Velocidad de movimiento de las plataformas móviles
-MOVABLE_PLATFORM_SPEED = 1
+MOVABLE_PLATFORM_SPEED = 0.4
 
 # Cantidad de mapas
 MAP_AMOUNT = 5
@@ -249,7 +249,7 @@ class GameView(arcade.View):
         #####
 
         self.scene.add_sprite("Arma", self.arma)
-        self.player_sprite = PlayerCharacter(self.arma,self.camera)
+        self.player_sprite = PlayerCharacter(self.arma,self.camera, self.physics_engine)
 
         if self.has_gun:
             self.arma.active = True
@@ -380,9 +380,9 @@ class GameView(arcade.View):
 
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite,
-            walls=[self.scene["platforms"]],
+            walls=[self.scene["platforms"], self.scene["special_platforms"]],
             gravity_constant=GRAVITY,
-            platforms=[self.scene["special_platforms"], self.scene["extras"], self.scene["teleporters"]],
+            platforms=[self.scene["extras"], self.scene["teleporters"]],
             ladders=self.scene["ladders"]
         )
 
@@ -535,12 +535,18 @@ class GameView(arcade.View):
         # Mover plataformas móviles alternando sentido de velocidad
         for movable_platform in self.scene["movable_platforms"]:
 
+            speed = MOVABLE_PLATFORM_SPEED
+
             if movable_platform.properties["move_on_x"]:
+
+                movable_platform.change_x = speed if movable_platform.change_x > 0 else -speed
 
                 initial_pos = movable_platform.properties["initial_pos"][0]
                 # Alternar sentido movimiento plataforma
                 if (movable_platform.center_x >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_x <= initial_pos - self.movable_platforms_displacement): movable_platform.change_x = - movable_platform.change_x
             else:
+
+                movable_platform.change_y = speed if movable_platform.change_y > 0 else -speed
 
                 initial_pos = movable_platform.properties["initial_pos"][1]
                 # Alternar sentido movimiento plataforma
@@ -837,14 +843,18 @@ class GameView(arcade.View):
         pressable_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.scene["pressable_objects"])
         
         if pressable_hit_list:
-            # Colocar texto
-            self.pressable_text.text = "Presiona E"
-            self.pressable_text.x = pressable_hit_list[0].center_x
-            self.pressable_text.y = pressable_hit_list[0].top + 20
+
+            name = pressable_hit_list[0].properties.get("name")
+
+
+            if name != "rocket_door":
+                # Colocar texto
+                self.pressable_text.text = "Presiona E"
+                self.pressable_text.x = pressable_hit_list[0].center_x
+                self.pressable_text.y = pressable_hit_list[0].top + 20
             
             # Si se presiona E
             if self.e_pressed:
-                name = pressable_hit_list[0].properties.get("name")
 
                 if name == "car":
                     
@@ -874,6 +884,31 @@ class GameView(arcade.View):
                         self.player_sprite.arma.visible = True
 
                     pressable_hit_list[0].remove_from_sprite_lists() # Quitar pistola del mapa
+                
+                elif name == "rocket_door":
+
+                    #if self.final_boss_defeated: # DESCOMENTAR ESTA LÍNEA CUANDO SE IMPLEMENTE ESTE BOOLEANO
+                    if True:
+
+                        # Colocar texto
+                        self.pressable_text.text = "Presiona E"
+                        self.pressable_text.x = pressable_hit_list[0].center_x
+                        self.pressable_text.y = pressable_hit_list[0].top + 20
+
+                        # Detener música
+                        if self.music_player is not None:
+                            arcade.stop_sound(self.music_player)
+                            self.music_player = None
+                    
+                        # Detener sonido de pasos para evitar bug
+                        if self.is_walking_sound_on and self.walk_player is not None:
+                            arcade.stop_sound(self.walk_player)
+                            self.walk_player = None
+                            self.is_walking_sound_on = False
+
+                        # Se muestra la pantalla de victoria
+                        # Provisionalmente se irá al menú hasta que se implemente la pantalla de victoria
+                        self.window.show_view(MainMenu())
 
                 self.e_pressed = False
         else:
