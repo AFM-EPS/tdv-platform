@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/mapa-2.json",
     "expandedProjectPaths": [
+        "tilesets",
         ".",
-        "maps",
-        "tilesets"
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -202,8 +202,8 @@
             "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1150,
-                "y": 539
+                "x": 960,
+                "y": 385
             }
         },
         "maps/mapa-2-actualizado.json": {
@@ -223,17 +223,17 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                4,
                 10,
+                4,
                 5,
-                3,
-                6
+                6,
+                3
             ],
-            "scale": 0.33,
+            "scale": 0.125,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 1254.5454545454545,
-                "y": 1134.848484848485
+                "x": 6432,
+                "y": 1308
             }
         },
         "maps/mapa-2bueno.json": {
@@ -246,17 +246,17 @@
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                7,
                 5,
                 17,
+                7,
                 8,
                 6
             ],
             "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1657.5757575757575,
-                "y": 1256.060606060606
+                "x": 5103.030303030303,
+                "y": 1031.818181818182
             }
         },
         "maps/mapa-4.json": {
@@ -268,8 +268,8 @@
             "scale": 0.5,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 596,
-                "y": 387
+                "x": 4800,
+                "y": 225
             }
         },
         "maps/mapa-5.json": {
@@ -279,8 +279,8 @@
             "scale": 0.25,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 828,
-                "y": 3766
+                "x": 884,
+                "y": 2518
             }
         },
         "tilesets/alien_spaceship.json": {

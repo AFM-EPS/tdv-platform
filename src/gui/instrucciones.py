@@ -46,7 +46,7 @@ class Instrucciones(arcade.View):
             "Moverse: flechas del teclado y ",
             "W(saltar/subir escalera), S(bajar escalera), ",
             "A(izquierda), D(derecha).",
-            "ESPACIO: disparar.",
+            "Disparar: espacio y Q.",
             "Apuntar: puntero del ratón."
         ]
 

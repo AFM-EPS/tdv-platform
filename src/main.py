@@ -20,8 +20,10 @@ from character.walking_enemy import WalkingEnemy as WalkingEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 from character.teleporter_particle_system import TeleporterParticleSystem as TeleporterParticles
+
 from gui.menu import MainMenu as MainMenu
 from gui.game_over import GameOverView as GameOverView
+from gui.abduction_animation import AbductionAnimation
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -84,7 +86,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 2
+        self.map_num = 1
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -767,8 +769,23 @@ class GameView(arcade.View):
                 name = pressable_hit_list[0].properties.get("name")
 
                 if name == "car":
-                    # Empezar animación
-                    print("Animación")
+                    
+                    # Detener música
+                    if self.music_player is not None:
+                        arcade.stop_sound(self.music_player)
+                        self.music_player = None
+                    
+                    # Detener sonido de pasos para evitar bug
+                    if self.is_walking_sound_on and self.walk_player is not None:
+                        arcade.stop_sound(self.walk_player)
+                        self.walk_player = None
+                        self.is_walking_sound_on = False
+
+                    # Se inicia la animación y cuando acaba aparece en el mapa 2
+                    next_view = GameView()
+                    next_view.map_num = 2
+                    self.window.show_view(AbductionAnimation(next_view))
+
 
                 elif name == "gun":
 
