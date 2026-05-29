@@ -162,6 +162,7 @@ class GameView(arcade.View):
         self.player_teleporting_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleporting.mp3")
         self.player_teleported_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleported.mp3")
         self.player_damage_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "suffering_damage.mp3")
+        self.music_level1 = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "music_level1.mp3")
                 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
@@ -435,8 +436,10 @@ class GameView(arcade.View):
 
     def on_show_view(self):
         self.setup()
-        self.music_player = self.background_music.play(volume=0.7, loop=True)
-
+        if self.map_num == 1:
+            self.music_player = self.music_level1.play(volume=0.7, loop=True)
+        else:
+            self.music_player = self.background_music.play(volume=0.7, loop=True)
 
 
     def on_draw(self):
