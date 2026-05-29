@@ -86,7 +86,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 1
+        self.map_num = 4
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -285,6 +285,11 @@ class GameView(arcade.View):
             enemy_shot_speed = enemy_marker.properties.get("shot_speed", 8)
             enemy_speed = enemy_marker.properties.get("speed", 3)
             enemy_vision = enemy_marker.properties.get("vision", 500)
+            #Debug boss final
+            ###!!!! FINAL BOSS EN MAPA 4!
+            if enemy_type == "flying_2" and self.map_num == 4:
+                enemy_type = "final_boss"
+            ###!!!! FINAL BOSS EN MAPA 4!
 
 
             if enemy_type == "flying_1":

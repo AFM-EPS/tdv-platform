@@ -50,11 +50,11 @@ class PlayerCharacter(Character):
 
 
         #Pasar orientación al arma
-        self.arma.angle = 360 - math.degrees(self.aim_radians)
-        if (self.mousex - SCREEN_WIDTH // 2) >= 0:
-            self.arma.flip(RIGHT_FACING)
-        else:
+        self.arma.angle = - math.degrees(self.aim_radians)
+        if self.arma.angle >= 90 or self.arma.angle <= -90:
             self.arma.flip(LEFT_FACING)
+        else:
+            self.arma.flip(RIGHT_FACING)
 
 
 
