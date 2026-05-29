@@ -29,6 +29,11 @@ class PlayerCharacter(Character):
         self.mousey = 0
         #Orientación relativa del mouse (para arma)
         self.aim_radians = 0
+
+        # Momento de invencibilidad
+        self.invincible_timer = 0
+        self.invincible_duration = 90
+
     def update_animation(self, delta_time):
         #Cálculo de posición de arma
         camara_x = self.camera.position.x  # El borde izquierdo de lo que ve la cámara

@@ -36,3 +36,19 @@ class Character(arcade.Sprite):
         # This variable will change dynamically and will represent the currently
         # active texture.
         self.texture = self.idle_texture_pair[0]
+
+        # Sistema de vida: 100 en total que reduce en 25 con cada golpe
+        self.max_health = 100
+        self.current_health = 100
+        
+    def take_damage(self, damage=25):
+        """
+        El personaje recibe dano. Por defecto resta 25 (1 vida).
+        """
+        self.current_health -= damage
+        
+        # Evitar valores negativos
+        if self.current_health < 0:
+            self.current_health = 0
+        
+        return self.current_health <= 0  # Retorna True si esta muerto
