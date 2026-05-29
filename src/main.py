@@ -24,6 +24,7 @@ from character.teleporter_particle_system import TeleporterParticleSystem as Tel
 from gui.menu import MainMenu as MainMenu
 from gui.game_over import GameOverView as GameOverView
 from gui.abduction_animation import AbductionAnimation
+from gui.victoria_animation import Victoria_Animation
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -446,6 +447,28 @@ class GameView(arcade.View):
         else:
             self.music_player = self.background_music.play(volume=0.7, loop=True)
 
+    def victoria(self):
+        if(self.map_num == 5):
+            # Detener música
+            if self.music_player is not None:
+                arcade.stop_sound(self.music_player)
+                self.music_player = None
+                    
+            # Detener sonido de pasos para evitar bug
+            if self.is_walking_sound_on and self.walk_player is not None:
+                arcade.stop_sound(self.walk_player)
+                self.walk_player = None
+                self.is_walking_sound_on = False
+
+            # Se hace el import aquí para evitar error por bucle infinito de import circular
+            from gui.menu import MainMenu
+
+            # Se inicia la animación y cuando acaba aparece en el mapa 1
+            next_view = MainMenu()
+            self.map_num = 1
+            self.window.show_view(Victoria_Animation(next_view))
+
+
 
     def on_draw(self):
         """Render the screen."""
@@ -630,9 +653,6 @@ class GameView(arcade.View):
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_platform_sound, volume=2.5)
                 return
-
-
-
 
 
         for bullet in self.scene["Bullets"]:
@@ -879,7 +899,8 @@ class GameView(arcade.View):
         else:
             self.pressable_text.text = ""
         
-
+        if (self.player_sprite.center_x > 1280 and self.player_sprite.center_y > 4400):
+            self.victoria()
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
@@ -978,6 +999,10 @@ class GameView(arcade.View):
         
         if key == arcade.key.E:
             self.e_pressed = True
+
+        if key == arcade.key.V:
+            self.victoria() #De provisional hasta que se implemente el enemigo final, 
+            #en la linea 902 aproximadamente se simula de forma provisional la victoria al llegar la zona superior derecha del mapa para facilitar las pruebas de la animación de la victoria
 
         self.process_keychange()
 
