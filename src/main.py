@@ -11,6 +11,7 @@ import arcade
 
 from character.air_enemy import Air_enemy
 from character.air_enemy2 import Air_enemy2
+from character.final_boss import FinalBoss
 #Importar Clases de otros archivos
 ## Reorganización de Clases
 from character.player import PlayerCharacter as PlayerCharacter
@@ -19,7 +20,10 @@ from character.walking_enemy import WalkingEnemy as WalkingEnemy
 from character.proyectil import Proyectil as Proyectil
 from character.arma import Arma as Arma
 from character.teleporter_particle_system import TeleporterParticleSystem as TeleporterParticles
+
 from gui.menu import MainMenu as MainMenu
+from gui.game_over import GameOverView as GameOverView
+from gui.abduction_animation import AbductionAnimation
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -82,7 +86,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 2
+        self.map_num = 1
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -297,6 +301,16 @@ class GameView(arcade.View):
                     gravity_constant=0,
                     platforms=[self.scene["special_platforms"], self.scene["extras"]],
                 )
+            elif enemy_type == "final_boss":
+                # La salud especificada es de 400
+                enemy_health = 400
+                enemy = FinalBoss(PROJECT_ROOT / "assets" / "sprites" / "final_boss" / "final_boss.png", self.player_sprite, self.scene, enemy_health, enemy_speed, enemy_shot_cadence, enemy_vision, enemy_shot_speed)
+                enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(  # Gravedad
+                    enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=0,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
 
 
             elif enemy_type == "walking_1":
@@ -316,7 +330,6 @@ class GameView(arcade.View):
             enemy.center_y = math.floor(
                 (coordinates[1] + 1) * (self.tile_map.tile_height * TILE_SCALING)
             )
-            # Si estamos en el Mapa 4, guardar referencia al flying_2 (boss de la arena)
             # Buscamos primero al enemigo que esté físicamente dentro de la arena (entre las dos compuertas).
             # Si no hay ninguno dentro del rango configurado, se hace un fallback al primer flying_2 que se encuentre.
             if enemy_type == "flying_2" and self.map_num == 4:
@@ -482,7 +495,7 @@ class GameView(arcade.View):
 
 
         for enemy in self.scene["enemies"]:
-            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2):
+            if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2) or isinstance(enemy, FinalBoss):
                 if hasattr(enemy, "motor_enemigo"):
                     enemy.motor_enemigo.update()
 
@@ -756,8 +769,23 @@ class GameView(arcade.View):
                 name = pressable_hit_list[0].properties.get("name")
 
                 if name == "car":
-                    # Empezar animación
-                    print("Animación")
+                    
+                    # Detener música
+                    if self.music_player is not None:
+                        arcade.stop_sound(self.music_player)
+                        self.music_player = None
+                    
+                    # Detener sonido de pasos para evitar bug
+                    if self.is_walking_sound_on and self.walk_player is not None:
+                        arcade.stop_sound(self.walk_player)
+                        self.walk_player = None
+                        self.is_walking_sound_on = False
+
+                    # Se inicia la animación y cuando acaba aparece en el mapa 2
+                    next_view = GameView()
+                    next_view.map_num = 2
+                    self.window.show_view(AbductionAnimation(next_view))
+
 
                 elif name == "gun":
 
@@ -843,7 +871,14 @@ class GameView(arcade.View):
         """Called whenever a key is pressed."""
 
         if key == arcade.key.ESCAPE:
-            self.setup()
+
+            # Detener música antes de ir al menú
+            if self.music_player is not None:
+                arcade.stop_sound(self.music_player)
+                self.music_player = None # Limpiamos la referencia
+            
+            menu_view = MainMenu()
+            self.window.show_view(menu_view)
 
         if key == arcade.key.UP or key == arcade.key.W:
             self.up_pressed = True
@@ -888,20 +923,6 @@ class GameView(arcade.View):
 
         self.process_keychange()
 
-
-class GameOverView(arcade.View):
-    def on_show_view(self):
-        self.window.background_color = arcade.color.BLACK
-
-    def on_draw(self):
-        self.clear()
-
-        texto = arcade.Text("Game Over - Click to Restart", WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, arcade.color.WHITE, 30, anchor_x="center")
-        texto.draw()
-
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        game_view = GameView()
-        self.window.show_view(game_view)
 
 def main():
     """Main function"""
