@@ -1,6 +1,6 @@
 import arcade
 from character.character import Character
-import pathlib
+from pathlib import Path
 import math
 #Constantes
 RIGHT_FACING = 0
@@ -9,12 +9,13 @@ LEFT_FACING = 1
 #OJO QUE PUEDE CAMBIAR! - CALCULA LA POSICION DE LA PISTOLA!
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
 
 class PlayerCharacter(Character):
     def __init__(self,arma,camera:arcade.Camera2D):
-        super().__init__(":resources:images/animated_characters/female_adventurer/femaleAdventurer")
+        super().__init__(PROJECT_ROOT / "assets" / "sprites" / "player" / "player")
 
         # Track extra state related to the player. We will use these for change
         # textures in animations
@@ -94,7 +95,7 @@ class PlayerCharacter(Character):
         # Handle walking
         if self.should_update_walk == 3:
             self.cur_texture += 1
-            if self.cur_texture > 7:
+            if self.cur_texture > 2:
                 self.cur_texture = 0
             self.texture = self.walk_textures[self.cur_texture][self.facing_direction]
             self.should_update_walk = 0

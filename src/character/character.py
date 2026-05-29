@@ -24,7 +24,7 @@ class Character(arcade.Sprite):
         self.fall_texture_pair = fall_texture, fall_texture.flip_left_right()
         # Load textures for walking with left and right facing textures
         self.walk_textures = []
-        for i in range(8):
+        for i in range(3):
             texture = arcade.load_texture(f"{main_path}_walk{i}.png")
             self.walk_textures.append((texture, texture.flip_left_right()))
 
