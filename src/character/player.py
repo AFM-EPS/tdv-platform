@@ -30,6 +30,11 @@ class PlayerCharacter(Character):
         self.mousey = 0
         #Orientación relativa del mouse (para arma)
         self.aim_radians = 0
+
+        # Momento de invencibilidad
+        self.invincible_timer = 0
+        self.invincible_duration = 90
+
     def update_animation(self, delta_time):
         #Cálculo de posición de arma
         camara_x = self.camera.position.x  # El borde izquierdo de lo que ve la cámara
@@ -46,11 +51,11 @@ class PlayerCharacter(Character):
 
 
         #Pasar orientación al arma
-        self.arma.angle = 360 - math.degrees(self.aim_radians)
-        if (self.mousex - SCREEN_WIDTH // 2) >= 0:
-            self.arma.flip(RIGHT_FACING)
-        else:
+        self.arma.angle = - math.degrees(self.aim_radians)
+        if self.arma.angle >= 90 or self.arma.angle <= -90:
             self.arma.flip(LEFT_FACING)
+        else:
+            self.arma.flip(RIGHT_FACING)
 
 
 

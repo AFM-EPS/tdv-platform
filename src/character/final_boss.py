@@ -25,7 +25,7 @@ class FinalBossProjectile(arcade.Sprite):
         self.change_y = math.sin(orientation) * velocidad
         
         # Ángulo visual (el sprite por defecto apunta hacia arriba, así que restamos 90 grados para orientarlo)
-        self.angle = math.degrees(orientation) - 90
+        self.angle = 90-(math.degrees(orientation))
 
 
 class FinalBoss(arcade.Sprite):

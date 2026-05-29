@@ -86,7 +86,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 1
+        self.map_num = 4
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None
@@ -161,7 +161,9 @@ class GameView(arcade.View):
         self.climbing_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "climbing.mp3")
         self.player_teleporting_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleporting.mp3")
         self.player_teleported_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleported.mp3")
-
+        self.player_damage_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "suffering_damage.mp3")
+        self.music_level1 = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "music_level1.mp3")
+                
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
         # Reset Map 4 trap variables
@@ -283,6 +285,11 @@ class GameView(arcade.View):
             enemy_shot_speed = enemy_marker.properties.get("shot_speed", 8)
             enemy_speed = enemy_marker.properties.get("speed", 3)
             enemy_vision = enemy_marker.properties.get("vision", 500)
+            #Debug boss final
+            ###!!!! FINAL BOSS EN MAPA 4!
+            if enemy_type == "flying_2" and self.map_num == 4:
+                enemy_type = "final_boss"
+            ###!!!! FINAL BOSS EN MAPA 4!
 
 
             if enemy_type == "flying_1":
@@ -410,11 +417,34 @@ class GameView(arcade.View):
         else:
             # Pon un color por defecto si el mapa no lo tiene configurado
             self.window.background_color = arcade.color.SKY_BLUE
+        
+         # Cargar texturas de corazones
+        self.heart_full_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "Corazon.png")
+        self.heart_empty_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "Corazon_vacio.png")
+
+        # Crear lista de sprites para los corazones (4 corazones)
+        self.heart_sprites = arcade.SpriteList()
+        heart_size = 60
+        spacing = 10
+        total_width = 4 * heart_size + 3 * spacing
+        start_x = WINDOW_WIDTH - 20 - total_width + heart_size / 2
+        start_y = WINDOW_HEIGHT - 20 - heart_size / 2
+
+        for i in range(4):
+            heart = arcade.Sprite()
+            heart.texture = self.heart_full_texture
+            heart.width = heart_size
+            heart.height = heart_size
+            heart.center_x = start_x + i * (heart_size + spacing)
+            heart.center_y = start_y
+            self.heart_sprites.append(heart)
 
     def on_show_view(self):
         self.setup()
-        self.music_player = self.background_music.play(volume=0.7, loop=True)
-
+        if self.map_num == 1:
+            self.music_player = self.music_level1.play(volume=0.7, loop=True)
+        else:
+            self.music_player = self.background_music.play(volume=0.7, loop=True)
 
 
     def on_draw(self):
@@ -446,6 +476,23 @@ class GameView(arcade.View):
         # Draw our Score
         self.score_text.draw()
 
+        # Dibujar corazones de vida
+        self.draw_health_hearts()
+
+    def draw_health_hearts(self):
+        """Dibuja 4 corazones en la esquina superior derecha."""
+        if self.player_sprite is None:
+            return
+
+        lives = int(self.player_sprite.current_health // 25)
+        # Clamp entre 0 y 4 para evitar errores si la salud está fuera de rango
+        lives = max(0, min(4, lives))
+
+        for i, heart in enumerate(self.heart_sprites):
+            heart.texture = self.heart_full_texture if i < lives else self.heart_empty_texture
+
+        self.heart_sprites.draw()   
+
     def on_update(self, delta_time):
         """Movement and Game Logic"""
 
@@ -454,6 +501,12 @@ class GameView(arcade.View):
         if self.physics_engine is None:
             return
 
+        # Reducir timer de invencibilidad cada frame
+        if self.player_sprite.invincible_timer > 0:
+            self.player_sprite.invincible_timer -= 1
+            self.player_sprite.visible = (self.player_sprite.invincible_timer // 5) % 2 == 0
+        else:
+            self.player_sprite.visible = True
 
         # Update our characters animation state
         if self.physics_engine.is_on_ladder():
@@ -553,18 +606,23 @@ class GameView(arcade.View):
                 bullet.remove_from_sprite_lists()
                 for collision in hit_list:
                     if self.scene["Player"] in collision.sprite_lists:
-                        arcade.play_sound(self.gameover_sound)
-                        game_over = GameOverView()
-                        if self.walk_player is not None:
-                            arcade.stop_sound(self.walk_player)
-                            self.walk_player = None
-                            self.is_walking_sound_on = False
-                        if self.climb_player is not None:
-                            arcade.stop_sound(self.climb_player)
-                            self.climb_player = None
-                            self.is_climbing_sound_on = False
-                        self.window.show_view(game_over)
-                        arcade.stop_sound(self.music_player)
+                        if self.player_sprite.invincible_timer <= 0:
+                            is_dead = self.player_sprite.take_damage(25)
+                            arcade.play_sound(self.player_damage_sound)
+                            self.player_sprite.invincible_timer = self.player_sprite.invincible_duration
+                            if is_dead:
+                                arcade.play_sound(self.gameover_sound)
+                                game_over = GameOverView()
+                                if self.walk_player is not None:
+                                    arcade.stop_sound(self.walk_player)
+                                    self.walk_player = None
+                                    self.is_walking_sound_on = False
+                                if self.climb_player is not None:
+                                    arcade.stop_sound(self.climb_player)
+                                    self.climb_player = None
+                                    self.is_climbing_sound_on = False
+                                self.window.show_view(game_over)
+                                arcade.stop_sound(self.music_player)
                     if self.scene["destructible_platforms"] in collision.sprite_lists:
                         collision.properties["health"] -= 25
                         arcade.play_sound(self.hit_platform_sound)
@@ -625,7 +683,27 @@ class GameView(arcade.View):
         )
 
         for collision in player_collision_list:
-            if self.scene["enemies"] in collision.sprite_lists or self.scene["player_death_zones"] in collision.sprite_lists:
+            if self.scene["enemies"] in collision.sprite_lists:
+                if self.player_sprite.invincible_timer <= 0:
+                    is_dead = self.player_sprite.take_damage(25)
+                    arcade.play_sound(self.player_damage_sound)
+                    self.player_sprite.invincible_timer = self.player_sprite.invincible_duration
+                    if is_dead:
+                        arcade.play_sound(self.gameover_sound)
+                        self.background_music.stop(self.music_player)
+                        game_over = GameOverView()
+                        if self.walk_player is not None:
+                            arcade.stop_sound(self.walk_player)
+                            self.walk_player = None
+                            self.is_walking_sound_on = False
+                        if self.climb_player is not None:
+                            arcade.stop_sound(self.climb_player)
+                            self.climb_player = None
+                            self.is_climbing_sound_on = False
+                        self.window.show_view(game_over)
+                        return
+
+            elif self.scene ["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 self.background_music.stop(self.music_player)
                 game_over = GameOverView()
