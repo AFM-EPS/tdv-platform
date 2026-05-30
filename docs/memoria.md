@@ -4,49 +4,49 @@ A continuación se presenta un **mapa conceptual completo** del juego **SPACE ES
 
 ## \***\*2.1. Mapa conceptual general de SPACE ESCAPE\*\***
 
-┌──────────────────────────┐
+                     ┌──────────────────────────┐
 
-│ SPACE ESCAPE │
+                     │      SPACE ESCAPE        │
 
-└────────────┬─────────────┘
+                     └────────────┬─────────────┘
 
-│
+                                  │
 
-┌───────────────────────────┼───────────────────────┐
+      ┌───────────────────────────┼───────────────────────┐
 
-│ │ │
+      │                           │                       │
 
-┌─────▼─────┐ ┌─────▼─────┐ ┌──────▼──────┐
+┌─────▼─────┐               ┌─────▼─────┐          ┌──────▼──────┐
 
-│ Niveles │ │ Enemigos │ │ Mecánicas │
+│ Niveles   │               │ Enemigos  │          │ Mecánicas   │
 
-└─────┬─────┘ └─────┬─────┘ └──────┬──────┘
+└─────┬─────┘               └─────┬─────┘          └──────┬──────┘
 
-│ ┌──────┴──────┐ │
+      │                    ┌──────┴──────┐                │
 
-│ │ │ │
+      │                    │             │                │
 
-┌─────▼─────┐ ┌─────▼─────┐ ┌─────▼─────┐ ┌─────▼──────┐
+┌─────▼─────┐        ┌─────▼─────┐ ┌─────▼─────┐    ┌─────▼──────┐
 
-│ Aterrizaje│ │ Voladores │ │Terrestres │ │ Movimiento │
+│ Aterrizaje│        │ Voladores │ │Terrestres │    │ Movimiento │
 
-└─────┬─────┘ └───────────┘ └───────────┘ └─────┬──────┘
+└─────┬─────┘        └───────────┘ └───────────┘    └─────┬──────┘
 
-┌──── ▼─────┐ │
+┌──── ▼─────┐                                             │
 
-│ Obras │ │
+│   Obras   │                                             │
 
-└─────┬─────┘ ┌───────┴─────┐
+└─────┬─────┘                                     ┌───────┴─────┐
 
-┌─────▼─────┐ ┌─────▼─────┐ ┌────▼────┐
+┌─────▼─────┐                               ┌─────▼─────┐  ┌────▼────┐
 
-│ Lab │ │Interacción│ │ Combate │
+│    Lab    │                               │Interacción│  │ Combate │
 
-└─────┬─────┘ └───────────┘ └─────────┘
+└─────┬─────┘                               └───────────┘  └─────────┘
 
 ┌─────▼─────┐
 
-│ Base │
+│   Base    │
 
 └───────────┘
 
@@ -56,47 +56,55 @@ NIVELES
 
 │
 
-├── 1. Zona de Aterrizaje
+├── 1. Zona de Abducción
 
-│ ├─ Tutorial
+│   ├─ Ambientado en la Tierra
 
-│ ├─ Nave transportadora alienígena
+│   ├─ Nave transportadora alienígena
 
-│ └─ Primeros drones
-
-│
-
-├── 2. Zonas de obras
-
-│ ├─ Plataformas artificiales
-
-│ ├─ Enemigos voladores y superficiales
-
-│ ├─ Trampas
-
-│ ├─ Grúas y ascensores
+│   └─ El protagonista es abducido cuando esta dentro del coche
 
 │
 
-├── 3. Laboratorio abandonado
+├── 2. Zona de Aterrizaje
+
+│   ├─ Tutorial
+
+│   ├─ Nave transportadora alienígena
+
+│   └─ Primeros drones
 
 │
 
-│ ├─ Maquinaria en movimiento
+├── 3. Zonas de obras
 
-│ └─ Grúas, ascensores y cintas transportadoras
+│   ├─ Plataformas artificiales
+
+│   ├─ Enemigos voladores y superficiales
+
+│   ├─ Trampas
+
+│   └─  Grúas y ascensores
 
 │
 
-└── 4. Base de lanzamiento alienígena
+├── 4. Laboratorio abandonado
 
-├─ Plataformas aéreas
+│   ├─ Maquinaria en movimiento
 
-├─ Enemigos diversos de superficie y voladores
+│   └─ Plataformas transportadoras
 
-├─ Trampas combinadas
+│
 
-└─ Cápsula de escape
+└── 5. Base de lanzamiento alienígena
+
+    ├─ Plataformas aéreas
+
+    ├─ Enemigos diversos de superficie y voladores
+
+    ├─ Trampas combinadas
+
+    └─ Cápsula de escape
 
 ## \***\*2.3. Enemigos\*\***
 
@@ -106,17 +114,17 @@ ENEMIGOS
 
 ├── Voladores
 
-│ ├─ Drones patrulla
+│   ├─ Drones patrulla
 
-│ └─ Robots esféricos
+│   └─ Robots esféricos
 
 │
 
 └── Terrestres
 
-├─ Robots caminantes
+    ├─ Robots caminantes
 
-└─ Torres defensivas
+    └─ Torres defensivas
 
 ## \***\*2.4. Mecánicas avanzadas\*\***
 
@@ -126,37 +134,29 @@ MECÁNICAS AVANZADAS
 
 ├── Movimiento
 
-│ ├─ Salto simple
+│   ├─ Salto simple
 
-│ ├─ Doble salto
+│   ├─ Deslizamiento por cables
 
-│ ├─ Deslizamiento por cables
+│   ├─ Trepar columnas
 
-│ ├─ Trepar columnas
-
-│ └─ Caídas controladas en superficies
+│   └─ Caídas controladas en superficies
 
 │
 
 ├── Interacción
 
-│ ├─ Plataformas que suben/bajan y se desplazan horizontalmente
+│   ├─ Plataformas que suben/bajan y se desplazan horizontalmente
 
-│ ├─ Teletransportadores
+│   ├─ Teletransportadores
 
-│ └─ Grúas móviles
+│   └─ Grúas
 
 │
 
 └── Combate
 
-├─ Disparo simple
-
-├─ Disparo doble
-
-├─ Disparo triple
-
-└─ Escudo energético
+    └─ Disparo simple
 
 ## \***\*2.5. Bocetos de pantallas (ascii)\*\***
 
@@ -164,23 +164,23 @@ MECÁNICAS AVANZADAS
 
 ┌───────────────────────────────────────────────────────────────┐
 
-│ SPACE ESCAPE │
+│                      SPACE ESCAPE                             │
 
-│ │
+│                                                               │
 
-│ \[Jugar\] │
+│                       \[Jugar\]                               │
 
-│ \[Créditos\] │
+│                      \[Créditos\]                             │
 
-│ \[Intrucciones\] │
+│                    \[Intrucciones\]                           │
 
-│ \[Níveles\] │
+│                      \[Níveles\]                              │
 
-│ \[Salir\] │
+│                       \[Salir\]                               │
 
-│ │
+│                                                               │
 
-│ │
+│                                                               │
 
 └───────────────────────────────────────────────────────────────┘
 
@@ -188,23 +188,23 @@ MECÁNICAS AVANZADAS
 
 ┌───────────────────────────────────────────────────────────────┐
 
-│ SPACE ESCAPE │
+│                        SPACE ESCAPE                           │
 
-│ │
+│                                                               │
 
-│ \[Nivel 1\] │
+│                        \[Nivel 1\]                            │
 
-│ \[Nivel 2\] │
+│                        \[Nivel 2\]                            │
 
-│ \[Nivel 3\] │
+│                        \[Nivel 3\]                            │
 
-│ \[Nivel 4\] │
+│                        \[Nivel 4\]                            │
 
-│ \[Nivel Final\] │
+│                        \[Nivel Final\]                        │
 
-│ \[Atras\] │
+│                        \[Atras\]                              │
 
-│ │
+│                                                               │
 
 └───────────────────────────────────────────────────────────────┘
 
@@ -212,25 +212,25 @@ MECÁNICAS AVANZADAS
 
 ┌───────────────────────────────────────────────────────────────┐
 
-│ Fondo: montañas alienígenas, lunas, planetas │
+│ Fondo: montañas alienígenas, lunas, planetas                  │
 
-│ │
+│                                                               │
 
-│ Arriba: enemigos voladores │ │ │ │ │
+│ Arriba: enemigos voladores                                    │
 
-│ \[Plataforma\] \[Plataforma móvil\] │
+│ \[Plataforma\] \[Plataforma móvil\]                           │
 
-│ ███████ ███████ │
+│ ███████ ███████                                               │
 
-│ ↑ ↑ │
+│ ↑ ↑                                                           │
 
-│ Enemigo superficial Jugador (●) → → → │
+│ Enemigo superficial Jugador (●) → → →                         │
 
-│ │
+│                                                               │
 
-│ │
+│                                                               │
 
-│ Abajo: precipicio, trampas, enemigos superficiales │ │ │
+│ Abajo: precipicio, trampas, enemigos superficiales            │
 
 └───────────────────────────────────────────────────────────────┘
 
@@ -238,25 +238,25 @@ MECÁNICAS AVANZADAS
 
 ┌──────────────────────────────┐
 
-│ Nivel superior │
+│ Nivel superior               │
 
-│ ████████████████████████ │
+│ ████████████████████████     │
+ 
+│ Torre defensiva (T)          │
 
-│ Torre defensiva (T) │
+│ ↓                            │
 
-│ ↓ │
+│ ████ Ascensor ████           │
 
-│ ████ Ascensor ████ │
+│ ↑ ↑                          │
 
-│ ↑ ↑ │
+│ Jugador (●) trepando         │
 
-│ Jugador (●) trepando │
+│                              │
 
-│ │ │
+│ ████████████████████████     │
 
-│ ████████████████████████ │
-
-│ Nivel inferior │
+│ Nivel inferior               │
 
 └──────────────────────────────┘
 
@@ -264,23 +264,23 @@ MECÁNICAS AVANZADAS
 
 ┌───────────────────────────────────────────────────────────────┐
 
-│ Fondo: Equipamientos alienígenas abandonados, maquinarias │ │ │
+│ Fondo: Equipamientos alienígenas abandonados, maquinarias     │
 
-│ │
+│                                                               │
 
-│ \[Plataforma\] \[Plataforma móvil vertical\] │
+│ \[Plataforma\] \[Plataforma móvil vertical\]                  │
 
-│ ███████ ███████ │
+│ ███████ ███████                                               │
 
-│ ↑ ↑ │
+│ ↑ ↑                                                           │
 
-│ Enemigo voladores Jugador (●) → → → │
+│ Enemigo voladores Jugador (●) → → →                           │
 
-│ │
+│                                                               │
 
-│ │
+│                                                               │
 
-│ Abajo:enemigos superficiales │
+│ Abajo:enemigos superficiales                                  │
 
 └───────────────────────────────────────────────────────────────┘
 
@@ -288,27 +288,27 @@ MECÁNICAS AVANZADAS
 
 ┌───────────────────────────────────────────────────────────────┐
 
-│ Nave Final: Núcleo de Defensa │
+│ Enemigo Final:                                                │
 
-│ │
+│       ╔══════════════╗                                        │
 
-│ ╔══════════════╗ │
+│       ║   ●●●●●●●●   ║ ← Nave final flotante                  │
 
-│ ║ ●●●●●●●● ║ ← Nave final flotante │
+│       ╚══════════════╝                                        │
 
-│ ╚══════════════╝ │
+│                                                               │
 
-│ / / / / │
+│ / / / /                                                       │
 
-│ Torres láser (T) alrededor │
+│ Aparesen enemigos diversos a medida que el jugador sube.      │
 
-│ │
+│                                                               │
 
-│ Jugador (●) debe enfrentarse al enemigo final y regresar a │
+│ Jugador (●) debe enfrentarse al enemigo final y regresar a la │
 
-│ la tierra en el cohete que aparece en esta fase │
+│ tierra en el cohete que aparece en esta fase.                 │
 
-│ │
+│                                                               │
 
 └───────────────────────────────────────────────────────────────┘
 
@@ -330,9 +330,9 @@ arcade.Sprite
 
 ├── Character
 
-│ ├── PlayerCharacter
+│   ├── PlayerCharacter
 
-│ └── Enemy
+│   └── Enemy
 
 │
 
@@ -358,6 +358,10 @@ arcade.View
 
 ├── MainMenu
 
+├── Animation
+
+├── VictoryView
+
 ├── Instrucciones
 
 ├── Creditos
@@ -374,31 +378,31 @@ Las clases PlayerCharacter y Enemy heredan de Character.
 
 ┌──────────────────────────┐
 
-│ Character │
+│       Character          │
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
 └──────────────────────────┘
 
-▲
+             ▲
 
-│
+             │
 
-├──────────────────────────────────────────┐
+             ├──────────────────────────────────────────┐
 
-│ │
+             │                                          │
 
-┌──────────────────────────┐ ┌──────────────────────────┐
+┌──────────────────────────┐               ┌──────────────────────────┐
 
-│ PlayerCharacter │ │ Enemy │
+│     PlayerCharacter      │               │          Enemy           │
 
-├──────────────────────────┤ ├──────────────────────────┤
+├──────────────────────────┤               ├──────────────────────────┤
 
-│ + \_init*\_(self) │ │ + \_init*\_(self) │
+│ + \_init*\_(self)        │               │ + \_init*\_(self)        │
 
-│ + update_animation() │ └──────────────────────────┘
+│ + update_animation()     │               └──────────────────────────┘
 
 └──────────────────────────┘
 
@@ -408,41 +412,41 @@ Las clases Air_enemy y Air_enemy2 heredan de arcade.Sprite.
 
 ┌────────────────────────────┐
 
-│ Air_enemy │
+│        Air_enemy           │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
-│ + update() │
+│ + update()                 │
 
-│ + movimiento() │
+│ + movimiento()             │
 
-│ + impacto() │
+│ + impacto()                │
 
-│ + restaurar_color() │
+│ + restaurar_color()        │
 
-│ + disparar() │
+│ + disparar()               │
 
 └────────────────────────────┘
 
 ┌────────────────────────────┐
 
-│ Air_enemy2 │
+│        Air_enemy2          │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
-│ + update() │
+│ + update()                 │
 
-│ + movimiento() │
+│ + movimiento()             │
 
-│ + impacto() │
+│ + impacto()                │
 
-│ + restaurar_color() │
+│ + restaurar_color()        │
 
-│ + disparar() │
+│ + disparar()               │
 
 └────────────────────────────┘
 
@@ -452,21 +456,21 @@ La clase WalkingEnemy hereda de arcade.Sprite.
 
 ┌────────────────────────────┐
 
-│ WalkingEnemy │
+│        WalkingEnemy        │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
-│ + update() │
+│ + update()                 │
 
-│ + movimiento() │
+│ + movimiento()             │
 
-│ + impacto() │
+│ + impacto()                │
 
-│ + restaurar_color() │
+│ + restaurar_color()        │
 
-│ + disparar() │
+│ + disparar()               │
 
 └────────────────────────────┘
 
@@ -476,71 +480,71 @@ Todas las clases heredan de arcade.Sprite.
 
 ┌────────────────────────────┐
 
-│ Arma │
+│           Arma             │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
-│ + flip() │
+│ + flip()                   │
 
 └────────────────────────────┘
 
 ┌────────────────────────────┐
 
-│ Proyectil │
+│        Proyectil           │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
 └────────────────────────────┘
 
 ┌────────────────────────────┐
 
-│ Proyectil_enemigo │
+│     Proyectil_enemigo      │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
 └────────────────────────────┘
 
 ┌────────────────────────────┐
 
-│ Proyectil_enemigo_andante │
+│ Proyectil_enemigo_andante  │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
 └────────────────────────────┘
 
 ┌────────────────────────────┐
 
-│ Explosion_enemigo │
+│ Explosion_enemigo          │
 
 ├────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)         │
 
-│ + update() │
+│ + update()                 │
 
 └────────────────────────────┘
 
-┌────────────────────────────┐
+┌─────────────────────────────┐
 
-│ Misil_enemigo │
+│ Misil_enemigo               │
 
-├────────────────────────────┤
+├─────────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)          │
 
-│ + update() │
+│ + update()                  │
 
 │ + remove_from_sprite_lists()│
 
-└────────────────────────────┘
+└─────────────────────────────┘
 
 ## \***\*3.5. Sistemas especiales\*\***
 
@@ -550,13 +554,13 @@ Todas las clases heredan de arcade.Sprite.
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
-│ + update() │
+│ + update()               │
 
-│ + draw() │
+│ + draw()                 │
 
-│ + is_finished() │
+│ + is_finished()          │
 
 └──────────────────────────┘
 
@@ -566,59 +570,59 @@ Todas las clases heredan de arcade.View.
 
 ┌──────────────────────────┐
 
-│ MainMenu │
+│         MainMenu         │
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
-│ + on_show_view() │
+│ + on_show_view()         │
 
-│ + play_game() │
+│ + play_game()            │
 
-│ + play_game() │
+│ + play_game()            │
 
-│ + creditos_game() │
+│ + creditos_game()        │
 
-│ + instrucciones_game() │
+│ + instrucciones_game()   │
 
-│ + exit_game() │
+│ + exit_game()            │
 
-│ + on_hide_view() │
+│ + on_hide_view()         │
 
-│ + on_draw() │
+│ + on_draw()              │
 
 └──────────────────────────┘
 
 ┌──────────────────────────┐
 
-│ Instrucciones │
+│      Instrucciones       │
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
-│ + on_show_view() │
+│ + on_show_view()         │
 
-│ + atras_game() │
+│ + atras_game()           │
 
-│ + on_draw() │
+│ + on_draw()              │
 
 └──────────────────────────┘
 
 ┌──────────────────────────┐
 
-│ Creditos │
+│ Creditos                 │
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
-│ + on_show_view() │
+│ + on_show_view()         │
 
-│ + atras_game() │
+│ + atras_game()           │
 
-│ + on_draw() │
+│ + on_draw()              │
 
 └──────────────────────────┘
 
@@ -628,43 +632,43 @@ Las clases GameView y GameOverview heredan de la clase arcade.View
 
 ┌──────────────────────────┐
 
-│ GameView │
+│ GameView                 │
 
 ├──────────────────────────┤
 
-│ + \_init\_\_(self) │
+│ + \_init\_\_(self)       │
 
-│ + setup() │
+│ + setup()                │
 
-│ + on_show_view() │
+│ + on_show_view()         │
 
-│ + on_draw() │
+│ + on_draw()              │
 
-│ + on_update() │
+│ + on_update()            │
 
-│ + on_mouse_motion() │
+│ + on_mouse_motion()      │
 
-│ + process_keychange() │
+│ + process_keychange()    │
 
-│ + on_key_press() │
+│ + on_key_press()         │
 
-│ + on_key_releaase() │
+│ + on_key_releaase()      │
 
-│ + on_draw() │
+│ + on_draw()              │
 
 └──────────────────────────┘
 
 ┌──────────────────────────┐
 
-│ GameOverView │
+│ GameOverView             │
 
 ├──────────────────────────┤
 
-│ + on_show_view() │
+│ + on_show_view()         │
 
-│ + on_draw() │
+│ + on_draw()              │
 
-│ + on_mouse_press() │
+│ + on_mouse_press()       │
 
 └──────────────────────────┘
 
@@ -679,6 +683,10 @@ Arcade.View ───────► Creditos
 Arcade.View ───────► GameView
 
 Arcade.View ───────► GameOverView
+
+Arcade.View ───────► VictoryView
+
+Arcade.View ───────► Animation
 
 Arcade.Sprite ───────► Character ───────► PlayerCharacter
 
@@ -767,19 +775,18 @@ Extiende:
 
 **Actor:** Jugador
 
-**Descripción:** El jugador activa teletransportador, accede a zonas, cambia de fases.
+**Descripción:** El jugador activa teletransportador, cambia de fase.
 
 Incluye:
 
 - Activar teletransportador
-- Acceder zonas
-- Acceder fases
+- Acceder a fases
 
 ### **4.2.5. Gestionar recursos**
 
 **Actor:** Jugador
 
-**Descripción:** El jugador recoge gamas y gestiona su inventario básico.
+**Descripción:** El jugador recoge gemas y gestiona su inventario básico.
 
 Incluye:
 
@@ -795,7 +802,7 @@ Incluye:
 Incluye:
 
 - Completar nivel
-- Desbloquear nueva zona
+- Desbloquear nueva fase
 
 ## \***\*4.3. Diagrama UML de Casos de Uso (PlantUML)\*\***
 
