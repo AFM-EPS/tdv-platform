@@ -7,7 +7,6 @@ import cv2
 from PIL import Image
 
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 class Animation(arcade.View):
 

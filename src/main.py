@@ -143,10 +143,11 @@ class GameView(arcade.View):
         self.final_boss_defeated = None
 
         # Ruta vídeos
-        self.abduction_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-alpha.mov"
-        self.victory_video_path = PROJECT_ROOT / "assets" / "videos" / "VIDEO_PROVISIONAL_VICTORIA.mp4"
+        self.abduction_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-abduction.mov"
+        self.victory_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-victory.mov"
         # Ruta audio vídeos
-        self.abduction_audio_path = PROJECT_ROOT / "assets" / "music" / "animation-alpha-audio.mp3"
+        self.abduction_audio_path = PROJECT_ROOT / "assets" / "music" / "animation-abduction-audio.mp3"
+        self.victory_audio_path = PROJECT_ROOT / "assets" / "music" / "animation-victory-audio.mp3"
 
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "coin1.wav")
@@ -919,7 +920,7 @@ class GameView(arcade.View):
                         # Se inicia la animación de victoria y cuando acaba aparece en el mapa 1
                         next_view = MainMenu()
                         self.map_num = 1
-                        self.window.show_view(Animation(next_view, self.victory_video_path, self.abduction_audio_path))
+                        self.window.show_view(Animation(next_view, self.victory_video_path, self.victory_audio_path))
                 
 
                 self.e_pressed = False
