@@ -223,17 +223,18 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                10,
-                4,
                 5,
                 6,
-                3
+                4,
+                3,
+                10,
+                7
             ],
-            "scale": 0.125,
-            "selectedLayer": 9,
+            "scale": 1.5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 6432,
-                "y": 1308
+                "x": 5554.666666666666,
+                "y": 1449
             }
         },
         "maps/mapa-2bueno.json": {
@@ -247,13 +248,13 @@
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
                 5,
+                6,
                 17,
-                7,
                 8,
-                6
+                7
             ],
             "scale": 0.33,
-            "selectedLayer": 6,
+            "selectedLayer": 5,
             "viewCenter": {
                 "x": 5103.030303030303,
                 "y": 1031.818181818182
@@ -262,11 +263,12 @@
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
                 5,
+                6,
                 17,
-                6
+                22
             ],
             "scale": 0.5,
-            "selectedLayer": 7,
+            "selectedLayer": 8,
             "viewCenter": {
                 "x": 4800,
                 "y": 225
@@ -274,13 +276,17 @@
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
-                4
+                5,
+                6,
+                13,
+                4,
+                3
             ],
-            "scale": 0.25,
+            "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
                 "x": 884,
-                "y": 2518
+                "y": 2519.333333333333
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -321,7 +327,7 @@
         },
         "tilesets/examples_tileset.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.25,
+            "scaleInDock": 0.125,
             "scaleInEditor": 1
         },
         "tilesets/fence.json": {
@@ -454,7 +460,6 @@
     "openFiles": [
         "maps/mapa-2.json",
         "maps/mapa-4.json",
-        "maps/mapa-1.json",
         "maps/mapa-3.json",
         "maps/mapa-5.json"
     ],
@@ -463,9 +468,9 @@
     "recentFiles": [
         "maps/mapa-5.json",
         "maps/mapa-3.json",
-        "maps/mapa-1.json",
         "maps/mapa-4.json",
         "maps/mapa-2.json",
+        "maps/mapa-1.json",
         "tilesets/space_gun.json",
         "maps/mapa-2-actualizado.json",
         "tilesets/rock_ladders.json",

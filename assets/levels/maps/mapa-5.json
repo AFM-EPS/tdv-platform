@@ -17,13 +17,42 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":13,
+         "name":"pressable_objects",
+         "objects":[
+                {
+                 "gid":10,
+                 "height":128,
+                 "id":53,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"rocket_door"
+                        }],
+                 "rotation":0,
+                 "type":"Pressable_Object",
+                 "visible":true,
+                 "width":128,
+                 "x":1408,
+                 "y":704
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "id":12,
          "image":"..\/..\/img\/rocket.png",
          "imageheight":4992,
          "imagewidth":580,
          "name":"rocket",
-         "offsetx":1189.81818181818,
-         "offsety":-77.3939393939392,
+         "offsetx":1187.15151515151,
+         "offsety":-62.7272727272725,
          "opacity":1,
          "type":"imagelayer",
          "visible":true,
@@ -136,30 +165,7 @@
          "draworder":"topdown",
          "id":3,
          "name":"teleporters",
-         "objects":[
-                {
-                 "gid":11,
-                 "height":128,
-                 "id":1,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"destination",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"is_activated",
-                         "type":"bool",
-                         "value":false
-                        }],
-                 "rotation":0,
-                 "type":"Teleporter",
-                 "visible":true,
-                 "width":128,
-                 "x":384,
-                 "y":4992
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -340,6 +346,62 @@
                  "y":2560
                 }, 
                 {
+                 "gid":2,
+                 "height":64,
+                 "id":45,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":896,
+                 "y":2112
+                }, 
+                {
+                 "gid":2,
+                 "height":64,
+                 "id":46,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":1152,
+                 "y":2112
+                }, 
+                {
                  "gid":4,
                  "height":128,
                  "id":20,
@@ -394,6 +456,34 @@
                  "width":128,
                  "x":256,
                  "y":2688
+                }, 
+                {
+                 "gid":2,
+                 "height":64,
+                 "id":47,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"move_on_x",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":640,
+                 "y":2112
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -964,6 +1054,50 @@
                  "width":0,
                  "x":59.1515151515154,
                  "y":1355.18181818182
+                },
+            
+                {
+                 "height":0,
+                 "id":44,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":250
+                        }, 
+                        {
+                         "name":"shot_cadence",
+                         "type":"float",
+                         "value":2
+                        }, 
+                        {
+                         "name":"shot_speed",
+                         "type":"float",
+                         "value":10
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"float",
+                         "value":6
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"flying_2"
+                        }, 
+                        {
+                         "name":"vision",
+                         "type":"int",
+                         "value":350
+                        }],
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":0,
+                 "x":1159.33333333333,
+                 "y":1810
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1121,24 +1255,6 @@
                  "y":2332
                 }, 
                 {
-                 "gid":13,
-                 "height":128,
-                 "id":42,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":10
-                        }],
-                 "rotation":0,
-                 "type":"Blue_ore",
-                 "visible":true,
-                 "width":128,
-                 "x":0,
-                 "y":1408
-                }, 
-                {
                  "gid":14,
                  "height":128,
                  "id":26,
@@ -1191,6 +1307,24 @@
                  "width":128,
                  "x":0,
                  "y":3744.66666666667
+                }, 
+                {
+                 "gid":14,
+                 "height":128,
+                 "id":55,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":50
+                        }],
+                 "rotation":0,
+                 "type":"Green_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":1.4210854715202e-14,
+                 "y":1408
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1359,8 +1493,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":13,
- "nextobjectid":43,
+ "nextlayerid":14,
+ "nextobjectid":56,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
