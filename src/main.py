@@ -23,6 +23,7 @@ from character.teleporter_particle_system import TeleporterParticleSystem as Tel
 
 from gui.menu import MainMenu as MainMenu
 from gui.game_over import GameOverView as GameOverView
+from gui.victory import VictoryView as VictoryView
 from gui.animation import Animation
 
 # Constants
@@ -917,8 +918,8 @@ class GameView(arcade.View):
                             self.walk_player = None
                             self.is_walking_sound_on = False
 
-                        # Se inicia la animación de victoria y cuando acaba aparece en el mapa 1
-                        next_view = MainMenu()
+                        # Se inicia la animación de victoria y cuando acaba se muestra la pantalla de victoria
+                        next_view = VictoryView()
                         self.map_num = 1
                         self.window.show_view(Animation(next_view, self.victory_video_path, self.victory_audio_path))
                 
