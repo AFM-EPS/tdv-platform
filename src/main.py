@@ -417,7 +417,7 @@ class GameView(arcade.View):
         self.shoot_timer = 0
 
         # Initialize our arcade.Text object for score
-        self.score_text = arcade.Text(f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}", x=0, y=25)
+        self.score_text = arcade.Text(f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}", x=25, y=25, font_name="Impact")
 
         # Calculate the right edge of the map in pixels
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)

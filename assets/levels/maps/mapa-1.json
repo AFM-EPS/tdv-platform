@@ -21,6 +21,20 @@
          "y":0
         }, 
         {
+         "id":14,
+         "image":"..\/..\/img\/white_cloud_A_D.png",
+         "imageheight":360,
+         "imagewidth":360,
+         "name":"indicator",
+         "offsetx":317,
+         "offsety":53,
+         "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -162,20 +176,6 @@
          "type":"tilelayer",
          "visible":true,
          "width":15,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "id":14,
-         "image":"..\/..\/img\/arbusto-W-S.png",
-         "imageheight":256,
-         "imagewidth":384,
-         "name":"Indicador",
-         "offsetx":384,
-         "offsety":388,
-         "opacity":1,
-         "type":"imagelayer",
-         "visible":true,
          "x":0,
          "y":0
         }],
