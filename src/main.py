@@ -148,6 +148,11 @@ class GameView(arcade.View):
         # Variable para almacenar si se ha derrotado al final boss
         self.final_boss_defeated = None
 
+        # Cargar texturas de gemas
+        self.gem_azul_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "blue_ore.png")
+        self.gem_verde_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "green_ore.png")
+        self.gem_dorada_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "golden_ore.png")
+
         # Ruta vídeos
         self.abduction_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-abduction.mov"
         self.victory_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-victory.mov"
@@ -417,7 +422,7 @@ class GameView(arcade.View):
         self.shoot_timer = 0
 
         # Initialize our arcade.Text object for score
-        self.score_text = arcade.Text(f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}", x=25, y=25, font_name="Impact")
+        self.score_text = arcade.Text(f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}", x=25, y=25, font_name="Impact")
 
         # Calculate the right edge of the map in pixels
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)
@@ -455,6 +460,53 @@ class GameView(arcade.View):
             heart.center_y = start_y
             self.heart_sprites.append(heart)
         
+        # Numero gemas
+        self.gem_imagen_sprites = arcade.SpriteList()
+        spacing = 10
+        x_correct = -225
+        y_correct = -20
+
+        # azul
+        azul_size = 60
+        total_width = 4 * azul_size + 3 * spacing
+        start_x = 20 + x_correct + total_width + azul_size / 2
+        start_y = 20 + y_correct + azul_size / 2
+
+        gem = arcade.Sprite()
+        gem.texture = self.gem_azul_texture
+        gem.width = azul_size
+        gem.height = azul_size
+        gem.center_x = start_x + 1 * (azul_size + spacing)
+        gem.center_y = start_y
+        self.gem_imagen_sprites.append(gem)
+
+        # verde
+        verde_size = 60
+        total_width = 4 * verde_size + 3 * spacing
+        start_x = 20 + x_correct+ total_width + verde_size / 2
+        start_y = 20 + y_correct +verde_size / 2
+
+        gem = arcade.Sprite()
+        gem.texture = self.gem_verde_texture
+        gem.width = verde_size
+        gem.height = verde_size
+        gem.center_x = start_x + 2 * (verde_size + spacing)
+        gem.center_y = start_y
+        self.gem_imagen_sprites.append(gem)
+
+        # dorada
+        dorada_size = 60
+        total_width = 4 * dorada_size + 3 * spacing
+        start_x = 20 + x_correct + total_width + dorada_size / 2
+        start_y = 20 + y_correct + dorada_size / 2
+
+        gem = arcade.Sprite()
+        gem.texture = self.gem_dorada_texture
+        gem.width = dorada_size
+        gem.height = dorada_size
+        gem.center_x = start_x + 3 * (dorada_size + spacing)
+        gem.center_y = start_y
+        self.gem_imagen_sprites.append(gem)
 
         #### AHORA ESTÁ EN TRUE POR DEBUG, PONER A FALSE ANTES DE ENTREGAR
         self.final_boss_defeated = True
@@ -496,6 +548,9 @@ class GameView(arcade.View):
 
         # Draw our Score
         self.score_text.draw()
+
+        # Dibujar imagenes contador de gemas
+        self.gem_imagen_sprites.draw()
 
         # Dibujar corazones de vida
         self.draw_health_hearts()
@@ -754,7 +809,7 @@ class GameView(arcade.View):
 
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
-                self.score_text.text = f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}"
+                self.score_text.text = f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}"
                 self.score_text.scale = 3.0 
 
 
