@@ -9,9 +9,9 @@ from PIL import Image
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
-class Victoria_Animation(arcade.View):
+class Animation(arcade.View):
 
-    def __init__(self, next_view):
+    def __init__(self, next_view, video_path, audio_path):
 
         super().__init__()
 
@@ -19,10 +19,9 @@ class Victoria_Animation(arcade.View):
         self.next_view = next_view
         
         # Cargar el vídeo
-        self.video = cv2.VideoCapture(PROJECT_ROOT / "assets" / "videos" / "VIDEO_PROVISIONAL_VICTORIA.mp4")
+        self.video = cv2.VideoCapture(video_path)
 
         # Cargar audio del vídeo
-        audio_path = PROJECT_ROOT / "assets" / "music" / "animation-alpha-audio.mp3"
         self.video_sound = arcade.load_sound(audio_path)
         self.sound_player = None
         
@@ -33,14 +32,6 @@ class Victoria_Animation(arcade.View):
 
         # Indicador de que el vídeo ha comenzado
         self.video_started = False
-
-        self.instructions_list = []
-
-        titulo = arcade.Text("¡Victoria!", self.window.width / 2, self.window.height / 2, arcade.color.WHITE, 48, anchor_x="center", font_name="Impact")
-        self.instructions_list.append(titulo)
-
-        text = arcade.Text("Click para continuar", self.window.width / 2, self.window.height / 2 - (40*2), arcade.color.WHITE, 24, anchor_x="center", font_name="Impact")
-        self.instructions_list.append(text)
 
 
     def on_show_view(self):
@@ -101,15 +92,14 @@ class Victoria_Animation(arcade.View):
         if self.video_started:
             self.sprite_list.draw()
 
-        # Dibujar instrucciones
-        for line in self.instructions_list:
-            line.draw()
 
+    def on_key_press(self, key, modifiers):
 
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        self.video.release()
+        # Saltar animación
+        if key == arcade.key.ESCAPE:
+            self.video.release()
 
-        if self.sound_player:
-            arcade.stop_sound(self.sound_player)
+            if self.sound_player:
+                arcade.stop_sound(self.sound_player)
             
-        self.window.show_view(self.next_view)
+            self.window.show_view(self.next_view)

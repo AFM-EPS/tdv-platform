@@ -23,8 +23,7 @@ from character.teleporter_particle_system import TeleporterParticleSystem as Tel
 
 from gui.menu import MainMenu as MainMenu
 from gui.game_over import GameOverView as GameOverView
-from gui.abduction_animation import AbductionAnimation
-from gui.victoria_animation import Victoria_Animation
+from gui.animation import Animation
 
 # Constants
 WINDOW_WIDTH = 1280
@@ -137,8 +136,17 @@ class GameView(arcade.View):
         # Letra E presionada
         self.e_pressed = False
 
-        # Variabla para almacenar si el jugador tiene arma
+        # Variable para almacenar si el jugador tiene arma
         self.has_gun = False
+
+        # Variable para almacenar si se ha derrotado al final boss
+        self.final_boss_defeated = None
+
+        # Ruta vídeos
+        self.abduction_video_path = PROJECT_ROOT / "assets" / "videos" / "animation-alpha.mov"
+        self.victory_video_path = PROJECT_ROOT / "assets" / "videos" / "VIDEO_PROVISIONAL_VICTORIA.mp4"
+        # Ruta audio vídeos
+        self.abduction_audio_path = PROJECT_ROOT / "assets" / "music" / "animation-alpha-audio.mp3"
 
         # Load sounds
         self.collect_coin_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "coin1.wav")
@@ -439,6 +447,10 @@ class GameView(arcade.View):
             heart.center_x = start_x + i * (heart_size + spacing)
             heart.center_y = start_y
             self.heart_sprites.append(heart)
+        
+
+        #### AHORA ESTÁ EN TRUE POR DEBUG, PONER A FALSE ANTES DE ENTREGAR
+        self.final_boss_defeated = True
 
     def on_show_view(self):
         self.setup()
@@ -446,27 +458,6 @@ class GameView(arcade.View):
             self.music_player = self.music_level1.play(volume=0.7, loop=True)
         else:
             self.music_player = self.background_music.play(volume=0.7, loop=True)
-
-    def victoria(self):
-        if(self.map_num == 5):
-            # Detener música
-            if self.music_player is not None:
-                arcade.stop_sound(self.music_player)
-                self.music_player = None
-                    
-            # Detener sonido de pasos para evitar bug
-            if self.is_walking_sound_on and self.walk_player is not None:
-                arcade.stop_sound(self.walk_player)
-                self.walk_player = None
-                self.is_walking_sound_on = False
-
-            # Se hace el import aquí para evitar error por bucle infinito de import circular
-            from gui.menu import MainMenu
-
-            # Se inicia la animación y cuando acaba aparece en el mapa 1
-            next_view = MainMenu()
-            self.map_num = 1
-            self.window.show_view(Victoria_Animation(next_view))
 
 
 
@@ -866,13 +857,18 @@ class GameView(arcade.View):
 
             name = pressable_hit_list[0].properties.get("name")
 
+            # Colocar texto
+            self.pressable_text.text = "Presiona E"
+            self.pressable_text.x = pressable_hit_list[0].center_x
+            self.pressable_text.y = pressable_hit_list[0].top + 20
 
-            if name != "rocket_door":
-                # Colocar texto
-                self.pressable_text.text = "Presiona E"
-                self.pressable_text.x = pressable_hit_list[0].center_x
-                self.pressable_text.y = pressable_hit_list[0].top + 20
             
+            if name == "rocket_door":
+                # Si es la puerta del cohete del final, se oculta el texto hasta que se derrote al final boss
+                if self.final_boss_defeated: self.pressable_text.text = "Presiona E"
+                else: self.pressable_text.text = ""
+            
+
             # Si se presiona E
             if self.e_pressed:
 
@@ -889,10 +885,10 @@ class GameView(arcade.View):
                         self.walk_player = None
                         self.is_walking_sound_on = False
 
-                    # Se inicia la animación y cuando acaba aparece en el mapa 2
+                    # Se inicia la animación de abducción y cuando acaba aparece en el mapa 2
                     next_view = GameView()
                     next_view.map_num = 2
-                    self.window.show_view(AbductionAnimation(next_view))
+                    self.window.show_view(Animation(next_view, self.abduction_video_path, self.abduction_audio_path))
 
 
                 elif name == "gun":
@@ -907,13 +903,7 @@ class GameView(arcade.View):
                 
                 elif name == "rocket_door":
 
-                    #if self.final_boss_defeated: # DESCOMENTAR ESTA LÍNEA CUANDO SE IMPLEMENTE ESTE BOOLEANO
-                    if True:
-
-                        # Colocar texto
-                        self.pressable_text.text = "Presiona E"
-                        self.pressable_text.x = pressable_hit_list[0].center_x
-                        self.pressable_text.y = pressable_hit_list[0].top + 20
+                    if self.final_boss_defeated:
 
                         # Detener música
                         if self.music_player is not None:
@@ -926,16 +916,17 @@ class GameView(arcade.View):
                             self.walk_player = None
                             self.is_walking_sound_on = False
 
-                        # Se muestra la pantalla de victoria
-                        # Provisionalmente se irá al menú hasta que se implemente la pantalla de victoria
-                        self.window.show_view(MainMenu())
+                        # Se inicia la animación de victoria y cuando acaba aparece en el mapa 1
+                        next_view = MainMenu()
+                        self.map_num = 1
+                        self.window.show_view(Animation(next_view, self.victory_video_path, self.abduction_audio_path))
+                
 
                 self.e_pressed = False
         else:
             self.pressable_text.text = ""
         
-        if (self.player_sprite.center_x > 1280 and self.player_sprite.center_y > 4400):
-            self.victoria()
+
 
         self.scene.update(delta_time, ["enemies", "Bullets","Enemy_bullets", "special_platforms"])
 
@@ -1035,9 +1026,6 @@ class GameView(arcade.View):
         if key == arcade.key.E:
             self.e_pressed = True
 
-        if key == arcade.key.V:
-            self.victoria() #De provisional hasta que se implemente el enemigo final, 
-            #en la linea 902 aproximadamente se simula de forma provisional la victoria al llegar la zona superior derecha del mapa para facilitar las pruebas de la animación de la victoria
 
         self.process_keychange()
 
