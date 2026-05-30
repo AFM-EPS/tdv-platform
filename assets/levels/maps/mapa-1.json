@@ -59,7 +59,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            72, 0, 72, 72, 0, 0, 72, 0, 0, 0, 72, 0, 0, 0, 0,
+            72, 0, 72, 0, 0, 0, 72, 72, 72, 0, 72, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":6,
          "id":8,
@@ -164,9 +164,23 @@
          "width":15,
          "x":0,
          "y":0
+        }, 
+        {
+         "id":14,
+         "image":"..\/..\/img\/arbusto-W-S.png",
+         "imageheight":256,
+         "imagewidth":384,
+         "name":"Indicador",
+         "offsetx":384,
+         "offsety":388,
+         "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":12,
- "nextobjectid":2,
+ "nextlayerid":15,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -203,6 +217,10 @@
         {
          "firstgid":73,
          "source":"..\/tilesets\/fence.json"
+        }, 
+        {
+         "firstgid":74,
+         "source":"..\/tilesets\/examples_tileset.json"
         }],
  "tilewidth":128,
  "type":"map",
