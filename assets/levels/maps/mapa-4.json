@@ -38,7 +38,6 @@
          "offsetx":4480,
          "offsety":0,
          "opacity":1,
-         "parallaxx":1,
          "type":"imagelayer",
          "visible":true,
          "x":0,
@@ -877,6 +876,34 @@
                  "width":128,
                  "x":4736,
                  "y":640
+                }, 
+                {
+                 "gid":9,
+                 "height":64,
+                 "id":59,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":513.034164730734,
+                 "y":507.739621086704
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -901,8 +928,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":27,
- "nextobjectid":59,
+ "nextlayerid":28,
+ "nextobjectid":61,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

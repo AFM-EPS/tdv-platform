@@ -110,6 +110,11 @@ class GameView(arcade.View):
         # This variable will store the text for score that we will draw to the screen.
         self.score_text = None
 
+        # Lista de gemas
+        self.gem_azul = 0
+        self.gem_dorada = 0
+        self.gem_verde = 0
+
         # Where is the right edge of the map?
         self.end_of_map = 0
 
@@ -402,7 +407,7 @@ class GameView(arcade.View):
         self.shoot_timer = 0
 
         # Initialize our arcade.Text object for score
-        self.score_text = arcade.Text(f"Score: {self.score}", x=0, y=5)
+        self.score_text = arcade.Text(f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}", x=0, y=25)
 
         # Calculate the right edge of the map in pixels
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)
@@ -741,9 +746,17 @@ class GameView(arcade.View):
             elif self.scene["ores"] in collision.sprite_lists:
                 # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
                 self.score += collision.properties["value"]
+                if (collision.properties["value"] == 10):
+                    self.gem_azul += 1
+                elif (collision.properties["value"] == 100):
+                    self.gem_dorada += 1
+                elif (collision.properties["value"] == 50):
+                    self.gem_verde += 1
+
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
-                self.score_text.text = f"Score: {self.score}"
+                self.score_text.text = f"Score: {self.score}   Gemas Azules: {self.gem_azul}   Gemas Verdes: {self.gem_verde}   Gemas Doradas: {self.gem_dorada}"
+                self.score_text.scale = 3.0 
 
 
         # Si se puede avanzar verticalmente en el mapa, la posición en Y de la cámara variará
