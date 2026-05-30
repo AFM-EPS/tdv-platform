@@ -253,11 +253,11 @@
                 8,
                 17
             ],
-            "scale": 0.25,
-            "selectedLayer": 11,
+            "scale": 0.75,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 5300,
-                "y": 1558
+                "x": 6213.333333333333,
+                "y": 1372.6666666666665
             }
         },
         "maps/mapa-4.json": {
@@ -270,8 +270,8 @@
             "scale": 0.5,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 1128,
-                "y": 225
+                "x": 5412,
+                "y": 471
             }
         },
         "maps/mapa-5.json": {
@@ -285,8 +285,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 884.8484848484849,
-                "y": 2519.69696969697
+                "x": 884.8484848484848,
+                "y": 656.060606060606
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -487,6 +487,7 @@
     "project": "levels.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "tilesets/rock_ladders.json",
         "maps/mapa-1.json",
         "tilesets/space_half_block_left.json",
         "tilesets/space_half_block.json",
@@ -497,8 +498,7 @@
         "tilesets/space_block.json",
         "maps/mapa-4.json",
         "maps/mapa-5.json",
-        "maps/mapa-3.json",
-        "maps/mapa-2.json"
+        "maps/mapa-3.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,
