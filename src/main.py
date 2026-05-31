@@ -3,6 +3,7 @@ import math
 from pathlib import Path
 
 import arcade
+import persistence
 
 from character.air_enemy import Air_enemy
 from character.air_enemy2 import Air_enemy2
@@ -214,6 +215,9 @@ class GameView(arcade.View):
             }
         }
 
+
+        # Asegurar que el nivel actual esté registrado como desbloqueado
+        persistence.unlock_level(self.map_num)
 
         # Cargar el tile map
         self.tile_map = arcade.load_tilemap(
@@ -688,6 +692,7 @@ class GameView(arcade.View):
 
                             if is_dead:
                                 arcade.play_sound(self.gameover_sound)
+                                persistence.update_high_score(self.score)
                                 game_over = GameOverView(self.map_num)
 
                                 if self.walk_player is not None:
@@ -772,6 +777,7 @@ class GameView(arcade.View):
                     self.player_sprite.invincible_timer = self.player_sprite.invincible_duration
                     if is_dead:
                         arcade.play_sound(self.gameover_sound)
+                        persistence.update_high_score(self.score)
                         self.background_music.stop(self.music_player)
                         game_over = GameOverView(self.map_num)
                         if self.walk_player is not None:
@@ -787,6 +793,7 @@ class GameView(arcade.View):
 
             elif self.scene ["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
+                persistence.update_high_score(self.score)
                 self.background_music.stop(self.music_player)
                 game_over = GameOverView(self.map_num)
                 if self.walk_player is not None:
@@ -875,6 +882,8 @@ class GameView(arcade.View):
                 self.particle_systems.remove(particle_system)
 
                 self.map_num = self.map_destination
+                persistence.unlock_level(self.map_num)
+                persistence.update_high_score(self.score)
                 arcade.play_sound(self.player_teleported_sound)
                 self.reset_score = False
                 self.setup()
@@ -1021,6 +1030,8 @@ class GameView(arcade.View):
                         self.walk_player = None
                         self.is_walking_sound_on = False
 
+                    persistence.unlock_level(2)
+                    persistence.update_high_score(self.score)
                     # Se inicia la animación de abducción y cuando acaba aparece en el mapa 2
                     next_view = GameView()
                     next_view.map_num = 2
@@ -1052,6 +1063,7 @@ class GameView(arcade.View):
                             self.walk_player = None
                             self.is_walking_sound_on = False
 
+                        persistence.update_high_score(self.score)
                         # Se inicia la animación de victoria y cuando acaba se muestra la pantalla de victoria
                         next_view = VictoryView()
                         self.map_num = 1
@@ -1128,6 +1140,7 @@ class GameView(arcade.View):
                 # Limpiar la referencia
                 self.music_player = None
             
+            persistence.update_high_score(self.score)
             menu_view = MainMenu()
             self.window.show_view(menu_view)
 

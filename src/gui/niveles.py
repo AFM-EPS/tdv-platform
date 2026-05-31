@@ -1,5 +1,6 @@
 import arcade
 import arcade.gui
+import persistence
 from pathlib import Path
 
 
@@ -15,6 +16,10 @@ class Niveles(arcade.View):
 
         # Manager que controla la interfaz
         self.manager = arcade.gui.UIManager()
+
+        self.unlocked_levels = [1]
+        self.high_score = 0
+        self.level_buttons = {}
 
 
         self.background_list = arcade.SpriteList()
@@ -48,6 +53,10 @@ class Niveles(arcade.View):
 
         self.manager.enable()
 
+        # Recargar datos de persistencia actualizados
+        self.unlocked_levels = persistence.get_unlocked_levels()
+        self.high_score = persistence.get_high_score()
+
 
         # Contenedor vertical
         self.vertical_box = arcade.gui.UIBoxLayout(space_between=20, align="center")
@@ -64,6 +73,15 @@ class Niveles(arcade.View):
         nivel_3_btn = arcade.gui.UITextureButton(texture=self.nivel_3_btn_sprite, width=192, height=64)
         nivel_4_btn = arcade.gui.UITextureButton(texture=self.nivel_4_btn_sprite, width=192, height=64)
         nivel_final_btn = arcade.gui.UITextureButton(texture=self.nivel_final_btn_sprite, width=192, height=64)
+
+        # Registrar botones para control de bloqueados
+        self.level_buttons = {
+            1: nivel_1_btn,
+            2: nivel_2_btn,
+            3: nivel_3_btn,
+            4: nivel_4_btn,
+            5: nivel_final_btn
+        }
 
         # Asociación de eventos de botones
         atras_btn.on_click = self.atras_game
@@ -108,6 +126,8 @@ class Niveles(arcade.View):
         self.window.show_view(game_view)
 
     def nivel_1_game(self, event):
+        if 1 not in self.unlocked_levels:
+            return
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         arcade.play_sound(self.button_press_sound)
@@ -123,6 +143,8 @@ class Niveles(arcade.View):
         self.window.show_view(game_view)
 
     def nivel_2_game(self, event):
+        if 2 not in self.unlocked_levels:
+            return
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         arcade.play_sound(self.button_press_sound)
@@ -138,6 +160,8 @@ class Niveles(arcade.View):
         self.window.show_view(game_view)
 
     def nivel_3_game(self, event):
+        if 3 not in self.unlocked_levels:
+            return
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         arcade.play_sound(self.button_press_sound)
@@ -153,6 +177,8 @@ class Niveles(arcade.View):
         self.window.show_view(game_view)
 
     def nivel_4_game(self, event):
+        if 4 not in self.unlocked_levels:
+            return
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         arcade.play_sound(self.button_press_sound)
@@ -168,6 +194,8 @@ class Niveles(arcade.View):
         self.window.show_view(game_view)
 
     def nivel_final_game(self, event):
+        if 5 not in self.unlocked_levels:
+            return
         # Se hace el import aquí para evitar error por bucle infinito de import circular
         from main import GameView
         arcade.play_sound(self.button_press_sound)
@@ -192,3 +220,39 @@ class Niveles(arcade.View):
 
         # Manager dibuja el menú
         self.manager.draw()
+
+        # Dibujar indicador de puntuación récord (High Score)
+        arcade.draw_text(
+            f"PUNTUACIÓN MÁXIMA: {self.high_score}",
+            WINDOW_WIDTH / 2,
+            40,
+            arcade.color.GOLDEN_YELLOW,
+            font_size=24,
+            anchor_x="center",
+            anchor_y="center",
+            font_name="Impact"
+        )
+
+        # Dibujar capa de bloqueo sobre los niveles que no están desbloqueados
+        for level_num, btn in self.level_buttons.items():
+            if level_num not in self.unlocked_levels:
+                # Dibujar rectángulo translúcido gris oscuro
+                arcade.draw_lbwh_rectangle_filled(
+                    btn.left,
+                    btn.bottom,
+                    btn.width,
+                    btn.height,
+                    (30, 30, 30, 200)  # Gris oscuro translúcido
+                )
+                # Dibujar texto de bloqueo elegante
+                arcade.draw_text(
+                    "🔒 BLOQUEADO",
+                    btn.left + btn.width / 2,
+                    btn.bottom + btn.height / 2,
+                    arcade.color.LIGHT_GRAY,
+                    font_size=12,
+                    anchor_x="center",
+                    anchor_y="center",
+                    font_name="Impact",
+                    bold=True
+                )
