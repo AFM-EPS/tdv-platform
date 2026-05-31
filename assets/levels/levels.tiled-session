@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/mapa-2.json",
     "expandedProjectPaths": [
-        "tilesets",
         ".",
-        "maps"
+        "maps",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -274,13 +274,13 @@
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
+                6,
                 13,
                 5,
                 3,
-                6,
                 4
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
                 "x": 884,

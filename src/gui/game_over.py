@@ -9,8 +9,11 @@ WINDOW_HEIGHT = 720
 
 class GameOverView(arcade.View):
 
-    def __init__(self):
+    def __init__(self, map_num):
         super().__init__()
+
+        # Guardar mapa en el que el jugador murió
+        self.map_num = map_num
 
 
         self.background_list = arcade.SpriteList()
@@ -32,6 +35,7 @@ class GameOverView(arcade.View):
         from main import GameView
 
         game_view = GameView()
+        game_view.map_num = self.map_num
         self.window.show_view(game_view)
 
 
