@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mapa-3.json",
+    "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
-        "maps",
+        "tilesets",
         ".",
-        "tilesets"
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -224,10 +224,10 @@
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
                 10,
-                6,
-                7,
                 5,
                 3,
+                6,
+                7,
                 4
             ],
             "scale": 0.125,
@@ -249,44 +249,44 @@
             "expandedObjectLayers": [
                 7,
                 5,
-                6,
+                17,
                 8,
-                17
+                6
             ],
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 6213.333333333333,
-                "y": 1372.6666666666665
+                "x": 7187.878787878788,
+                "y": 1265.151515151515
             }
         },
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
-                22,
                 5,
-                6,
-                17
+                22,
+                17,
+                6
             ],
-            "scale": 0.5,
-            "selectedLayer": 9,
+            "scale": 0.33,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 5412,
-                "y": 471
+                "x": 4051.5151515151515,
+                "y": 159.090909090909
             }
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
                 13,
-                4,
-                3,
                 5,
-                6
+                3,
+                6,
+                4
             ],
-            "scale": 0.33,
-            "selectedLayer": 1,
+            "scale": 0.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 884.8484848484848,
-                "y": 656.060606060606
+                "x": 726,
+                "y": 301
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -327,7 +327,7 @@
         },
         "tilesets/examples_tileset.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.125,
+            "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
         "tilesets/fence.json": {
@@ -427,15 +427,19 @@
             "scaleInEditor": 1
         },
         "tilesets/space_block.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_block_rock.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_cliff.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_corner.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_gun.json": {
@@ -444,12 +448,15 @@
             "scaleInEditor": 1
         },
         "tilesets/space_half_block.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_half_block_left.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_hill.json": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "tilesets/space_rock.json": {
@@ -479,14 +486,15 @@
     "map.tileWidth": 128,
     "map.width": 80,
     "openFiles": [
-        "maps/mapa-4.json",
-        "maps/mapa-3.json",
-        "maps/mapa-5.json",
-        "maps/mapa-1.json"
+        "maps/mapa-5.json"
     ],
     "project": "levels.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "maps/mapa-4.json",
+        "maps/mapa-2.json",
+        "maps/mapa-5.json",
+        "maps/mapa-3.json",
         "tilesets/rock_ladders.json",
         "maps/mapa-1.json",
         "tilesets/space_half_block_left.json",
@@ -494,11 +502,7 @@
         "tilesets/space_cliff.json",
         "tilesets/space_hill.json",
         "tilesets/space_corner.json",
-        "tilesets/space_block_rock.json",
-        "tilesets/space_block.json",
-        "maps/mapa-4.json",
-        "maps/mapa-5.json",
-        "maps/mapa-3.json"
+        "tilesets/space_block_rock.json"
     ],
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,
