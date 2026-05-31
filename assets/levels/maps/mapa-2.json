@@ -1699,8 +1699,8 @@
                 {
                  "gid":180,
                  "height":128,
-                 "id":138,
-                 "name":"heal",
+                 "id":143,
+                 "name":"",
                  "opacity":1,
                  "properties":[
                         {
@@ -1717,14 +1717,14 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":5914,
-                 "y":310
+                 "x":5890.66666666667,
+                 "y":298.666666666667
                 }, 
                 {
                  "gid":180,
                  "height":128,
-                 "id":139,
-                 "name":"heal",
+                 "id":147,
+                 "name":"",
                  "opacity":1,
                  "properties":[
                         {
@@ -1741,14 +1741,14 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":7976,
-                 "y":268
+                 "x":7778.06060606061,
+                 "y":262.787878787879
                 }, 
                 {
                  "gid":180,
                  "height":128,
-                 "id":140,
-                 "name":"heal",
+                 "id":148,
+                 "name":"",
                  "opacity":1,
                  "properties":[
                         {
@@ -1765,14 +1765,14 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":7776,
-                 "y":266
+                 "x":7950.78787878788,
+                 "y":265.818181818182
                 }, 
                 {
                  "gid":180,
                  "height":128,
-                 "id":141,
-                 "name":"heal",
+                 "id":149,
+                 "name":"",
                  "opacity":1,
                  "properties":[
                         {
@@ -1789,8 +1789,8 @@
                  "type":"",
                  "visible":true,
                  "width":128,
-                 "x":7684,
-                 "y":1040
+                 "x":7684.12121212121,
+                 "y":1041.57575757576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2929,7 +2929,7 @@
          "y":0
         }],
  "nextlayerid":20,
- "nextobjectid":143,
+ "nextobjectid":150,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.2",
@@ -2998,7 +2998,7 @@
         {
          "columns":1,
          "firstgid":180,
-         "image":"..\/..\/..\/..\/..\/..\/..\/Downloads\/heal.png",
+         "image":"..\/..\/img\/heal.png",
          "imageheight":128,
          "imagewidth":128,
          "margin":0,

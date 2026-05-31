@@ -794,6 +794,78 @@
                  "width":0,
                  "x":1159.33333333333,
                  "y":1810
+                }, 
+                {
+                 "gid":176,
+                 "height":128,
+                 "id":103,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":128,
+                 "y":1408
+                }, 
+                {
+                 "gid":176,
+                 "height":128,
+                 "id":104,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":260,
+                 "y":3064
+                }, 
+                {
+                 "gid":176,
+                 "height":128,
+                 "id":105,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":1152,
+                 "y":1808
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1033,103 +1105,6 @@
                  "width":128,
                  "x":1.4210854715202e-14,
                  "y":1408
-                }, 
-                {
-                 "gid":176,
-                 "height":128,
-                 "id":98,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":123.878787879,
-                 "y":3740.696969697
-                },
-            
-                {
-                 "gid":176,
-                 "height":128,
-                 "id":99,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1145.09090909112,
-                 "y":3201.30303030306
-                }, 
-                {
-                 "gid":176,
-                 "height":128,
-                 "id":101,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":129.939393939606,
-                 "y":1407.36363636367
-                }, 
-                {
-                 "gid":176,
-                 "height":128,
-                 "id":102,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":1278.42424242445,
-                 "y":1858.87878787882
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2558,7 +2533,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":103,
+ "nextobjectid":106,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.2",
@@ -2611,11 +2586,11 @@
         {
          "columns":1,
          "firstgid":176,
-         "image":"..\/..\/..\/..\/..\/..\/..\/Downloads\/heal.png",
+         "image":"..\/..\/img\/heal.png",
          "imageheight":128,
          "imagewidth":128,
          "margin":0,
-         "name":"heal",
+         "name":"Heal",
          "spacing":0,
          "tilecount":1,
          "tileheight":128,

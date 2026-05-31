@@ -1830,54 +1830,6 @@
                  "width":128,
                  "x":3458,
                  "y":888
-                }, 
-                {
-                 "gid":182,
-                 "height":128,
-                 "id":111,
-                 "name":"heal",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":2735.9696969697,
-                 "y":514.939393939394
-                }, 
-                {
-                 "gid":182,
-                 "height":128,
-                 "id":113,
-                 "name":"heal",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":6060.21212121212,
-                 "y":2042.21212121212
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2374,6 +2326,54 @@
                  "width":128,
                  "x":4992,
                  "y":1792
+                }, 
+                {
+                 "gid":182,
+                 "height":128,
+                 "id":114,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2724,
+                 "y":510
+                }, 
+                {
+                 "gid":182,
+                 "height":128,
+                 "id":116,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":5684,
+                 "y":2052
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2488,7 +2488,7 @@
          "y":0
         }],
  "nextlayerid":23,
- "nextobjectid":114,
+ "nextobjectid":117,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.2",
@@ -2561,11 +2561,11 @@
         {
          "columns":1,
          "firstgid":182,
-         "image":"..\/..\/..\/..\/..\/..\/..\/Downloads\/heal.png",
+         "image":"..\/..\/img\/heal.png",
          "imageheight":128,
          "imagewidth":128,
          "margin":0,
-         "name":"heal",
+         "name":"Heal",
          "spacing":0,
          "tilecount":1,
          "tileheight":128,
