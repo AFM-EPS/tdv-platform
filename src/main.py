@@ -179,11 +179,16 @@ class GameView(arcade.View):
         self.music_level1 = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "music_level1.mp3")
                 
     def setup(self):
-        
+
         # Reseteo de las variables de la trampa del mapa 4
         self.map4_trap_triggered = False
         self.map4_door_sprites = []
         self.map4_boss_enemy = None
+
+        # Parámetros configurables de la arena del Mapa 5
+        self.map5_trap_triggered = False
+        self.map5_door_sprites = []
+        self.map5_boss_enemy = None
 
         # Parámetros configurables de la arena del Mapa 4
         self.map4_arena_trigger_x = 2780
@@ -223,7 +228,7 @@ class GameView(arcade.View):
         self.camera = arcade.Camera2D()
 
 
-        
+
         # De esta manera se evita que ciertas capas de Tiled ausentes en ciertos mapas, no den errores
         expected_layers = [
             "enemies",
@@ -295,11 +300,6 @@ class GameView(arcade.View):
             enemy_shot_speed = enemy_marker.properties.get("shot_speed", 8)
             enemy_speed = enemy_marker.properties.get("speed", 3)
             enemy_vision = enemy_marker.properties.get("vision", 500)
-            #Debug boss final
-            ###!!!! FINAL BOSS EN MAPA 4!
-            if enemy_type == "flying_2" and self.map_num == 4:
-                enemy_type = "final_boss"
-            ###!!!! FINAL BOSS EN MAPA 4!
 
 
             if enemy_type == "flying_1":
@@ -419,7 +419,7 @@ class GameView(arcade.View):
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)
         self.end_of_map *= self.tile_map.scaling
 
-        
+
         # Cambio para arreglar errores
         if self.tile_map.background_color:
             self.window.background_color = self.tile_map.background_color
@@ -447,7 +447,7 @@ class GameView(arcade.View):
             heart.center_x = start_x + i * (heart_size + spacing)
             heart.center_y = start_y
             self.heart_sprites.append(heart)
-        
+
         # Número gemas
         self.gem_imagen_sprites = arcade.SpriteList()
         spacing = 10
@@ -617,7 +617,7 @@ class GameView(arcade.View):
                 # Alternar sentido movimiento plataforma
                 if (movable_platform.center_y >= initial_pos + self.movable_platforms_displacement) or (movable_platform.center_y <= initial_pos - self.movable_platforms_displacement): movable_platform.change_y = - movable_platform.change_y
 
-        
+
         # Actualizar motores de físicas de los enemigos
         for enemy in self.scene["enemies"]:
             if isinstance(enemy, WalkingEnemy) or isinstance(enemy, Air_enemy) or isinstance(enemy, Air_enemy2) or isinstance(enemy, FinalBoss):
@@ -754,7 +754,7 @@ class GameView(arcade.View):
                             collision.remove_from_sprite_lists()
                             arcade.play_sound(self.final_hit_platform_sound, volume=2.5)
                 return
-            
+
             # Remover bala si se sale del mapa
             if (bullet.right < 0) or (bullet.left > self.end_of_map):
                 bullet.remove_from_sprite_lists()
@@ -819,7 +819,7 @@ class GameView(arcade.View):
                 collision.remove_from_sprite_lists()
                 arcade.play_sound(self.collect_coin_sound)
                 self.score_text.text = f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}"
-                self.score_text.scale = 3.0 
+                self.score_text.scale = 3.0
 
 
         # Si se puede avanzar verticalmente en el mapa, la posición en Y de la cámara variará
@@ -907,14 +907,68 @@ class GameView(arcade.View):
 
             # Desactivar compuertas al derrotar al air_enemy2 (boss)
             if self.map4_trap_triggered and len(self.map4_door_sprites) > 0:
-                boss_dead = True
+                self.final_boss_defeated = True
                 if self.map4_boss_enemy in self.scene["enemies"] and self.map4_boss_enemy.health > 0:
-                    boss_dead = False
+                    self.final_boss_defeated = False
 
-                if boss_dead:
+                if self.final_boss_defeated:
                     for door in self.map4_door_sprites:
                         door.remove_from_sprite_lists()
                     self.map4_door_sprites.clear()
+
+                    # Reproducir sonido de teletransporte para indicar desbloqueo
+                    if self.player_teleported_sound:
+                        arcade.play_sound(self.player_teleported_sound, volume=1.5)
+
+        # Lógica de la trampa y generación del boss final en el Mapa 5
+        if self.map_num == 5:
+            # 1. Activar trigger al subir arriba del  (por encima de Y = 4400)
+            if not self.map5_trap_triggered and self.player_sprite.center_y >= 4400:
+                self.map5_trap_triggered = True
+
+                # Generar el Boss Final
+                self.map5_boss_enemy = FinalBoss(
+                    PROJECT_ROOT / "assets" / "sprites" / "final_boss" / "final_boss.png",
+                    self.player_sprite,
+                    self.scene,
+                    vida=400,
+                    velocidad=6,
+                    velocidad_disparo=2.0,
+                    vision=800,
+                    velocidad_proyectil=10
+                )
+                self.map5_boss_enemy.center_x = 832
+                self.map5_boss_enemy.center_y = 5000
+                self.map5_boss_enemy.motor_enemigo = arcade.PhysicsEnginePlatformer(
+                    self.map5_boss_enemy,
+                    walls=self.scene["platforms"],
+                    gravity_constant=0,
+                    platforms=[self.scene["special_platforms"], self.scene["extras"]],
+                )
+                self.scene.add_sprite("enemies", self.map5_boss_enemy)
+
+                # Cerrar compuerta para bloquear el descenso (en Y = 4160 e Y = 4288, columna 3 que es X = 448)
+                for y_pos in [4160, 4288]:
+                    door = arcade.Sprite(PROJECT_ROOT / "assets" / "img" / "metal_platform.png", scale=TILE_SCALING)
+                    door.center_x = 3 * 128 + 64  # 448
+                    door.center_y = y_pos
+                    self.scene.add_sprite("platforms", door)
+                    self.map5_door_sprites.append(door)
+
+                # Reproducir sonido de impacto de plataforma para alertar del cierre
+                if self.final_hit_platform_sound:
+                    arcade.play_sound(self.final_hit_platform_sound, volume=1.5)
+
+            # 2. Desactivar compuertas al derrotar al Boss Final
+            if self.map5_trap_triggered and len(self.map5_door_sprites) > 0:
+                self.final_boss_defeated = True
+                if self.map5_boss_enemy in self.scene["enemies"] and self.map5_boss_enemy.health > 0:
+                    self.final_boss_defeated = False
+
+                if self.final_boss_defeated:
+                    for door in self.map5_door_sprites:
+                        door.remove_from_sprite_lists()
+                    self.map5_door_sprites.clear()
 
                     # Reproducir sonido de teletransporte para indicar desbloqueo
                     if self.player_teleported_sound:
@@ -943,12 +997,12 @@ class GameView(arcade.View):
             self.pressable_text.x = pressable_hit_list[0].center_x
             self.pressable_text.y = pressable_hit_list[0].top + 20
 
-            
+
             if name == "rocket_door":
                 # Si es la puerta del cohete del final, se oculta el texto hasta que se derrote al final boss
                 if self.final_boss_defeated: self.pressable_text.text = "Presiona E"
                 else: self.pressable_text.text = ""
-            
+
 
             # Si se presiona E
             if self.e_pressed:
@@ -981,7 +1035,7 @@ class GameView(arcade.View):
                         self.player_sprite.arma.visible = True
 
                     pressable_hit_list[0].remove_from_sprite_lists() # Quitar pistola del mapa
-                
+
                 elif name == "rocket_door":
 
                     if self.final_boss_defeated:
@@ -990,7 +1044,7 @@ class GameView(arcade.View):
                         if self.music_player is not None:
                             arcade.stop_sound(self.music_player)
                             self.music_player = None
-                    
+
                         # Detener sonido de pasos para evitar bug
                         if self.is_walking_sound_on and self.walk_player is not None:
                             arcade.stop_sound(self.walk_player)
@@ -1001,7 +1055,7 @@ class GameView(arcade.View):
                         next_view = VictoryView()
                         self.map_num = 1
                         self.window.show_view(Animation(next_view, self.victory_video_path, self.victory_audio_path))
-                
+
 
                 self.e_pressed = False
         else:
@@ -1044,7 +1098,7 @@ class GameView(arcade.View):
             if self.physics_engine.is_on_ladder():
                 self.player_sprite.change_y = -PLAYER_MOVEMENT_SPEED
 
-        
+
         # Gestionar movimiento vertical
         if self.physics_engine.is_on_ladder():
             if not self.up_pressed and not self.down_pressed:
@@ -1052,7 +1106,7 @@ class GameView(arcade.View):
             elif self.up_pressed and self.down_pressed:
                 self.player_sprite.change_y = 0
 
-        
+
         # Gestionar movimiento horizontal
         if self.right_pressed and not self.left_pressed:
             self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
@@ -1088,14 +1142,14 @@ class GameView(arcade.View):
         if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = True
 
-        #### BORRAR ANTES DE ENTREGAR 
+        #### BORRAR ANTES DE ENTREGAR
         if key == arcade.key.L:
             if self.map_num < MAP_AMOUNT:
                 self.map_num += 1
                 self.setup()
             else: self.map_num = 0
         ####
-        
+
         if key == arcade.key.E:
             self.e_pressed = True
 
