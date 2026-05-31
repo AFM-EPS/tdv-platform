@@ -81,7 +81,7 @@ class GameView(arcade.View):
         self.tile_map = None
 
         # Variable para guardar el mapa a cargar
-        self.map_num = 4
+        self.map_num = 1
 
         # Variable para guardar el destino de un teleporter activado
         self.map_destination = None

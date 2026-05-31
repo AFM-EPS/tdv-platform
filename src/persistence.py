@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from webhook import leaderstats
 
 # El archivo de guardado estará en la raíz del proyecto
 SAVE_FILE_PATH = Path(__file__).parent.parent / "save_data.json"
@@ -69,6 +70,13 @@ def unlock_level(level_num):
     if level_num not in data["unlocked_levels"]:
         data["unlocked_levels"].append(level_num)
         save_data(data)
+        
+        # Enviar progreso a la nube de manera segura
+        try:
+            leaderstats.ControlDeDatos.guardarDatos("", level_num * 100000)
+        except Exception as e:
+            print(f"Error al enviar progreso a la nube: {e}")
+            
         return True
     return False
 
@@ -88,5 +96,12 @@ def update_high_score(score):
     if score > data["high_score"]:
         data["high_score"] = score
         save_data(data)
+        
+        # Enviar puntuación récord a la nube de manera segura
+        try:
+            leaderstats.ControlDeDatos.guardarDatos("", score)
+        except Exception as e:
+            print(f"Error al enviar puntuación récord a la nube: {e}")
+            
         return True
     return False
