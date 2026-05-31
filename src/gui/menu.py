@@ -53,6 +53,10 @@ class MainMenu(arcade.View):
 
         self.manager.enable()
         self.high_score = persistence.get_high_score()
+
+        if hasattr(self.window, 'menu_music_player') and self.window.menu_music_player is not None:
+            self.menu_music_player = self.window.menu_music_player
+
         if self.menu_music_player is None or not self.menu_music_player.playing:
             self.menu_music_player = self.menu_music.play(volume=0.5, loop=True)
             self.window.menu_music_player = self.menu_music_player
@@ -107,6 +111,7 @@ class MainMenu(arcade.View):
         if self.menu_music_player is not None:
             self.menu_music.stop(self.menu_music_player)
             self.menu_music_player = None
+            self.window.menu_music_player = None
         game_view = GameView()
         self.window.show_view(game_view)
 
