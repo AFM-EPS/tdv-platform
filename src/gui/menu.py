@@ -49,6 +49,18 @@ class MainMenu(arcade.View):
         self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
         self.menu_music_player = None
 
+        # Texto record
+        self.current_score_record_text = arcade.Text(
+            f"RÉCORD ACTUAL: {self.high_score}",
+            WINDOW_WIDTH / 2,
+            30,
+            arcade.color.GOLDEN_YELLOW,
+            font_size=22,
+            anchor_x="center",
+            anchor_y="center",
+            font_name="Impact"
+        )
+
     def on_show_view(self):
 
         self.manager.enable()
@@ -154,13 +166,4 @@ class MainMenu(arcade.View):
         self.manager.draw()
 
         # Dibujar puntuación máxima
-        arcade.draw_text(
-            f"RÉCORD ACTUAL: {self.high_score}",
-            WINDOW_WIDTH / 2,
-            30,
-            arcade.color.GOLDEN_YELLOW,
-            font_size=22,
-            anchor_x="center",
-            anchor_y="center",
-            font_name="Impact"
-        )
+        self.current_score_record_text.draw()

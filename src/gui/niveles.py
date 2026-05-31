@@ -49,6 +49,18 @@ class Niveles(arcade.View):
         # Sonido de boton
         self.button_press_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "button_press.mp3")
 
+        # Texto score máximo
+        self.max_score_text = arcade.Text(
+            f"PUNTUACIÓN MÁXIMA: {self.high_score}",
+            WINDOW_WIDTH / 2,
+            40,
+            arcade.color.GOLDEN_YELLOW,
+            font_size=24,
+            anchor_x="center",
+            anchor_y="center",
+            font_name="Impact"
+        )
+
     def on_show_view(self):
 
         self.manager.enable()
@@ -222,16 +234,7 @@ class Niveles(arcade.View):
         self.manager.draw()
 
         # Dibujar indicador de puntuación récord (High Score)
-        arcade.draw_text(
-            f"PUNTUACIÓN MÁXIMA: {self.high_score}",
-            WINDOW_WIDTH / 2,
-            40,
-            arcade.color.GOLDEN_YELLOW,
-            font_size=24,
-            anchor_x="center",
-            anchor_y="center",
-            font_name="Impact"
-        )
+        self.max_score_text.draw()
 
         # Dibujar capa de bloqueo sobre los niveles que no están desbloqueados
         for level_num, btn in self.level_buttons.items():
@@ -245,7 +248,7 @@ class Niveles(arcade.View):
                     (30, 30, 30, 200)  # Gris oscuro translúcido
                 )
                 # Dibujar texto de bloqueo elegante
-                arcade.draw_text(
+                arcade.Text(
                     "🔒 BLOQUEADO",
                     btn.left + btn.width / 2,
                     btn.bottom + btn.height / 2,
@@ -255,4 +258,4 @@ class Niveles(arcade.View):
                     anchor_y="center",
                     font_name="Impact",
                     bold=True
-                )
+                ).draw()

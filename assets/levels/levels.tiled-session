@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mapa-2.json",
+    "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
-        ".",
         "tilesets",
+        ".",
         "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -227,17 +227,17 @@
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
                 10,
-                4,
+                5,
                 6,
+                4,
                 3,
-                7,
-                5
+                7
             ],
             "scale": 0.33,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 7748.484848484848,
-                "y": 1104.5454545454545
+                "x": 8378.787878787878,
+                "y": 1056.060606060606
             }
         },
         "maps/mapa-2.json#heal": {
@@ -253,17 +253,17 @@
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                6,
-                7,
+                8,
                 5,
                 17,
-                8
+                6,
+                7
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 8380,
-                "y": 1033
+                "x": 7557.575757575758,
+                "y": 992.4242424242423
             }
         },
         "maps/mapa-3.json#Heal": {
@@ -274,16 +274,16 @@
         },
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
-                22,
-                6,
                 5,
+                22,
                 17,
+                6,
                 20
             ],
             "scale": 0.5,
-            "selectedLayer": 7,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 5208,
+                "x": 3956,
                 "y": 225
             }
         },
@@ -295,17 +295,17 @@
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
-                4,
+                5,
                 6,
-                3,
                 13,
-                5
+                4,
+                3
             ],
-            "scale": 0.25,
+            "scale": 1,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 684,
-                "y": 3166
+                "x": 173,
+                "y": 1422.5
             }
         },
         "maps/mapa-5.json#Heal": {
@@ -519,10 +519,10 @@
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "maps/mapa-5.json",
-        "maps/mapa-4.json",
-        "maps/mapa-3.json",
         "maps/mapa-2.json",
+        "maps/mapa-3.json",
+        "maps/mapa-4.json",
+        "maps/mapa-5.json",
         "maps/mapa-1.json",
         "tilesets/space_gun.json",
         "maps/mapa-2-actualizado.json",

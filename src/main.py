@@ -44,11 +44,6 @@ LEFT_FACING = 1
 # Velocidad de movimiento de las plataformas móviles
 MOVABLE_PLATFORM_SPEED = 0.4
 
-# Cantidad de mapas
-MAP_AMOUNT = 5
-
-
-
 
 
 class GameView(arcade.View):
