@@ -5,9 +5,9 @@
     },
     "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
-        "tilesets",
         ".",
-        "maps"
+        "maps",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -276,17 +276,17 @@
         },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
+                6,
                 13,
                 5,
                 3,
-                6,
                 4
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 726,
-                "y": 301
+                "x": 1136.3636363636363,
+                "y": 313.6363636363635
             }
         },
         "tilesets/alien_spaceship.json": {
@@ -491,9 +491,9 @@
     "project": "levels.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "maps/mapa-5.json",
         "maps/mapa-4.json",
         "maps/mapa-2.json",
-        "maps/mapa-5.json",
         "maps/mapa-3.json",
         "tilesets/rock_ladders.json",
         "maps/mapa-1.json",

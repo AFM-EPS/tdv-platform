@@ -694,7 +694,7 @@ class GameView(arcade.View):
 
                             if is_dead:
                                 arcade.play_sound(self.gameover_sound)
-                                game_over = GameOverView()
+                                game_over = GameOverView(self.map_num)
 
                                 if self.walk_player is not None:
                                     arcade.stop_sound(self.walk_player)
@@ -779,7 +779,7 @@ class GameView(arcade.View):
                     if is_dead:
                         arcade.play_sound(self.gameover_sound)
                         self.background_music.stop(self.music_player)
-                        game_over = GameOverView()
+                        game_over = GameOverView(self.map_num)
                         if self.walk_player is not None:
                             arcade.stop_sound(self.walk_player)
                             self.walk_player = None
@@ -794,7 +794,7 @@ class GameView(arcade.View):
             elif self.scene ["player_death_zones"] in collision.sprite_lists:
                 arcade.play_sound(self.gameover_sound)
                 self.background_music.stop(self.music_player)
-                game_over = GameOverView()
+                game_over = GameOverView(self.map_num)
                 if self.walk_player is not None:
                     arcade.stop_sound(self.walk_player)
                     self.walk_player = None
@@ -876,6 +876,7 @@ class GameView(arcade.View):
 
                 self.map_num = self.map_destination
                 arcade.play_sound(self.player_teleported_sound)
+                self.reset_score = False
                 self.setup()
 
         # Lógica de la trampa de compuertas en el Mapa 4
@@ -1088,13 +1089,6 @@ class GameView(arcade.View):
         if key == arcade.key.Q or key == arcade.key.SPACE:
             self.shoot_pressed = True
 
-        #### BORRAR ANTES DE ENTREGAR 
-        if key == arcade.key.L:
-            if self.map_num < MAP_AMOUNT:
-                self.map_num += 1
-                self.setup()
-            else: self.map_num = 0
-        ####
         
         if key == arcade.key.E:
             self.e_pressed = True
