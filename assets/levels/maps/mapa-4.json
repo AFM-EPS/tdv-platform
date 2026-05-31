@@ -83,6 +83,7 @@
                  "height":0,
                  "id":33,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -126,6 +127,7 @@
                  "height":0,
                  "id":34,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -169,6 +171,7 @@
                  "height":0,
                  "id":35,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -212,6 +215,7 @@
                  "height":0,
                  "id":36,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -255,6 +259,7 @@
                  "height":0,
                  "id":37,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -298,6 +303,7 @@
                  "height":0,
                  "id":38,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -341,6 +347,7 @@
                  "height":0,
                  "id":58,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -384,6 +391,7 @@
                  "height":0,
                  "id":62,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -427,6 +435,7 @@
                  "height":0,
                  "id":63,
                  "name":"",
+                 "opacity":1,
                  "point":true,
                  "properties":[
                         {
@@ -493,6 +502,7 @@
                  "height":128,
                  "id":18,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -511,6 +521,7 @@
                  "height":128,
                  "id":19,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -529,6 +540,7 @@
                  "height":128,
                  "id":21,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -547,6 +559,7 @@
                  "height":128,
                  "id":22,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -565,6 +578,7 @@
                  "height":128,
                  "id":24,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -583,6 +597,7 @@
                  "height":128,
                  "id":25,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -601,6 +616,7 @@
                  "height":128,
                  "id":61,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -619,6 +635,7 @@
                  "height":128,
                  "id":64,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -637,6 +654,7 @@
                  "height":128,
                  "id":65,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -655,6 +673,7 @@
                  "height":128,
                  "id":66,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -673,6 +692,7 @@
                  "height":128,
                  "id":67,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -691,6 +711,7 @@
                  "height":128,
                  "id":68,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"value",
@@ -703,6 +724,30 @@
                  "width":128,
                  "x":320.818181818182,
                  "y":512.212121212121
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":72,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":4475.39393939394,
+                 "y":642.787878787879
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -720,6 +765,7 @@
                  "height":128,
                  "id":53,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destination",
@@ -788,6 +834,7 @@
                  "height":64,
                  "id":4,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -816,6 +863,7 @@
                  "height":64,
                  "id":43,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -844,6 +892,7 @@
                  "height":64,
                  "id":44,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -872,6 +921,7 @@
                  "height":64,
                  "id":45,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -900,6 +950,7 @@
                  "height":64,
                  "id":46,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -928,6 +979,7 @@
                  "height":64,
                  "id":47,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -956,6 +1008,7 @@
                  "height":64,
                  "id":48,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -984,6 +1037,7 @@
                  "height":64,
                  "id":49,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -1012,6 +1066,7 @@
                  "height":64,
                  "id":54,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -1040,6 +1095,7 @@
                  "height":128,
                  "id":59,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -1068,6 +1124,7 @@
                  "height":32,
                  "id":69,
                  "name":"",
+                 "opacity":1,
                  "properties":[
                         {
                          "name":"destructible",
@@ -1115,10 +1172,10 @@
          "y":0
         }],
  "nextlayerid":28,
- "nextobjectid":70,
+ "nextobjectid":74,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.11.2",
+ "tiledversion":"1.12.2",
  "tileheight":128,
  "tilesets":[
         {
@@ -1188,6 +1245,19 @@
         {
          "firstgid":188,
          "source":"..\/tilesets\/space_half_block.json"
+        }, 
+        {
+         "columns":1,
+         "firstgid":189,
+         "image":"..\/..\/..\/..\/..\/..\/..\/Downloads\/heal.png",
+         "imageheight":128,
+         "imagewidth":128,
+         "margin":0,
+         "name":"heal",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":128,
+         "tilewidth":128
         }],
  "tilewidth":128,
  "type":"map",

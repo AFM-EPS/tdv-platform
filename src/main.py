@@ -177,6 +177,7 @@ class GameView(arcade.View):
         self.player_teleported_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "teleported.mp3")
         self.player_damage_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "suffering_damage.mp3")
         self.music_level1 = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "music_level1.mp3")
+        self.player_heal_sound = arcade.load_sound(PROJECT_ROOT / "assets" / "music" / "player_heal.mp3")
                 
     def setup(self):
 
@@ -413,7 +414,7 @@ class GameView(arcade.View):
         self.shoot_timer = 0
 
         # Inizialización texto puntaje
-        self.score_text = arcade.Text(f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}", x=25, y=25, font_name="Impact")
+        self.score_text = arcade.Text(f"Score: {self.score}{self.gem_azul}{self.gem_verde}{self.gem_dorada}", x=25, y=25, font_name="Impact")
 
         # Calcular borde derecho del mapa
         self.end_of_map = (self.tile_map.width * self.tile_map.tile_width)
@@ -430,6 +431,7 @@ class GameView(arcade.View):
          # Cargar texturas de corazones
         self.heart_full_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "Corazon.png")
         self.heart_empty_texture = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "Corazon_vacio.png")
+        self.player_heal = arcade.load_texture(PROJECT_ROOT / "assets" / "img" / "heal.png")
 
         # Crear lista de sprites para los corazones (4 corazones)
         self.heart_sprites = arcade.SpriteList()
@@ -807,19 +809,25 @@ class GameView(arcade.View):
                 return
 
             elif self.scene["ores"] in collision.sprite_lists:
-                # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
-                self.score += collision.properties["value"]
-                if (collision.properties["value"] == 10):
-                    self.gem_azul += 1
-                elif (collision.properties["value"] == 100):
-                    self.gem_dorada += 1
-                elif (collision.properties["value"] == 50):
-                    self.gem_verde += 1
+                if collision.properties.get("type") == "heart":
+                    # Aumentar vida máximo hasta 100
+                    self.player_sprite.current_health = min(100, self.player_sprite.current_health + 25)
+                    collision.remove_from_sprite_lists()
+                    arcade.play_sound(self.player_heal_sound)
+                else:
+                    # Si la colisión es un ore, se remueve y se añade su correspondiente valor al score
+                    self.score += collision.properties["value"]
+                    if (collision.properties["value"] == 10):
+                        self.gem_azul += 1
+                    elif (collision.properties["value"] == 100):
+                        self.gem_dorada += 1
+                    elif (collision.properties["value"] == 50):
+                        self.gem_verde += 1
 
-                collision.remove_from_sprite_lists()
-                arcade.play_sound(self.collect_coin_sound)
-                self.score_text.text = f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}"
-                self.score_text.scale = 3.0
+                    collision.remove_from_sprite_lists()
+                    arcade.play_sound(self.collect_coin_sound)
+                    self.score_text.text = f"Score: {self.score}                                   {self.gem_azul}                      {self.gem_verde}                      {self.gem_dorada}"
+                    self.score_text.scale = 3.0
 
 
         # Si se puede avanzar verticalmente en el mapa, la posición en Y de la cámara variará
