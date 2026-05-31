@@ -1830,6 +1830,54 @@
                  "width":128,
                  "x":3458,
                  "y":888
+                }, 
+                {
+                 "gid":182,
+                 "height":128,
+                 "id":114,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2724,
+                 "y":510
+                }, 
+                {
+                 "gid":182,
+                 "height":128,
+                 "id":116,
+                 "name":"",
+                 "opacity":1,
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":5684,
+                 "y":2052
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2326,54 +2374,6 @@
                  "width":128,
                  "x":4992,
                  "y":1792
-                }, 
-                {
-                 "gid":182,
-                 "height":128,
-                 "id":114,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":2724,
-                 "y":510
-                }, 
-                {
-                 "gid":182,
-                 "height":128,
-                 "id":116,
-                 "name":"",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":5684,
-                 "y":2052
                 }],
          "opacity":1,
          "type":"objectgroup",
