@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "maps/mapa-2.json",
     "expandedProjectPaths": [
         ".",
-        "tilesets",
-        "maps"
+        "maps",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
@@ -226,17 +226,17 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                7,
                 6,
-                4,
                 10,
+                7,
                 3,
+                4,
                 5
             ],
             "scale": 0.25,
-            "selectedLayer": 14,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 9824,
+                "x": 1192,
                 "y": 750
             }
         },
@@ -253,17 +253,17 @@
         },
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
-                7,
+                8,
                 6,
                 17,
-                8,
+                7,
                 5
             ],
             "scale": 0.25,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 6872,
-                "y": 950
+                "x": 5104,
+                "y": 1034
             }
         },
         "maps/mapa-3.json#heal": {
@@ -279,8 +279,8 @@
             "scale": 0.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 912,
-                "y": 633
+                "x": 4800,
+                "y": 225
             }
         },
         "maps/mapa-4.json#heal": {
@@ -289,9 +289,9 @@
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
                 6,
-                4,
                 13,
                 3,
+                4,
                 5
             ],
             "scale": 0.25,
@@ -509,10 +509,10 @@
     "project": "levels.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "maps/mapa-5.json",
         "maps/mapa-4.json",
         "maps/mapa-3.json",
         "maps/mapa-2.json",
-        "maps/mapa-5.json",
         "maps/mapa-1.json",
         "tilesets/space_gun.json",
         "maps/mapa-2-actualizado.json",

@@ -1791,30 +1791,6 @@
                  "width":128,
                  "x":7684,
                  "y":1040
-                }, 
-                {
-                 "gid":180,
-                 "height":128,
-                 "id":142,
-                 "name":"heal",
-                 "opacity":1,
-                 "properties":[
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"heart"
-                        }, 
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":128,
-                 "x":728,
-                 "y":1982
                 }],
          "opacity":1,
          "type":"objectgroup",
