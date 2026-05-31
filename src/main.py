@@ -258,14 +258,8 @@ class GameView(arcade.View):
         # Daño del arma y cadencia (frames entre disparo)
         self.arma = Arma(danno=25, fireRate=30)
 
-        #####
-        # BORRAR ANTES DE ENTREGAR
-        # Al poner estas líneas, el arma estará disponible incluso si el jugador no la ha recogido en el mapa 2
-        # Únicamente para debug
-        self.has_gun = True
-        self.arma.active = True
-        self.arma.visible = True
-        #####
+        if self.map_num not in [1, 2]:
+            self.has_gun = True
 
         # Crear arma y jugador
         self.scene.add_sprite("Arma", self.arma)
@@ -498,8 +492,6 @@ class GameView(arcade.View):
         gem.center_y = start_y
         self.gem_imagen_sprites.append(gem)
 
-        #### AHORA ESTÁ EN TRUE POR DEBUG, PONER A FALSE ANTES DE ENTREGAR
-        self.final_boss_defeated = True
 
     def on_show_view(self):
 
