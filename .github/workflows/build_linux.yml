@@ -31,8 +31,7 @@ jobs:
 
     - name: 🛠️ Compilar el juego con PyInstaller
       run: |
-        pyinstaller --noconfirm --onedir --windowed --name "SpaceEscape" --add-data "assets:assets" --collect-data arcade --copy-metadata arcade src/main.py
-
+         pyinstaller --noconfirm --onedir --windowed --name "SpaceEscape" --add-data "assets:assets" --copy-metadata arcade src/main.py
     - name: 🗜️ Comprimir el resultado
       run: |
         cd dist
