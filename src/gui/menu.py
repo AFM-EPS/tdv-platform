@@ -1,5 +1,6 @@
 import arcade
 import arcade.gui
+import persistence
 from pathlib import Path
 
 
@@ -15,6 +16,8 @@ class MainMenu(arcade.View):
 
         # Manager que controla la interfaz
         self.manager = arcade.gui.UIManager()
+
+        self.high_score = 0
 
 
         self.background_list = arcade.SpriteList()
@@ -49,6 +52,7 @@ class MainMenu(arcade.View):
     def on_show_view(self):
 
         self.manager.enable()
+        self.high_score = persistence.get_high_score()
         if self.menu_music_player is None or not self.menu_music_player.playing:
             self.menu_music_player = self.menu_music.play(volume=0.5, loop=True)
             self.window.menu_music_player = self.menu_music_player
@@ -143,3 +147,15 @@ class MainMenu(arcade.View):
 
         # Manager dibuja el menú
         self.manager.draw()
+
+        # Dibujar puntuación máxima
+        arcade.draw_text(
+            f"RÉCORD ACTUAL: {self.high_score}",
+            WINDOW_WIDTH / 2,
+            30,
+            arcade.color.GOLDEN_YELLOW,
+            font_size=22,
+            anchor_x="center",
+            anchor_y="center",
+            font_name="Impact"
+        )

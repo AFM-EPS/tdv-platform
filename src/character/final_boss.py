@@ -9,10 +9,6 @@ MAX_BUSCA_TIME = 5  # segundos
 VELOCIDAD_PROYECTIL_BOSS = 10
 
 class FinalBossProjectile(arcade.Sprite):
-    """
-    Proyectil direccional del Boss Final.
-    Se orienta en radianes y viaja en esa dirección.
-    """
     def __init__(self, boss, orientation: float, velocidad: float = 10):
         super().__init__(":resources:images/space_shooter/laserRed01.png", 1.0)
         self.boss = boss
