@@ -11,7 +11,7 @@ SCALE = 1.2
 
 DISTANCIA_DEL_PERSONAJE = 50
 
-print(TEXTURE_PATH)
+
 class Arma(arcade.Sprite):
     def __init__(self,danno:int = 25, fireRate:int = 30):
         super().__init__(TEXTURE_PATH,SCALE)

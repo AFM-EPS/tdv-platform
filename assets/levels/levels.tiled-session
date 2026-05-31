@@ -3,14 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mapa-1.json",
+    "activeFile": "maps/mapa-5.json",
     "expandedProjectPaths": [
         "tilesets",
-        "maps",
-        "."
+        ".",
+        "maps"
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "C:/Users/Casa/Desktop/Laboratorio/Tecnología de Videojuegos/arcade-development/arcade-development/arcade/resources/assets/tiled_maps/more_tiles.json": {
             "dynamicWrapping": true,
             "scaleInDock": 1
@@ -202,8 +205,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 515,
-                "y": 360.5
+                "x": 2031.5,
+                "y": 384.5
             }
         },
         "maps/mapa-2-actualizado.json": {
@@ -223,19 +226,22 @@
         },
         "maps/mapa-2.json": {
             "expandedObjectLayers": [
-                4,
-                5,
-                7,
                 10,
+                5,
+                6,
+                4,
                 3,
-                6
+                7
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 732,
-                "y": 865
+                "x": 8378.787878787878,
+                "y": 1056.060606060606
             }
+        },
+        "maps/mapa-2.json#heal": {
+            "scaleInDock": 1
         },
         "maps/mapa-2bueno.json": {
             "scale": 0.0971337890625,
@@ -248,46 +254,65 @@
         "maps/mapa-3.json": {
             "expandedObjectLayers": [
                 8,
-                17,
                 5,
-                7,
-                6
+                17,
+                6,
+                7
             ],
             "scale": 0.33,
-            "selectedLayer": 5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 3248.4848484848485,
-                "y": 1031.818181818182
+                "x": 7557.575757575758,
+                "y": 992.4242424242423
             }
+        },
+        "maps/mapa-3.json#Heal": {
+            "scaleInDock": 1
+        },
+        "maps/mapa-3.json#heal": {
+            "scaleInDock": 1
         },
         "maps/mapa-4.json": {
             "expandedObjectLayers": [
-                22,
                 5,
+                22,
                 17,
-                6
+                6,
+                20
             ],
             "scale": 0.5,
-            "selectedLayer": 8,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 7248,
+                "x": 3956,
                 "y": 225
             }
         },
+        "maps/mapa-4.json#Heal": {
+            "scaleInDock": 1
+        },
+        "maps/mapa-4.json#heal": {
+            "scaleInDock": 1
+        },
         "maps/mapa-5.json": {
             "expandedObjectLayers": [
-                4,
                 5,
+                6,
                 13,
-                3,
-                6
+                4,
+                3
             ],
-            "scale": 0.33,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1227.2727272727275,
-                "y": 3416.666666666667
+                "x": 173,
+                "y": 1422.5
             }
+        },
+        "maps/mapa-5.json#Heal": {
+            "scaleInDock": 1
+        },
+        "maps/mapa-5.json#heal": {
+            "scaleInDock": 1
         },
         "tilesets/alien_spaceship.json": {
             "dynamicWrapping": false,
@@ -327,7 +352,7 @@
         },
         "tilesets/examples_tileset.json": {
             "dynamicWrapping": false,
-            "scaleInDock": 0.125,
+            "scaleInDock": 0.25,
             "scaleInEditor": 1
         },
         "tilesets/fence.json": {
@@ -426,8 +451,36 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilesets/space_block.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_block_rock.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_cliff.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_corner.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/space_gun.json": {
             "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_half_block.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_half_block_left.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/space_hill.json": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -451,7 +504,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/PC/Desktop/repo/tdv-platform/assets/img",
+    "last.imagePath": "C:/Users/alber/OneDrive/Desktop/Proyecto Tecnología de videojuegos/tdv-platform/assets/img",
     "map.height": 17,
     "map.lastUsedFormat": "json",
     "map.tileHeight": 128,
@@ -459,27 +512,26 @@
     "map.width": 80,
     "openFiles": [
         "maps/mapa-2.json",
-        "maps/mapa-4.json",
         "maps/mapa-3.json",
-        "maps/mapa-5.json",
-        "maps/mapa-1.json"
+        "maps/mapa-4.json",
+        "maps/mapa-5.json"
     ],
     "project": "levels.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "maps/mapa-2.json",
-        "maps/mapa-4.json",
         "maps/mapa-3.json",
+        "maps/mapa-4.json",
         "maps/mapa-5.json",
         "maps/mapa-1.json",
         "tilesets/space_gun.json",
         "maps/mapa-2-actualizado.json",
         "tilesets/rock_ladders.json",
-        "tilesets/garbage.json",
-        "tilesets/junk_block.json",
-        "tilesets/rusty_metal_tile.json",
-        "tilesets/rusty_metal_platform.json"
+        "tilesets/space_half_block_left.json",
+        "tilesets/space_half_block.json",
+        "tilesets/space_cliff.json"
     ],
+    "tileset.embedInMap": true,
     "tileset.lastUsedFormat": "json",
     "tileset.margin": 0,
     "tileset.spacing": 0,
@@ -487,5 +539,5 @@
         "height": 128,
         "width": 128
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

@@ -1,274 +1,639 @@
-**1\. ESQUEMA DEL JUEGO**
-
-**_1.1. Nombre del juego_**
-
-**SPACE ESCAPE** es un videojuego que intenta transmitir al jugador una situaci√≥n de peligro y movimiento constante. La palabra **_Space_** sit√∫a al jugador en un entorno desconocido y hostil, mientras que **_Escape_** deja claro el objetivo principal del juego: sobrevivir y huir. El nombre funciona bien en pantallas de tipo **_arcade_**, es f√°cil de recordar y permite crear logotipos estilizados con tipograf√≠as futuristas.
-
-**_1.2. G√©nero / Subtipo_**
-
-**G√©nero:** Se trata de un juego de plataformas con saltos y perspectiva lateral.
-
-**Subtipo:** Es un juego de acci√≥n estilo _arcade_ con √©nfasis en la movilidad, la esquiva y los disparos.
-
-El juego combina:
-
-- Precisi√≥n de plataformas cl√°sicas (saltos, sincronizaci√≥n y obst√°culos).
-- Combate ligero con proyectiles.
-- Ritmo r√°pido t√≠pico de un juego _arcade_, con niveles cortos pero intensos.
-- Lectura visual clara gracias a la c√°mara lateral, que permite anticipar peligros.
-
-El dise√±o favorece las partidas din√°micas, con enemigos que obligan al jugador a moverse constantemente y escenarios que cambian de forma activa mediante plataformas m√≥viles, trampas y mecanismos alien√≠genas.
-
-**_1.3. Historia y objetivos_**
-
-**Contexto narrativo**
-
-El protagonista es una persona com√∫n que, durante una noche tranquila, es abducido accidentalmente por una nave alien√≠gena. La nave lo transporta al **_espacio_**, a un planeta desconocido lleno de ruinas tecnol√≥gicas, fauna agresiva y sistemas de defensa fuera de control.
-
-El planeta parece haber sido abandonado hace siglos, pero sus m√°quinas siguen activas, operando sin supervisi√≥n y atacando cualquier forma de vida.
-
-**Objetivo general**
-
-El objetivo principal del juego es **_escapar_** del planeta superando zonas peligrosas, derrotando a los enemigos y activando teletransportadores alien√≠genas que desbloquean nuevas fases.
-
-**_1.4. Estructura narrativa_**
-
-**_Introducci√≥n_**
-
-- Cinem√°tica inicial: el protagonista es abducido y transportado a un planeta alien√≠gena.
-
-**_Desarrollo_**
-
-- El primer nivel es un breve tutorial en el planeta alien√≠gena.
-- Se ense√±an las mec√°nicas b√°sicas tales como caminar, saltar, disparar, usar las plataformas y activar los teletransportadores.
-- Se introduce el bl√°ster.
-- El jugador explora varias regiones del planeta, cada una con una est√©tica y mec√°nicas propias.
-- Aparecen enemigos terrestres y voladores, a√∫n m√°s complejos y con patrones variados.
-- Se introducen plataformas m√≥viles, ascensores, gr√∫as, teletransportadores y trampas.
-- El jugador debe recolectar gemas o activar mecanismos como los teletransportadores para avanzar.
-- La dificultad aumenta gradualmente con nuevos tipos de enemigos con muchos retos que requieren de precisi√≥n.
-
-**_Conclusi√≥n_**
-
-- El jugador llega a la base de lanzamiento, donde se encuentra el cohete de escape.
-- Enfrenta a un enemigo final y un desaf√≠o mayor (por ejemplo, un n√∫cleo de defensa planetaria).
-- Tras superar este √∫ltimo obst√°culo, el jugador accede a la c√°psula del cohete espacial y escapa del planeta.
-- Cinem√°tica final: regreso a la Tierra.
-
-**Nota:** Se plantea implementar una posible secuela.
-
-**_1.4. Personajes (elementos)_**
-
-**1.4.1. Personaje jugador**
-
-- Se trata de un humano com√∫n abducido por alien√≠genas y trasladado a un planeta hostil
-- Habilidades:
-- El jugador puede caminar, correr, saltar y subir por escaleras.
-- Disparar con un bl√°ster de energ√≠a.
-- Colgarse de bordes, trepar columnas y deslizarse por cables o gr√∫as.
-- Activar dispositivos alien√≠genos como los teletransportadores y plataformas.
-- Arma principal: bl√°ster de energ√≠a de corto alcance, con posibilidad de mejoras temporales (disparo doble, triple y proyectil de haz perforante).
-
-**1.4.2. Enemigos**
-
-**_Voladores_**
-
-- **Drones alien√≠genas:** patrullan con rutas fijas, detectan al jugador y disparan r√°fagas cortas.
-- **Robots esf√©ricos:** flotan lentamente y disparan proyectiles teledirigidos.
-
-**_Superficiales_**
-
-- **Robots caminantes:** bloquean los pasillos, tienen armadura resistente y disparan cuerpo a cuerpo.
-- **Torres defensivas:** fijas, detectan movimiento del personaje y disparan l√°seres precisos.
-
-**1.4.3. Elementos del entorno**
-
-- **Plataformas destructibles:** se rompen al recibir da√±o.
-- **Plataformas indestructibles:** base del nivel, usadas para los saltos principales.
-- **Escaleras, ascensores, gr√∫as y columnas:** permiten una movilidad vertical y horizontal.
-- **Teletransportadores:** cambian al jugador de zona o de fase.
-- **Objetos coleccionables:** gemas de salud, mejoras temporales (velocidad, disparo, escudo).
-
-**_1.5. Est√©tica_**
-
-- Se trata de un videojuego estilo visual **2D pixel art**, inspirado en juegos arcades retro pero con animaciones fluidas y efectos modernos.
-- Paleta de colores vibrante, con predominio de tonos ne√≥n, luces pulsantes y metales desgastados.
-- Las plataformas y elementos del escenario siguen una **cuadr√≠cula modular de 128x128 p√≠xeles**, facilitando la construcci√≥n de niveles.
-- Fondos compuestos de:
-- Estrellas y nebulosas.
-- Lunas m√∫ltiples.
-- Estructuras alien√≠genas gigantes.
-- Interfaz minimalista:
-- Barra de vida.
-- Indicador de munici√≥n o energ√≠a.
-- Progreso del nivel o n√∫mero de gemas recolectadas.
-- Naves destruidas
-
-**_1.6. Mec√°nicas_**
-
-**1.6.1. Movimiento**
-
-- Caminar y correr.
-- Saltos simples.
-- Ca√≠da controlada en superficies (por ejemplo, plataformas).
-
-**1.6.2. Interacci√≥n con el entorno**
-
-- Plataformas m√≥viles horizontales y verticales.
-- Escaleras para ascenso y descenso manual.
-- Ascensores autom√°ticos o activados por interruptores.
-- Gr√∫as y columnas para colgarse, deslizarse o trepar.
-- Teletransportadores que cambian al jugador de fase o zona.
-- Interruptores que activan puertas, plataformas o mecanismos.
-
-**1.6.3. Combate**
-
-- Disparo frontal con bl√°ster.
-- Mejoras temporales:
-- R√°faga r√°pida.
-- Mayor alcance.
-- Disparo m√∫ltiple.
-- Enemigos con patrones simples pero variados:
-- Movimiento lineal.
-- Patrullaje.
-- Ataques teledirigidos.
-- Explosiones al morir.
-
-**1.6.4. Progresi√≥n**
-
-- Niveles lineales con rutas alternativas para exploraci√≥n.
-- Recolecci√≥n de gemas para mejorar la salud.
-- Incremento gradual de la dificultad mediante:
-- Nuevos enemigos.
-- Plataformas m√°s complejas.
-- Trampas m√°s r√°pidas o precisas.
-
-**_1.7. Escenarios_**
-
-El planeta alien√≠gena se divide en varias zonas tem√°ticas, cada una con est√©tica, enemigos y mec√°nicas propias.
-
-**1.7.1. Zona de abducci√≥n**
-
-- Zona en el planeta tierra donde es abducido el personaje.
-- Presencia de la nave que realiza la abducci√≥n.
-
-**1.7.2. Zona de aterrizaje**
-
-- Nave desde la que llega al planeta hostil.
-- Planetas en el horizonte.
-- Nivel tutorial.
-- Enemigos simples y plataformas b√°sicas.
-
-**1.7.3. Zonas de obras**
-
-- Restos de obras, gr√∫as, escaleras.
-- Edificio en construcci√≥n. Zona abierta con plataformas m√≥viles suspendidas.
-- Plataformas naturales (ra√≠ces, troncos, hojas).
-- Enemigos voladores y terrestres que se ocultan.
-- Nivel vertical con escaleras, ascensores y columnas.
-- Enemigos que disparan desde plataformas elevadas.
-- Secciones de ca√≠da libre controlada.
-- Trampas mec√°nicas como prensas o sierras.
-
-**1.7.4. Laboratorio abandonado**
-
-- Maquinaria en movimiento, gr√∫as, ascensores y cintas transportadoras.
-- Robots defectuosos y torres defensivas.
-- Enemigos voladores predominantes.
-
-**1.7.5. Base de lanzamiento alien√≠gena**
-
-- Fase final.
-- Mayor dificultad.
-- Trampas combinadas, enemigos diversos de superficie y voladores.
-- Enemigo final o n√∫cleo de defensa del planeta hostil.
-
-**_1.8. Estructura del repositorio_**
-
-/assets
-
-/debug
-
-/img
-
-/levels
-
-/music
-
-/sprites
-
-/docs
-
-gdd.md
-
-memory.md
-
-/src
-
-/character
-
-/gui
-
-/webhook
-
-main.py
-
-README.md
-
-requirements.txt
-
-**1.9. C√≥mo ejecutar el proyecto**
-
-- Clonar el repositorio:
-
-git clone <https://github.com/AFM-EPS/tdv-platform.git>
-
-- Instalar dependencias:
-
-pip install arcade
-
-- Ejecutar el juego:
-
-python src/main.py
-
-**_1.10. Roadmap del proyecto_**
-
-‚úÖ **Versi√≥n 1.0 - Versi√≥n inicial (Producto M√≠nimo Viable)**
-
-- Implementado los movimientos b√°sicos del jugador
-- Incluido sistema de disparo con bl√°ster
-- Se ha implementado los enemigos simples (voladores y terrestres)
-- Se ha creado las plataformas est√°ticas y m√≥viles
-- Se ha a√±adido un nivel tutorial funcional
-- Se ha implementado un HUD b√°sico (vida y energ√≠a)
-
-üöß **Versi√≥n 1.1 - Expansi√≥n de mec√°nicas**
-
-- Se ha implementado mejoras del bl√°ster
-- Se ha a√±adido trampas mec√°nicas
-- Se ha incluido sistema de gemas y progresi√≥n
-- Se ha implementado nuevos patrones de enemigos
-- Se ha incluido algunas animaciones avanzadas del jugador
-
-üß™ **Versi√≥n 1.2 - Pulido y optimizaci√≥n**
-
-- Se ha optimizado las colisiones
-- Se ha ajustado la dificultad progresiva
-- Se ha mejorado la interfaz/HUD
-- Se ha creado efectos visuales y part√≠culas
-- Se ha producido sonido y m√∫sica adaptativa
-
-üöÄ **Versi√≥n 2.0 - Versi√≥n final**
-
-- Se ha introducido el nivel final con la presencia de una nueva Nave alien√≠gena
-- Nuevas cinem√°ticas de introducci√≥n y cierre
-
-**_1.11. Autores_**
-
-El proyecto ha sido desarrollado por estudiantes de la asignatura **Tecnolog√≠a de Videojuegos**.
-
-**_1.12. Documentaci√≥n_**
-
-- **Memoria del proyecto:** docs/memory.md
-- **GDD:** docs/gdd.md
-- Recursos adicionales en la carpeta /docs.
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Book Antiqua";
+	panose-1:2 4 6 2 5 3 5 3 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 3.0cm 70.85pt 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ES>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-size:12.0pt;line-height:103%;font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6. MANUAL DE USUARIO (DESCRIPCI”N DEL FUNCIONAMIENTO) </span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>En este apartado se<i> </i>explica cÛmo interact˙a un usuario con
+el videojuego. </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><i><span style='font-family:"Calibri Light","sans-serif";
+color:black'>&nbsp;</span></i></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>Se ha capturado las pantallas del videojuego y se muestra el
+funcionamiento de las distintas opciones, mensajes de error, etc.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>Nota: Para arrancar la aplicaciÛn es necesario elegir ìRun Python
+File in Terminalî sobre la clase principal main.py.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-family:"Calibri Light","sans-serif";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.1. Pantalla 1: TÌtulo y men˙ principal</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> punto de entrada al juego y
+acceso a las opciones b·sicas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Elementos
+en pantalla:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Logo
+del juego:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+ìSPACE ESCAPEî en grande, estilo ·rcade, centrado.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Fondo
+animado:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+planetas alienÌgenas, estrellas, naves.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Men˙
+principal (lista):</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Jugar</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>CrÈditos</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Instrucciones</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Niveles</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> (si est· desbloqueado)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Salir</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> </span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>RatÛn:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Arriba/abajo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> desplaza el cursor por las
+opciones.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Clica
+botÛn izquierdo:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+confirma opciÛn.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Salir:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> Si clica en este botÛn sale
+de la aplicaciÛn.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=727 height=391
+id=rectole0000000000 src="image001gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.2. Pantalla 2: Pantalla de crÈditos</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> mostrar los autores.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Formato:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ventana
+con informaciÛn textual sobre los autores del juego.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Cerrar la
+ventana mediante el boton &quot;ATR¡S&quot;.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=727 height=393
+id=rectole0000000001 src="image002gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.3. Pantalla 3: Pantalla de instrucciones</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> enseÒar al jugador las
+mec·nicas del juego.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Formato:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ventanas
+con instrucciones textuales sobre el juego.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ejemplos:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:108.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>ìMoverse:
+flechas del teclado y &quot;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:108.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>&quot;W</span><span
+style='font-family:"Cambria Math","serif"'>(</span><span style='font-family:
+"Calibri Light","sans-serif"'>saltar</span><span style='font-family:"Cambria Math","serif"'>/</span><span
+style='font-family:"Calibri Light","sans-serif"'>subir</span><span
+style='font-family:"Cambria Math","serif"'> </span><span style='font-family:
+"Calibri Light","sans-serif"'>escalera</span><span style='font-family:"Cambria Math","serif"'>),
+</span><span style='font-family:"Calibri Light","sans-serif"'>S</span><span
+style='font-family:"Cambria Math","serif"'>(</span><span style='font-family:
+"Calibri Light","sans-serif"'>bajar</span><span style='font-family:"Cambria Math","serif"'>
+</span><span style='font-family:"Calibri Light","sans-serif"'>escalera</span><span
+style='font-family:"Cambria Math","serif"'>), î</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:108.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>ìDisparar:
+espacio y Q.î</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Cerrar la
+ventana mediante el boton &quot;ATR¡S&quot;.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=736 height=398
+id=rectole0000000002 src="image003gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.4. Pantalla 4: SelecciÛn de nivel</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> permitir al jugador elegir en
+quÈ zona del planeta jugar.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Elementos
+en pantalla:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Lista
+de niveles:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>NIVEL 1
+(Zona de abducciÛn)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>NIVEL 2
+(Zona de aterrizaje)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>NIVEL 3
+(Zonas de obras)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:72.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>NIVEL 4
+(Laboratorio abandonado)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:72.0pt;margin-bottom:.0001pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>NIVEL
+FINAL (Base de lanzamiento alienÌgena)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Movimiento
+del raton:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+seleccionar un nivel.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Click
+del raton:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+iniciar el nivel seleccionado (si est· desbloqueado).</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Boton
+volver atras:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+volver al men˙ principal.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=736 height=398
+id=rectole0000000003 src="image004gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5. Pantalla 5: Juego en curso (HUD in-game)</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> mostrar la acciÛn del juego y
+la informaciÛn mÌnima necesaria.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Elementos
+del HUD:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Barra
+de vida:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+esquina superior izquierda.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Progreso
+del nivel:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>PequeÒo
+indicador (ej.: ìScore: 10î, ìGemas azules: 1î, etc...)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Movimiento:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> izquierda/derecha y teclas A
+y D.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Salto:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> botÛn asignado fecha hacia
+arriba y tecla W.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Disparo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> botÛn asignado Espacio.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> acciÛn cerca de objetos
+(teletransportadores).</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=736 height=402
+id=rectole0000000004 src="image005gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.1. Pantalla 5.1: NIVEL 1</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000005 src="image006gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.1. Pantalla 5.1.1: NIVEL 1.1</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=376
+id=rectole0000000006 src="image007gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.2. Pantalla 5.2: NIVEL 2</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=376
+id=rectole0000000007 src="image008gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.2. Pantalla 5.2.1: REGOGIDA ARMA</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=390
+id=rectole0000000008 src="image009gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.3. Pantalla 5.3: NIVEL 3</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000009 src="image010gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.3. Pantalla 5.3.1: GRUA/OBRAS</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000010 src="image011gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.4. Pantalla 5.4: NIVEL 4</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000011 src="image012gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.4. Pantalla 5.4.1: LABORATORIO</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=390
+id=rectole0000000012 src="image013gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.5. Pantalla 5.5: NIVEL FINAL</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000013 src="image014gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.5.5. Pantalla 5.5.1: ENFRENTAMIENTO FINAL</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=693 height=389
+id=rectole0000000014 src="image015gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>6.6. Pantalla 6: Game Over</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> informar que el jugador ha
+perdido y ofrecer opciones de reintentar nivel.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Elementos:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Texto
+central grande: <b>ìGAME OVERî</b>.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Opciones:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Reintentar
+nivel</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>InteracciÛn
+del usuario:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Clicar
+botÛn izquierdo ratÛn para reiniciar el nivel.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=736 height=402
+id=rectole0000000015 src="image016gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif"'>6.7.
+Pantalla 7: Pantalla de victoria / fin de nivel</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Objetivo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> celebrar la victoria del
+jugador, mostrar el regreso del protagonista a la tierra.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Elementos:</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Texto: <b>ì°VICTORIAî</b>.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Cinem·tica
+breve que muestra al personaje regresando a la tierra.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Botones:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Click
+para volver al men˙ principal.</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><img width=736 height=402
+id=rectole0000000016 src="image017gdd.jpg"></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

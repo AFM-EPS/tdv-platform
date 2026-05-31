@@ -1,285 +1,1084 @@
-**6\. MANUAL DE USUARIO (DESCRIPCI√ìN DEL FUNCIONAMIENTO)**
-
-En este apartado se explica c√≥mo interact√∫a un usuario con el videojuego.
-
-Se ha capturado las pantallas del videojuego y se muestra el funcionamiento de las distintas opciones, mensajes de error, etc.
-
-Nota: Para arrancar la aplicaci√≥n es necesario elegir "Run Python File in Terminal" sobre la clase principal main.py.
-
-**_6.1. Pantalla 1: T√≠tulo y men√∫ principal_**
-
-**Objetivo:** punto de entrada al juego y acceso a las opciones b√°sicas.
-
-**Elementos en pantalla:**
-
-- **Logo del juego:** "SPACE ESCAPE" en grande, estilo arcade, centrado.
-- **Fondo animado:** planeta alien√≠gena, estrellas, naves pasando lentamente.
-- **Men√∫ principal (lista):**
-- **Jugar**
-- **Cr√©ditos**
-- **Instrucciones**
-- **N√≠veles** (si est√° desbloqueado)
-- **Salir**
-
-**Interacci√≥n del usuario:**
-
-- **Rat√≥n:**
-- **Arriba/abajo:** desplaza el cursor por las opciones.
-- **Clica bot√≥n izquierdo:** confirma opci√≥n.
-- **Salir:** Si clica en este bot√≥n sale de la aplicaci√≥n.
-- **Feedback visual:**
-- Opci√≥n seleccionada resaltada con color, brillo o subrayado.
-- Sonido corto al moverse por el men√∫ y otro distinto al confirmar.
-
-**_6.2. Pantalla 2: Pantalla de cr√©ditos_**
-
-**Objetivo:** mostrar los cr√©ditos.
-
-**Formato:**
-
-- Ventanas con informaci√≥n textual sobre los autores del juego.
-
-**Interacci√≥n del usuario:**
-
-- Cerrar el mensaje con la mediante la acci√≥n Volver atr√°s.
-
-**_6.3. Pantalla 3: Pantalla de instrucciones_**
-
-**Objetivo:** ense√±ar al jugador las mec√°nicas del juego.
-
-**Formato:**
-
-- Ventanas con instrucciones textuales sobre el juego.
-- Ejemplos:
-- Al inicio:
-
-"Usa ‚Üê ‚Üí para moverte. Pulsa \[W\] para saltar."
-
-- Al obtener el bl√°ster:
-
-"Pulsa \[Espacio\] para disparar tu bl√°ster de energ√≠a."
-
-- Al llegar a un teletransportador:
-
-"Ac√©rcate y pulsa \[E\] para activar el teletransportador."
-
-**Interacci√≥n del usuario:**
-
-- Cerrar el mensaje con la mediante la acci√≥n Volver atr√°s.
-- Opci√≥n en "Opciones" para activar/desactivar las instrucciones.
-
-**_6.4. Pantalla 4: Selecci√≥n de nivel_**
-
-**Objetivo:** permitir al jugador elegir en qu√© zona del planeta jugar.
-
-**Elementos en pantalla:**
-
-- **Lista de niveles:**
-- Zona de abducci√≥n
-- Zona de aterrizaje
-- Zonas de obras
-- Laboratorio abandonado
-- Base de lanzamiento alien√≠gena
-- **Indicadores de estado:**
-- Icono de **bloqueado/desbloqueado**.
-- Peque√±o texto: "Completado", "En progreso", "Nuevo".
-- **Panel de informaci√≥n del nivel:**
-- **Descripci√≥n breve** del escenario.
-- **Dificultad** (por ejemplo, 1-5 estrellas).
-- **Objetivo principal** (ej.: "Encuentra la c√°psula de escape").
-- **Recompensas** o coleccionables encontrados / totales.
-
-**Interacci√≥n del usuario:**
-
-- **Arriba/abajo o izquierda/derecha:** cambiar de nivel seleccionado.
-- **Raton / Click izquierdo:** iniciar el nivel seleccionado (si est√° desbloqueado).
-- **Boton volver atras:** volver al men√∫ principal.
-
-**Mensajes de error / restricciones:**
-
-- Si el jugador intenta entrar a un nivel bloqueado:
-- Mensaje emergente:
-
-"Este nivel a√∫n est√° bloqueado. Completa el nivel anterior para desbloquearlo."
-
-- Bot√≥n: "Aceptar".
-
-**_6.5. Pantalla 5: Juego en curso (HUD in-game)_**
-
-**Objetivo:** mostrar la acci√≥n del juego y la informaci√≥n m√≠nima necesaria.
-
-**Elementos del HUD:**
-
-- **Barra de vida:** esquina superior izquierda.
-- **Munici√≥n / energ√≠a del bl√°ster:** icono + n√∫mero o barra.
-- **Iconos de mejoras temporales activas:** por ejemplo, disparo triple, escudo, con temporizador.
-- **Progreso del nivel:**
-- Peque√±o indicador (ej.: "Gemas: 1/3" o "Objetivo: llegar al teletransportador").
-- **Mensajes contextuales:**
-- "Pulsa \[E\] para activar el interruptor."
-- "Pulsa \[Espacio\] para doble salto."
-
-**Interacci√≥n del usuario:**
-
-- **Movimiento:** izquierda/derecha y teclas A y D.
-- **Salto:** bot√≥n asignado fecha hacia arriba y tecla W.
-- **Disparo:** bot√≥n asignado Espacio.
-- **Interacci√≥n:** acci√≥n cerca de objetos (ascensores, teletransportadores).
-- **Pausa:** tecla/bot√≥n espec√≠fico (ej.: Esc o Start).
-
-**Mensajes de error / feedback in-game:**
-
-- Intentar usar un teletransportador sin energ√≠a:
-
-"El teletransportador no tiene energ√≠a suficiente."
-
-- Intentar abrir puerta sin llave:
-
-"Necesitas una llave para abrir esta puerta."
-
-- Vida baja:
-- Parpadeo de la barra de vida y mensaje breve:
-
-"¬°Peligro! Vida cr√≠tica."
-
-**_6.6. Pantalla 6: Game Over_**
-
-**Objetivo:** informar que el jugador ha perdido y ofrecer opciones de reintentar nivel o volver al men√∫ principal del juego, escoger otra fase, etc.
-
-**Elementos:**
-
-- Texto central grande: **"GAME OVER"**.
-- Subtexto: "Has perdido toda tu vida."
-- Estad√≠sticas r√°pidas:
-- Tiempo jugado.
-- Enemigos derrotados.
-- Coleccionables obtenidos (gemas de salud).
-- Opciones:
-- **Reintentar nivel**
-- **Volver al men√∫ principal o de niveles.**
-
-**Interacci√≥n del usuario:**
-
-- Arriba/abajo para seleccionar con rat√≥n.
-- Clicar bot√≥n izquierdo rat√≥n para confirmar.
-
-**_6.7. Pantalla 7: Pantalla de victoria / fin de nivel_**
-
-**Objetivo:** celebrar la victoria del jugador, mostrar progresos y resultados.
-
-**Elementos:**
-
-- Texto: **"Nivel final completado"** o, al final, **"Has escapado del planeta"**.
-- Cinem√°tica breve o imagen est√°tica del personaje en la c√°psula de escape.
-- Estad√≠sticas:
-- Tiempo que ha tardado en completar el nivel.
-- Porcentaje de coleccionables (gemas, por ejemplo).
-- Da√±o recibido (si ha perdido algo de vida).
-- Botones:
-- **Repetir nivel final**.
-- **Volver al men√∫ principal o de niveles**.
-
-**_6.8. Pantalla 8: Mensajes de error del sistema / carga_**
-
-**Situaciones t√≠picas:**
-
-- **Error al cargar partida:**
-
-"No se ha podido cargar la partida. El archivo est√° da√±ado." Bot√≥n: "Aceptar".
-
-- **Error al guardar:**
-
-"Error al guardar el progreso. Comprueba el espacio disponible." Botones: "Reintentar / Continuar sin guardar".
-
-- **Pantalla de carga:**
-- Barra de progreso.
-- Texto: "Cargando zona: F√°brica abandonada‚Ä¶"
-- Consejos de juego ("Tip: Usa el doble salto para alcanzar plataformas altas.").
-
-**_6.9. Pantalla 9: Opciones / Configuraci√≥n_**
-
-**Objetivo:** ajustar par√°metros del juego.
-
-**Secciones t√≠picas:**
-
-- **Audio:**
-- Volumen general.
-- Volumen m√∫sica.
-- Volumen efectos.
-- **V√≠deo (si aplica):**
-- Pantalla completa / ventana.
-- Brillo.
-- **Controles:**
-- Mapeo de teclas/botones.
-- Sensibilidad (si hay apuntado).
-- **Juego:**
-- Idioma.
-- Activar/desactivar tutoriales.
-- Nivel de dificultad (F√°cil / Normal / Dif√≠cil).
-
-**Interacci√≥n del usuario:**
-
-- Navegaci√≥n por pesta√±as o lista.
-- Ajuste de valores con izquierda/derecha.
-- Confirmar con Enter / A.
-- Volver con Esc / B.
-
-**Mensajes de error / validaci√≥n:**
-
-- Si se intenta asignar la misma tecla a dos acciones cr√≠ticas:
-
-"Esta tecla ya est√° asignada a otra acci√≥n. ¬øDeseas sobrescribirla?" Opciones: **S√≠ / No**.
-
-**_6.10. Pantalla 10: Men√∫ de pausa_**
-
-**Objetivo:** permitir al jugador detener la acci√≥n y acceder a opciones r√°pidas.
-
-**Elementos:**
-
-- Fondo del juego **congelado** y oscurecido.
-- Men√∫ central con opciones:
-- **Reanudar**
-- **Reiniciar nivel**
-- **Opciones**
-- **Volver al men√∫ principal**
-
-**Interacci√≥n del usuario:**
-
-- Navegar con arriba/abajo.
-- Confirmar con Enter / A.
-- Reanudar tambi√©n con la tecla/bot√≥n de pausa.
-
-**Mensajes de confirmaci√≥n:**
-
-- Al elegir "Reiniciar nivel":
-
-"¬øSeguro que deseas reiniciar el nivel? Perder√°s el progreso actual." Opciones: **S√≠ / No**.
-
-- Al elegir "Volver al men√∫ principal":
-
-"¬øSalir al men√∫ principal? El progreso no guardado se perder√°." Opciones: **S√≠ / No**.
-
-**_6.11. Pantalla 11: Pantallas de tutorial / ayuda contextual_**
-
-**Objetivo:** ense√±ar al jugador las mec√°nicas sin romper el ritmo.
-
-**Formato:**
-
-- Peque√±as ventanas semitransparentes sobre el juego.
-- Ejemplos:
-- Al inicio:
-
-"Usa ‚Üê ‚Üí para moverte. Pulsa \[Espacio\] para saltar."
-
-- Al obtener el bl√°ster:
-
-"Pulsa \[Ctrl\] para disparar tu bl√°ster de energ√≠a."
-
-- Al llegar a un teletransportador:
-
-"Ac√©rcate y pulsa \[E\] para activar el teletransportador."
-
-**Interacci√≥n del usuario:**
-
-- Cerrar el mensaje con la tecla de acci√≥n o autom√°ticamente tras unos segundos (seg√∫n dise√±o).
-- Opci√≥n en "Opciones" para activar/desactivar tutoriales.
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:"Calibri Light";
+	panose-1:2 15 3 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Book Antiqua";
+	panose-1:2 4 6 2 5 3 5 3 3 4;}
+@font-face
+	{font-family:"Segoe UI Symbol";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+@font-face
+	{font-family:"Segoe UI Emoji";
+	panose-1:2 11 5 2 4 2 4 2 2 3;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 3.0cm 70.85pt 3.0cm;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ES>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#2F5496'>1. ESQUEMA DEL
+JUEGO</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.1. Nombre del juego</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>SPACE
+ESCAPE</span></b><span style='font-family:"Calibri Light","sans-serif"'> es un
+videojuego que intenta transmitir al jugador una situaciÛn de peligro y
+movimiento constante. La palabra <b><i>Space</i></b> sit˙a al jugador en un
+entorno desconocido y hostil, mientras que <b><i>Escape</i></b> deja claro el
+objetivo principal del juego: sobrevivir y huir. El nombre funciona bien en
+pantallas de tipo <b><i>arcade</i></b>, es f·cil de recordar y permite crear
+logotipos estilizados con tipografÌas futuristas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.2. GÈnero / Subtipo</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>GÈnero:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> Se trata de un juego de
+plataformas con saltos y perspectiva lateral. </span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Subtipo:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> Es un juego de acciÛn estilo <i>arcade</i>
+con Ènfasis en la movilidad, la esquiva y los disparos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+juego combina:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>PrecisiÛn
+de plataformas cl·sicas (saltos, sincronizaciÛn y obst·culos).</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Combate
+ligero con proyectiles.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ritmo
+r·pido tÌpico de un juego <i>arcade</i>, con niveles cortos pero intensos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Lectura
+visual clara gracias a la c·mara lateral, que permite anticipar peligros.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+diseÒo favorece las partidas din·micas, con enemigos que obligan al jugador a
+moverse constantemente y escenarios que cambian de forma activa mediante
+plataformas mÛviles, trampas y mecanismos alienÌgenas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.3. Historia y objetivos</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>Contexto
+narrativo</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+protagonista es una persona com˙n que, durante una noche tranquila, es abducido
+accidentalmente por una nave alienÌgena. La nave lo transporta al <b><i>espacio</i></b>,
+a un planeta desconocido lleno de ruinas tecnolÛgicas y sistemas de defensa
+fuera de control.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+planeta parece haber sido abandonado hace siglos, pero sus m·quinas siguen
+activas, operando sin supervisiÛn y atacando cualquier forma de vida.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>Objetivo general</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+objetivo principal del juego es <b><i>escapar</i></b> del planeta superando
+zonas peligrosas, derrotando a los enemigos y activando teletransportadores
+alienÌgenas que desbloquean nuevas fases.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.4. Estructura narrativa</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><i><span
+style='font-family:"Calibri Light","sans-serif";color:#2E74B5'>IntroducciÛn</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Primer
+nivel y cinem·tica inicial: el protagonista es abducido y transportado a un
+planeta alienÌgena.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><i><span
+style='font-family:"Calibri Light","sans-serif";color:#2E74B5'>Desarrollo</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>El segundo
+nivel es un breve tutorial en el planeta alienÌgena.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se enseÒan
+las mec·nicas b·sicas tales como caminar, saltar, disparar, usar las
+plataformas y activar los teletransportadores.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se
+introduce el bl·ster.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>El jugador
+explora varias regiones del planeta, cada una con una estÈtica y mec·nicas
+propias.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Aparecen
+enemigos terrestres y voladores, a˙n m·s complejos y con patrones variados.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se
+introducen plataformas mÛviles, ascensores, gr˙as, teletransportadores y
+trampas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>El jugador
+debe recolectar gemas o activar mecanismos como los teletransportadores para
+avanzar.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>La
+dificultad aumenta gradualmente con nuevos tipos de enemigos con muchos retos
+que requieren de precisiÛn.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><i><span
+style='font-family:"Calibri Light","sans-serif";color:#2E74B5'>ConclusiÛn</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>El jugador
+llega a la base de lanzamiento, donde se encuentra el cohete de escape.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enfrenta†
+a un enemigo final y su desafÌo mayor.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Tras
+superar este ˙ltimo obst·culo, el jugador accede a la c·psula del cohete
+espacial y escapa del planeta.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Cinem·tica
+final: regreso a la Tierra. </span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><span style='font-family:"Calibri Light","sans-serif"'>Nota:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> Se plantea implementar una
+posible secuela.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.4. Personajes (elementos)</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.4.1. Personaje
+jugador</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se trata
+de un humano com˙n abducido por alienÌgenas y trasladado a un planeta hostil</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Habilidades:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>El jugador
+puede caminar, correr, saltar y subir por escaleras.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Disparar
+con un bl·ster de energÌa.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Colgarse
+de bordes, trepar columnas y deslizarse por cables o gr˙as.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Activar
+dispositivos alienÌgenos como los teletransportadores.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Arma
+principal: bl·ster de energÌa de corto alcance.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.4.2. Enemigos</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><i><span
+style='font-family:"Calibri Light","sans-serif";color:#2E74B5'>Voladores</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Drones
+alienÌgenas:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+patrullan con rutas fijas, detectan al jugador y disparan r·fagas cortas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Robots
+esfÈricos:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+flotan lentamente y disparan proyectiles teledirigidos.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><i><span
+style='font-family:"Calibri Light","sans-serif";color:#2E74B5'>Superficiales</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Robots
+caminantes:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+bloquean los pasillos, tienen armadura resistente y disparan cuerpo a cuerpo.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.4.3. Elementos
+del entorno</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Plataformas
+destructibles:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+se rompen al recibir daÒo.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Plataformas
+indestructibles:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+base del nivel, usadas para los saltos principales.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Escaleras,
+ascensores, gr˙as y columnas:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+permiten una movilidad vertical y horizontal.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Teletransportadores:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> cambian al jugador de fase.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Objetos
+coleccionables:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+gemas de salud.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.5. EstÈtica</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se trata
+de un videojuego estilo visual <b>2D pixel art</b>, inspirado en juegos arcade
+retro pero con animaciones fluidas y efectos modernos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Paleta de
+colores vibrante, con predominio de tonos neÛn, luces pulsantes y metales
+desgastados.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Las
+plataformas y elementos del escenario siguen una <b>cuadrÌcula modular de
+128x128 pÌxeles</b>, facilitando la construcciÛn de niveles.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Fondos
+compuestos de:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Estrellas
+y nebulosas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Lunas
+m˙ltiples.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Estructuras
+alienÌgenas gigantes.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Interfaz
+minimalista:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Barra de
+vida.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>N˙mero de
+gemas recolectadas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.6. Mec·nicas</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.6.1.
+Movimiento</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Caminar y
+correr.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Saltos
+simples.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>CaÌda
+controlada en superficies (por ejemplo, plataformas).</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.6.2.
+InteracciÛn con el entorno</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Plataformas
+mÛviles horizontales y verticales.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Escaleras
+para ascenso y descenso manual.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ascensores
+autom·ticos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Gr˙as y
+columnas para colgarse, deslizarse o trepar.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Teletransportadores
+que cambian al jugador de fase.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif";
+color:red;background:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.6.3. Combate</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Disparo
+con bl·ster.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigos
+con patrones simples pero variados:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Movimiento
+lineal.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Patrullaje.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ataques
+teledirigidos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.6.4.
+ProgresiÛn</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Niveles
+lineales con rutas alternativas para exploraciÛn.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>RecolecciÛn
+de gemas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Incremento
+gradual de la dificultad mediante:</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Nuevos
+enemigos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Plataformas
+m·s complejas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:72.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Trampas
+m·s r·pidas o precisas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.7. Escenarios</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+planeta alienÌgena se divide en varias zonas tem·ticas, cada una con estÈtica,
+enemigos y mec·nicas propias.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.7.1. Zona de
+abducciÛn</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Zona en el
+planeta tierra donde es abducido el personaje.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Presencia
+de la nave que realiza la abducciÛn.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.7.2. Zona de
+aterrizaje</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Nave desde
+la que llega al planeta hostil.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Planetas
+en el horizonte.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Nivel
+tutorial.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigos
+simples y plataformas b·sicas.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.7.3. Zonas de
+obras</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Restos de
+obras, gr˙as, escaleras.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Edificio
+en construcciÛn. Zona abierta con plataformas mÛviles suspendidas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigos
+voladores y terrestres que se ocultan.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Nivel
+vertical con escaleras, ascensores y columnas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigos
+que disparan desde plataformas elevadas.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Secciones
+de caÌda libre controlada.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.7.4.
+Laboratorio abandonado</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Maquinaria
+en movimiento, gr˙as, ascensores y cintas transportadoras.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Robots
+defensivos.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigos
+voladores predominantes.</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'>1.7.5. Base de lanzamiento
+alienÌgena</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Fase
+final.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Mayor
+dificultad.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Trampas
+combinadas, enemigos diversos de superficie y voladores.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Enemigo
+final.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.8. Estructura del repositorio</span></i></b></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>/assets</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /debug</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /img</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /levels</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /music</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /sprites</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /videos</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>/docs</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† gdd.md </span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† memory.md</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>/src</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /character</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /gui</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† /webhook</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>††† main.py</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>README.md</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>requirements.txt</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:
+inter-ideograph;text-indent:-.5pt;line-height:103%;page-break-after:avoid'><b><span
+style='font-family:"Calibri Light","sans-serif";color:#2F5496'>1.9. CÛmo
+ejecutar el proyecto</span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Clonar el
+repositorio:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>git clone </span><a
+href="https://github.com/AFM-EPS/tdv-platform.git"><span style='font-family:
+"Calibri Light","sans-serif";color:blue'>https://github.com/AFM-EPS/tdv-platform.git</span></a></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Instalar
+dependencias:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>pip install arcade</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>pip install opencv-python</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Ejecutar
+el juego:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>python src/main.py</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.10. Roadmap del proyecto</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><span
+style='font-family:"Segoe UI Symbol","sans-serif";color:#1F4D78'>&#9989;</span><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'> <b>VersiÛn 1.0
+ó VersiÛn inicial (Producto MÌnimo Viable)</b></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Implementado
+los movimientos b·sicos del jugador</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Incluido
+sistema de disparo con bl·ster</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+implementado los enemigos simples (voladores y terrestres)</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+creado las plataformas est·ticas y mÛviles</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+aÒadido un nivel tutorial </span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+implementado un HUD b·sico</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><span
+style='font-family:"Segoe UI Symbol","sans-serif";color:#1F4D78'>&#128679;</span><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'> <b>VersiÛn 1.1
+ó ExpansiÛn de mec·nicas</b></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+implementado mejoras del bl·ster</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+aÒadido enemigos ocultos</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+incluido sistema de gemas y progresiÛn</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+implementado nuevos patrones de enemigos</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+incluido algunas animaciones avanzadas del jugador</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><span
+style='font-family:"Segoe UI Emoji","sans-serif";color:#1F4D78'>&#129514;</span><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'> <b>VersiÛn 1.2
+ó Pulido y optimizaciÛn</b></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+optimizado las colisiones</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+ajustado la dificultad progresiva</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+mejorado la interfaz/HUD (muestra el n˙mero de cada gema recogida con su
+imagen).</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+creado efectos visuales y partÌculas</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+producido sonido mejorado</span></p>
+
+<p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;
+margin-left:.5pt;margin-bottom:.0001pt;text-align:justify;text-justify:inter-ideograph;
+text-indent:-.5pt;line-height:103%;page-break-after:avoid'><span
+style='font-family:"Segoe UI Symbol","sans-serif";color:#1F4D78'>&#128640;</span><span
+style='font-family:"Calibri Light","sans-serif";color:#1F4D78'> <b>VersiÛn 2.0
+ó VersiÛn final</b></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Se ha
+introducido el nivel final con la presencia de una nueva Nave alienÌgena</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"Calibri Light","sans-serif"'>Nuevas
+cinem·ticas de introducciÛn y cierre</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.11. Autores</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><span style='font-family:"Calibri Light","sans-serif"'>El
+proyecto ha sido desarrollado por estudiantes de la asignatura <b>TecnologÌa de
+Videojuegos</b>.</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:0cm;line-height:normal'><b><i><span style='font-family:"Calibri Light","sans-serif";
+color:#2F5496'>1.12. DocumentaciÛn</span></i></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>Memoria
+del proyecto:</span></b><span style='font-family:"Calibri Light","sans-serif"'>
+docs/memory.md</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif"'>ï<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><b><span style='font-family:"Calibri Light","sans-serif"'>GDD:</span></b><span
+style='font-family:"Calibri Light","sans-serif"'> docs/gdd.md</span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:0cm;margin-bottom:5.0pt;
+margin-left:36.0pt;text-indent:-18.0pt;line-height:normal'><span
+style='font-family:"Calibri Light","sans-serif";color:black'>ï<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style='font-family:"Calibri Light","sans-serif"'>Recursos adicionales en la
+carpeta /docs.</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:5.35pt;
+margin-left:.5pt;text-align:justify;text-justify:inter-ideograph;text-indent:
+-.5pt;line-height:103%'><span style='font-size:12.0pt;line-height:103%;
+font-family:"Book Antiqua","serif";color:black'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

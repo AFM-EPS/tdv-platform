@@ -119,8 +119,8 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":1152,
-                 "y":640
+                 "x":1606.66666666667,
+                 "y":596
                 }, 
                 {
                  "height":0,
@@ -162,8 +162,8 @@
                  "type":"Enemy",
                  "visible":true,
                  "width":0,
-                 "x":1792,
-                 "y":256
+                 "x":2118.66666666667,
+                 "y":269.333333333333
                 }, 
                 {
                  "height":0,
@@ -335,7 +335,7 @@
                  "visible":true,
                  "width":0,
                  "x":7296,
-                 "y":640
+                 "y":623
                 }, 
                 {
                  "height":0,
@@ -379,6 +379,92 @@
                  "width":0,
                  "x":7424,
                  "y":384
+                }, 
+                {
+                 "height":0,
+                 "id":62,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"shot_cadence",
+                         "type":"float",
+                         "value":1.5
+                        }, 
+                        {
+                         "name":"shot_speed",
+                         "type":"float",
+                         "value":8
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"float",
+                         "value":5
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"flying_1"
+                        }, 
+                        {
+                         "name":"vision",
+                         "type":"int",
+                         "value":400
+                        }],
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":0,
+                 "x":943.333333333333,
+                 "y":174
+                }, 
+                {
+                 "height":0,
+                 "id":63,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"shot_cadence",
+                         "type":"float",
+                         "value":1.5
+                        }, 
+                        {
+                         "name":"shot_speed",
+                         "type":"float",
+                         "value":8
+                        }, 
+                        {
+                         "name":"speed",
+                         "type":"float",
+                         "value":5
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"flying_1"
+                        }, 
+                        {
+                         "name":"vision",
+                         "type":"int",
+                         "value":400
+                        }],
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":0,
+                 "x":1088,
+                 "y":310.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -417,8 +503,8 @@
                  "type":"Blue_ore",
                  "visible":true,
                  "width":128,
-                 "x":1664,
-                 "y":384
+                 "x":1792,
+                 "y":512
                 }, 
                 {
                  "gid":5,
@@ -435,26 +521,8 @@
                  "type":"Green_ore",
                  "visible":true,
                  "width":128,
-                 "x":1792,
-                 "y":384
-                }, 
-                {
-                 "gid":6,
-                 "height":128,
-                 "id":20,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "rotation":0,
-                 "type":"Golden_ore",
-                 "visible":true,
-                 "width":128,
-                 "x":1920,
-                 "y":384
+                 "x":2432,
+                 "y":383.5
                 }, 
                 {
                  "gid":4,
@@ -495,24 +563,6 @@
                 {
                  "gid":6,
                  "height":128,
-                 "id":23,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"value",
-                         "type":"int",
-                         "value":100
-                        }],
-                 "rotation":0,
-                 "type":"Golden_ore",
-                 "visible":true,
-                 "width":128,
-                 "x":6912,
-                 "y":640
-                }, 
-                {
-                 "gid":6,
-                 "height":128,
                  "id":24,
                  "name":"",
                  "properties":[
@@ -545,6 +595,321 @@
                  "width":128,
                  "x":7168,
                  "y":640
+                }, 
+                {
+                 "gid":5,
+                 "height":128,
+                 "id":61,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":50
+                        }],
+                 "rotation":0,
+                 "type":"Green_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":6848,
+                 "y":512.333333333333
+                }, 
+                {
+                 "gid":6,
+                 "height":128,
+                 "id":64,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "rotation":0,
+                 "type":"Golden_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":1023.66666666667,
+                 "y":384
+                }, 
+                {
+                 "gid":6,
+                 "height":128,
+                 "id":65,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "rotation":0,
+                 "type":"Golden_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":895.666666666667,
+                 "y":384.333333333333
+                }, 
+                {
+                 "gid":6,
+                 "height":128,
+                 "id":66,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "rotation":0,
+                 "type":"Golden_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":959,
+                 "y":384.333333333333
+                }, 
+                {
+                 "gid":6,
+                 "height":128,
+                 "id":67,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":100
+                        }],
+                 "rotation":0,
+                 "type":"Golden_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":831.666666666667,
+                 "y":384.666666666667
+                }, 
+                {
+                 "gid":4,
+                 "height":128,
+                 "id":68,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":10
+                        }],
+                 "rotation":0,
+                 "type":"Blue_ore",
+                 "visible":true,
+                 "width":128,
+                 "x":320.818181818182,
+                 "y":512.212121212121
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":74,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":4488,
+                 "y":636
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":75,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2432,
+                 "y":254
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":76,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":638,
+                 "y":382
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":77,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2946,
+                 "y":544
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":78,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":6996,
+                 "y":682
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":79,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":2692,
+                 "y":388
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":80,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":3456,
+                 "y":542
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":81,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":3970,
+                 "y":544
+                }, 
+                {
+                 "gid":189,
+                 "height":128,
+                 "id":82,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"heart"
+                        }, 
+                        {
+                         "name":"value",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":7550,
+                 "y":636
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -587,11 +952,11 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 102, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+         "data":[0, 0, 0, 0, 23, 22, 22, 22, 22, 22, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 22, 22, 22, 22, 22, 0, 0, 0, 0, 0, 0, 0, 185, 188, 188, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 185, 2147483833, 0, 0, 0, 0, 0, 0, 0, 0, 0, 186, 187, 2147483834, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 19, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 185, 2147483833, 0, 0, 0, 0, 0,
             2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2],
          "height":6,
          "id":2,
@@ -879,7 +1244,7 @@
                 }, 
                 {
                  "gid":9,
-                 "height":64,
+                 "height":128,
                  "id":59,
                  "name":"",
                  "properties":[
@@ -902,8 +1267,36 @@
                  "type":"Special_platforms",
                  "visible":true,
                  "width":128,
-                 "x":513.034164730734,
-                 "y":507.739621086704
+                 "x":639.784164730734,
+                 "y":383.989621086704
+                }, 
+                {
+                 "gid":9,
+                 "height":32,
+                 "id":69,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"destructible",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":50
+                        }, 
+                        {
+                         "name":"movable",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"Special_platforms",
+                 "visible":true,
+                 "width":128,
+                 "x":638.829619276189,
+                 "y":159.398711995795
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -929,7 +1322,7 @@
          "y":0
         }],
  "nextlayerid":28,
- "nextobjectid":61,
+ "nextobjectid":83,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -986,6 +1379,35 @@
         {
          "firstgid":184,
          "source":"..\/tilesets\/scaffold_platform.json"
+        }, 
+        {
+         "firstgid":185,
+         "source":"..\/tilesets\/space_half_block_left.json"
+        }, 
+        {
+         "firstgid":186,
+         "source":"..\/tilesets\/space_hill.json"
+        }, 
+        {
+         "firstgid":187,
+         "source":"..\/tilesets\/space_block.json"
+        }, 
+        {
+         "firstgid":188,
+         "source":"..\/tilesets\/space_half_block.json"
+        }, 
+        {
+         "columns":1,
+         "firstgid":189,
+         "image":"..\/..\/img\/heal.png",
+         "imageheight":128,
+         "imagewidth":128,
+         "margin":0,
+         "name":"Heal",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":128,
+         "tilewidth":128
         }],
  "tilewidth":128,
  "type":"map",
